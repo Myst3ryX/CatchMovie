@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catch Movie!</string>
+    <string name="title_movies">Movies</string>
+    <string name="title_tv_show">TV Shows</string>
+    <string name="title_actors">Actors</string>
+
+    <string name="title_movies_catching_history_fragment">Recently Caught Movies</string>
+    <string name="title_movies_watchlist_fragment">Movies Watchlist</string>
+    <string name="title_movies_favorites_fragment">Favorite Movies</string>
+
+    <string name="text_catching_history_fragment">You didn\'t caught any movie yet! Press button below to catch your first one!</string>
+    <string name="text_watchlist_fragment">Your watchlist is empty</string>
+    <string name="text_favorites_fragment">Your favorite movies list is empty</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="movies_tab_sections">
+        <item>recent</item>
+        <item>watchlist</item>
+        <item>favorites</item>
+    </string-array>
+
+    <string name="fab_click">Clicked!</string>
+</resources>
