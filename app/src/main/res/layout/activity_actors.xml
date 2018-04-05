@@ -17,6 +17,12 @@
 
         <include layout="@layout/toolbar" />
 
+        <fragment
+            android:id="@+id/fragment_actors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            class="com.myst3ry.catchmovie.ui.fragment.ActorsFragment" />
+
     </LinearLayout>
 
     <include layout="@layout/nav_drawer" />

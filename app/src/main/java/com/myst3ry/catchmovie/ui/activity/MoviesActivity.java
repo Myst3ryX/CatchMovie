@@ -8,37 +8,44 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.ui.adapter.ViewPagerAdapter;
+import com.myst3ry.catchmovie.ui.adapter.MoviesPagerAdapter;
+
+import butterknife.BindString;
+import butterknife.BindView;
 
 public class MoviesActivity extends NavDrawerBaseActivity {
 
-    private static int navItemId;
+    private static int navItemSelected;
+
+    @BindString(R.string.bar_movies_title)
+    String moviesTitle;
+    @BindView(R.id.view_pager)
+    ViewPager moviesPager;
+    @BindView(R.id.tabs)
+    TabLayout moviesTabs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
-        super.onCreateDrawer();
+        setTitle(moviesTitle);
+        super.setupDrawer();
 
         if (savedInstanceState == null) {
-            navItemId = getIntent().getIntExtra(NAV_ITEM_ID_EXTRA, 0);
+            navItemSelected = getIntent().getIntExtra(NAV_ITEM_SELECTED_EXTRA, 0);
         } else {
-            navItemId = savedInstanceState.getInt(NAV_ITEM_ID);
+            navItemSelected = savedInstanceState.getInt(NAV_ITEM_SELECTED);
         }
 
-        final ViewPager moviesPager = (ViewPager) findViewById(R.id.view_pager);
-        moviesPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(),
-                getResources().getStringArray(R.array.pager_sections)));
-
-        final TabLayout moviesTabs = (TabLayout) findViewById(R.id.tabs);
+        moviesPager.setAdapter(new MoviesPagerAdapter(getSupportFragmentManager(),
+                getResources().getStringArray(R.array.movies_sections)));
         moviesTabs.setupWithViewPager(moviesPager);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getNavigationView().setCheckedItem(navItemId);
-        getToolbar().setTitle(getString(R.string.bar_movies_title));
+        getNavigationView().setCheckedItem(navItemSelected);
     }
 
     @Override
@@ -60,6 +67,7 @@ public class MoviesActivity extends NavDrawerBaseActivity {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putInt(NAV_ITEM_ID, navItemId);
+        super.onSaveInstanceState(outState);
+        outState.putInt(NAV_ITEM_SELECTED, navItemSelected);
     }
 }

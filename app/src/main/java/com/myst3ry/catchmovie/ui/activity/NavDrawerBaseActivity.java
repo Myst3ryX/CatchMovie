@@ -4,28 +4,31 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.R;
 
-public class NavDrawerBaseActivity extends AppCompatActivity {
+import butterknife.BindView;
 
-    protected static final String NAV_ITEM_ID = "NavItemId";
-    protected static final String NAV_ITEM_ID_EXTRA = "NavItemIdExtra";
-    protected static final int NAV_CLOSE_DELAY = 250;
+public class NavDrawerBaseActivity extends BaseActivity {
 
-    private NavigationView navigationView;
-    private Toolbar toolbar;
-    private DrawerLayout drawer;
+    public static final String NAV_ITEM_SELECTED = "NavItemSelected";
+    public static final String NAV_ITEM_SELECTED_EXTRA = "NavItemSelectedExtra";
+    private static final int NAV_CLOSE_DELAY = 250;
+
     private Handler handler;
+
+    @BindView(R.id.nav_view_main)
+    NavigationView navigationView;
+    @BindView(R.id.drawer_main)
+    DrawerLayout drawer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,18 +36,18 @@ public class NavDrawerBaseActivity extends AppCompatActivity {
         handler = new Handler();
     }
 
-    protected void onCreateDrawer() {
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+    }
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    protected void setupDrawer() {
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_main);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
+                this, drawer, getToolbar(), R.string.nav_drawer_open, R.string.nav_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view_main);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -91,7 +94,7 @@ public class NavDrawerBaseActivity extends AppCompatActivity {
         }
 
         if (launchIntent != null) {
-            launchIntent.putExtra(NAV_ITEM_ID_EXTRA, id);
+            launchIntent.putExtra(NAV_ITEM_SELECTED_EXTRA, id);
             final Intent finalLaunchIntent = new Intent(launchIntent);
             handler.postDelayed(new Runnable() {
                 @Override
@@ -116,9 +119,5 @@ public class NavDrawerBaseActivity extends AppCompatActivity {
 
     public NavigationView getNavigationView() {
         return navigationView;
-    }
-
-    public Toolbar getToolbar() {
-        return toolbar;
     }
 }
