@@ -6,7 +6,7 @@
     android:background="@color/color_main_background"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:context=".ui.activity.SettingsStubActivity">
+    tools:context=".ui.activity.MovieDetailActivity">
 
     <include layout="@layout/toolbar" />
 

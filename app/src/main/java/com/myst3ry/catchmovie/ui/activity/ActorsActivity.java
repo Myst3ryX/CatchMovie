@@ -5,33 +5,38 @@ import android.support.annotation.Nullable;
 
 import com.myst3ry.catchmovie.R;
 
+import butterknife.BindString;
+
 public class ActorsActivity extends NavDrawerBaseActivity {
 
-    private static int navItemId;
+    @BindString(R.string.bar_actors_title)
+    String actorsTitle;
+
+    private static int navItemSelected;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actors);
-        super.onCreateDrawer();
+        setTitle(actorsTitle);
+        super.setupDrawer();
 
         if (savedInstanceState == null) {
-            navItemId = getIntent().getIntExtra(NAV_ITEM_ID_EXTRA, 0);
+            navItemSelected = getIntent().getIntExtra(NAV_ITEM_SELECTED_EXTRA, 0);
         } else {
-            navItemId = savedInstanceState.getInt(NAV_ITEM_ID);
+            navItemSelected = savedInstanceState.getInt(NAV_ITEM_SELECTED);
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getNavigationView().setCheckedItem(navItemId);
-        getToolbar().setTitle(getString(R.string.bar_actors_title));
+        getNavigationView().setCheckedItem(navItemSelected);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putInt(NAV_ITEM_ID, navItemId);
+        outState.putInt(NAV_ITEM_SELECTED, navItemSelected);
     }
 
 }

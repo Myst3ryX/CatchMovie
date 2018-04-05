@@ -6,42 +6,49 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.ui.adapter.ViewPagerAdapter;
+import com.myst3ry.catchmovie.ui.adapter.TvShowsPagerAdapter;
+
+import butterknife.BindString;
+import butterknife.BindView;
 
 public class TvShowsActivity extends NavDrawerBaseActivity {
 
-    private static int navItemId;
+    private static int navItemSelected;
+
+    @BindString(R.string.bar_tv_shows_title)
+    String tvShowsTitle;
+    @BindView(R.id.view_pager)
+    ViewPager tvShowsPager;
+    @BindView(R.id.tabs)
+    TabLayout tvShowsTabs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tv_shows);
-        super.onCreateDrawer();
+        setTitle(tvShowsTitle);
+        super.setupDrawer();
 
         if (savedInstanceState == null) {
-            navItemId = getIntent().getIntExtra(NAV_ITEM_ID_EXTRA, 0);
+            navItemSelected = getIntent().getIntExtra(NAV_ITEM_SELECTED_EXTRA, 0);
         } else {
-            navItemId = savedInstanceState.getInt(NAV_ITEM_ID);
+            navItemSelected = savedInstanceState.getInt(NAV_ITEM_SELECTED);
         }
 
-        final ViewPager showsPager = (ViewPager) findViewById(R.id.view_pager);
-        showsPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(),
-                getResources().getStringArray(R.array.pager_sections)));
-
-        final TabLayout moviesTabs = (TabLayout) findViewById(R.id.tabs);
-        moviesTabs.setupWithViewPager(showsPager);
+        tvShowsPager.setAdapter(new TvShowsPagerAdapter(getSupportFragmentManager(),
+                getResources().getStringArray(R.array.tv_shows_sections)));
+        tvShowsTabs.setupWithViewPager(tvShowsPager);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        getNavigationView().setCheckedItem(navItemId);
-        getToolbar().setTitle(getString(R.string.bar_tv_shows_title));
+        getNavigationView().setCheckedItem(navItemSelected);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(NAV_ITEM_ID, navItemId);
+        outState.putInt(NAV_ITEM_SELECTED, navItemSelected);
     }
 }

@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.myst3ry.catchmovie.R;
 
-public class SettingsStubActivity extends NavDrawerBaseActivity {
+public class SettingsStubActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
