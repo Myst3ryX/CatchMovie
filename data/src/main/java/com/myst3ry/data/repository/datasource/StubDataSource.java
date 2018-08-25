@@ -1,7 +1,7 @@
 package com.myst3ry.data.repository.datasource;
 
-import com.myst3ry.data.local.entity.ActorEntity;
 import com.myst3ry.data.local.entity.MovieEntity;
+import com.myst3ry.data.local.entity.PersonEntity;
 import com.myst3ry.data.local.entity.TvShowEntity;
 
 import java.util.ArrayList;
@@ -9,11 +9,11 @@ import java.util.List;
 
 public final class StubDataSource implements DataSource {
 
-    public List<ActorEntity> getActorsList() {
+    public List<PersonEntity> getActorsList() {
         final int actorsSize = 5;
-        List<ActorEntity> actors = new ArrayList<>(actorsSize);
+        List<PersonEntity> actors = new ArrayList<>(actorsSize);
         for (int i = 0; i < actorsSize; i++) {
-            final ActorEntity actor = new ActorEntity();
+            final PersonEntity actor = new PersonEntity();
             //actor.setActorPhotoImage(R.drawable.jordana_photo);
             //actor.setActorName("Jordana Brewster");
             actors.add(actor);

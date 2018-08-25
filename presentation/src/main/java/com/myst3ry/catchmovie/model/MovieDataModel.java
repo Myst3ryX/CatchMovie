@@ -6,7 +6,7 @@ public final class MovieDataModel {
     public static final int WATCH = 1;
     public static final int FAVORITE = 2;
 
-    private final long mMovieId;
+    private final int mMovieId;
     private final int mMoviePosterImage;
     private final String mMovieReleaseYear;
     private final String mMovieTitle;
@@ -28,7 +28,7 @@ public final class MovieDataModel {
         return new Builder();
     }
 
-    public long getMovieId() {
+    public int getMovieId() {
         return mMovieId;
     }
 
@@ -59,7 +59,7 @@ public final class MovieDataModel {
 
     public static final class Builder {
 
-        private long id;
+        private int id;
         private int poster;
         private String releaseYear;
         private String title;
@@ -70,7 +70,7 @@ public final class MovieDataModel {
         private Builder() {
         }
 
-        public Builder setMovieId(final long id) {
+        public Builder setMovieId(final int id) {
             this.id = id;
             return this;
         }

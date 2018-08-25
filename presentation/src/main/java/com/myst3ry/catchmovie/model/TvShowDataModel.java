@@ -6,7 +6,7 @@ public final class TvShowDataModel {
     public static final int FAVORITE = 1;
     public static final int WATCH = 2;
 
-    private final long mTvShowId;
+    private final int mTvShowId;
     private final int mTvShowPosterImage;
     private final String mTvShowReleaseYear;
     private final String mTvShowTitle;
@@ -28,7 +28,7 @@ public final class TvShowDataModel {
         return new Builder();
     }
 
-    public long getTvShowId() {
+    public int getTvShowId() {
         return mTvShowId;
     }
 
@@ -59,7 +59,7 @@ public final class TvShowDataModel {
 
     public static final class Builder {
 
-        private long id;
+        private int id;
         private int poster;
         private String releaseYear;
         private String title;
@@ -70,7 +70,7 @@ public final class TvShowDataModel {
         private Builder() {
         }
 
-        public Builder setTvShowId(final long id) {
+        public Builder setTvShowId(final int id) {
             this.id = id;
             return this;
         }

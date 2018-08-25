@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.activity.movie.MoviesActivity"
+    tools:context=".ui.movie.activity.MoviesActivity"
     tools:openDrawer="start">
 
-    <include layout="@layout/app_bar" />
+    <include layout="@layout/content_movies" />
 
     <include layout="@layout/nav_drawer" />
 

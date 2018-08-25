@@ -14,17 +14,13 @@ public final class RecyclerViewScrollListener extends RecyclerView.OnScrollListe
     }
 
     @Override
-    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-        super.onScrollStateChanged(recyclerView, newState);
-    }
-
-    //hide fab with scrolling down and show with scrolling up
-    @Override
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-        if (dy > DY_POS && mFab.isShown()) {
-            mFab.hide();
-        } else if (dy < DY_POS && !mFab.isShown()) {
-            mFab.show();
+        if (mFab != null) {
+            if (dy > DY_POS && mFab.isShown()) {
+                mFab.hide();
+            } else if (dy < DY_POS && !mFab.isShown()) {
+                mFab.show();
+            }
         }
     }
 }

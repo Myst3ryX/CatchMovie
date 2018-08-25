@@ -6,8 +6,13 @@
     android:background="@color/color_main_background"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:context=".ui.activity.movie.MovieDetailActivity">
+    tools:context=".ui.movie.activity.MovieDetailActivity">
 
     <include layout="@layout/toolbar" />
+
+    <FrameLayout
+        android:id="@+id/frame_movie_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

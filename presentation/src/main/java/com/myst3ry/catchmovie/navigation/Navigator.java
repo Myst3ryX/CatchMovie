@@ -7,13 +7,16 @@ import android.support.annotation.NonNull;
 
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.constants.IntentConstants;
-import com.myst3ry.catchmovie.ui.activity.SettingsStubActivity;
-import com.myst3ry.catchmovie.ui.activity.actor.ActorDetailActivity;
-import com.myst3ry.catchmovie.ui.activity.actor.ActorsActivity;
-import com.myst3ry.catchmovie.ui.activity.movie.MovieDetailActivity;
-import com.myst3ry.catchmovie.ui.activity.movie.MoviesActivity;
-import com.myst3ry.catchmovie.ui.activity.tvshow.TvShowDetailActivity;
-import com.myst3ry.catchmovie.ui.activity.tvshow.TvShowsActivity;
+import com.myst3ry.catchmovie.ui.movie.activity.MovieDetailActivity;
+import com.myst3ry.catchmovie.ui.movie.activity.MovieFindActivity;
+import com.myst3ry.catchmovie.ui.movie.activity.MoviesActivity;
+import com.myst3ry.catchmovie.ui.person.activity.PersonDetailActivity;
+import com.myst3ry.catchmovie.ui.person.activity.PersonFindActivity;
+import com.myst3ry.catchmovie.ui.person.activity.PersonsActivity;
+import com.myst3ry.catchmovie.ui.settings.SettingsStubActivity;
+import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowDetailActivity;
+import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowFindActivity;
+import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowsActivity;
 
 public final class Navigator {
 
@@ -27,27 +30,27 @@ public final class Navigator {
         context.startActivity(tvShowsIntent);
     }
 
-    public void navigateToActorsScreen(@NonNull final Context context) {
-        final Intent actorsIntent = ActorsActivity.newIntent(context);
-        context.startActivity(actorsIntent);
+    public void navigateToPersonsScreen(@NonNull final Context context) {
+        final Intent personsIntent = PersonsActivity.newIntent(context);
+        context.startActivity(personsIntent);
     }
 
-    public void navigateToMovieDetailScreen(@NonNull final Context context, final long movieId) {
+    public void navigateToMovieDetailScreen(@NonNull final Context context, final int movieId) {
         final Intent movieDetailIntent = MovieDetailActivity.newIntent(context);
         movieDetailIntent.putExtra(IntentConstants.EXTRA_MOVIE_ID, movieId);
         context.startActivity(movieDetailIntent);
     }
 
-    public void navigateToTvShowDetailScreen(@NonNull final Context context, final long tvShowId) {
+    public void navigateToTvShowDetailScreen(@NonNull final Context context, final int tvShowId) {
         final Intent tvShowDetailIntent = TvShowDetailActivity.newIntent(context);
         tvShowDetailIntent.putExtra(IntentConstants.EXTRA_TV_SHOW_ID, tvShowId);
         context.startActivity(tvShowDetailIntent);
     }
 
-    public void navigateToActorDetailScreen(@NonNull final Context context, final long actorId) {
-        final Intent actorDetailIntent = ActorDetailActivity.newIntent(context);
-        actorDetailIntent.putExtra(IntentConstants.EXTRA_ACTOR_ID, actorId);
-        context.startActivity(actorDetailIntent);
+    public void navigateToPersonDetailScreen(@NonNull final Context context, final int personId) {
+        final Intent personDetailIntent = PersonDetailActivity.newIntent(context);
+        personDetailIntent.putExtra(IntentConstants.EXTRA_PERSON_ID, personId);
+        context.startActivity(personDetailIntent);
     }
 
     public void navigateToSettingsScreen(@NonNull final Context context) {
@@ -55,16 +58,19 @@ public final class Navigator {
         context.startActivity(settingsIntent);
     }
 
-    public void navigateToNewMovieScreen(@NonNull final Context context) {
-        //todo implement
+    public void navigateToMovieFindScreen(@NonNull final Context context) {
+        final Intent movieFindIntent = MovieFindActivity.newIntent(context);
+        context.startActivity(movieFindIntent);
     }
 
-    public void navigateToNewTvShowScreen(@NonNull final Context context) {
-        //todo implement
+    public void navigateToTvShowFindScreen(@NonNull final Context context) {
+        final Intent tvShowFindIntent = TvShowFindActivity.newIntent(context);
+        context.startActivity(tvShowFindIntent);
     }
 
-    public void navigateToNewActorScreen(@NonNull final Context context) {
-        //todo implement
+    public void navigateToPersonSearchScreen(@NonNull final Context context) {
+        final Intent personFindIntent = PersonFindActivity.newIntent(context);
+        context.startActivity(personFindIntent);
     }
 
     public void navigateToContactScreen(@NonNull final Context context, final String mailSubject,

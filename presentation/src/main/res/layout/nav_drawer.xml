@@ -7,8 +7,8 @@
     android:layout_gravity="start"
     android:background="@color/color_nav_background"
     android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.NavigationView"
     app:headerLayout="@layout/nav_drawer_header"
     app:itemIconTint="@color/color_nav_item_text"
     app:itemTextColor="@color/color_nav_item_text"
-    app:menu="@menu/menu_nav_main"
-    app:theme="@style/ThemeOverlay.AppCompat.NavigationView" />
+    app:menu="@menu/menu_navigation" />

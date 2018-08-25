@@ -5,7 +5,5 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/color_primary"
-    app:subtitleTextAppearance="?android:attr/textAppearanceSmall"
     app:subtitleTextColor="@color/color_main_text"
-    app:titleTextAppearance="?android:attr/textAppearanceLarge"
     app:titleTextColor="@color/color_highlighted_text" />

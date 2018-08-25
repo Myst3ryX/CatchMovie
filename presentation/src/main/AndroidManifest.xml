@@ -10,19 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Toolbar">
-        <activity android:name=".ui.activity.NavDrawerBaseActivity" />
-        <activity android:name=".ui.activity.movie.MoviesActivity">
+        <activity android:name=".ui.movie.activity.MoviesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.tvshow.TvShowsActivity" />
-        <activity android:name=".ui.activity.actor.ActorsActivity" />
-        <activity android:name=".ui.activity.SettingsStubActivity" />
-        <activity android:name=".ui.activity.movie.MovieDetailActivity" />
-        <activity android:name=".ui.activity.tvshow.TvShowDetailActivity" />
-        <activity android:name=".ui.activity.actor.ActorDetailActivity" />
+        <activity android:name=".ui.tvshow.activity.TvShowsActivity" />
+        <activity android:name=".ui.person.activity.PersonsActivity" />
+        <activity android:name=".ui.settings.SettingsStubActivity" />
+
+        <activity android:name=".ui.movie.activity.MovieDetailActivity" />
+        <activity android:name=".ui.tvshow.activity.TvShowDetailActivity" />
+        <activity android:name=".ui.person.activity.PersonDetailActivity" />
+
+        <activity android:name=".ui.movie.activity.MovieFindActivity" />
+        <activity android:name=".ui.person.activity.PersonFindActivity" />
+        <activity android:name=".ui.tvshow.activity.TvShowFindActivity" />
     </application>
 
 </manifest>
