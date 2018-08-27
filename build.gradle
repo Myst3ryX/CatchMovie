@@ -17,6 +17,8 @@ buildscript {
 
         ROOM_VER = '1.1.1'
 
+        TIMBER_VER = '4.7.0'
+
         JUNIT_VER = '4.12'
         RUNNER_VER = '1.0.2'
         ESPRESSO_VER = '3.0.2'

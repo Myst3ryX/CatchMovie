@@ -19,7 +19,6 @@ public final class TvShowItemDataModelMapper {
     public static TvShowItemDataModel transform(final TvShowItemModel model) {
         return TvShowItemDataModel.newBuilder()
                 .setId(model.getId())
-                .setType(model.getType())
                 .setPoster(model.getPoster())
                 .setTitle(model.getTitle())
                 .setReleaseDate(model.getReleaseDate())

@@ -15,6 +15,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @MoviesScope
 public final class MovieDetailPresenter extends BasePresenter<MovieDetailView> {
@@ -44,8 +45,6 @@ public final class MovieDetailPresenter extends BasePresenter<MovieDetailView> {
                 .map(MovieDetailDataModelMapper::transform)
                 .subscribe(this::setMovieDetails,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
-
-        //todo credits
     }
 
     public void setMovieRating(final int movieId, final double rating) {
@@ -61,14 +60,16 @@ public final class MovieDetailPresenter extends BasePresenter<MovieDetailView> {
     }
 
     private void setMovieDetails(final MovieDetailDataModel movie) {
-        //todo log
         if (movie != null) {
+            Timber.i("Movie /" + movie.getMovieTitle() + "/ details loaded successful");
             mView.setMovieDetails(movie);
+        } else {
+            Timber.w("Movie details load failed: null object");
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Movie details load error: %s", message);
         mView.showToast(message);
     }
 }

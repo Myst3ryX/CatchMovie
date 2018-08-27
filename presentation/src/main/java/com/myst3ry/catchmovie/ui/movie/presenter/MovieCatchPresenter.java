@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @MoviesScope
 public final class MovieCatchPresenter extends BasePresenter<MovieCatchView> {
@@ -34,14 +35,17 @@ public final class MovieCatchPresenter extends BasePresenter<MovieCatchView> {
     }
 
     private void showCatchResult(final MovieItemDataModel movie) {
-        //todo log
         if (movie != null) {
+            Timber.i("Movie /" + movie.getMovieTitle() + "/ catch successful");
             mView.showMovieCatchResult(movie);
+        } else {
+            Timber.w("Movie catch failed: null object");
+            //mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Movie catch error: %s", message);
         mView.showToast(message);
     }
 }

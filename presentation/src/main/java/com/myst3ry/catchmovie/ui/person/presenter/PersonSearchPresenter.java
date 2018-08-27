@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @PersonsScope
 public final class PersonSearchPresenter extends BasePresenter<PersonSearchView> {
@@ -36,14 +37,17 @@ public final class PersonSearchPresenter extends BasePresenter<PersonSearchView>
     }
 
     private void showSearchResult(final List<PersonItemDataModel> persons) {
-        //todo log
         if (persons != null && !persons.isEmpty()) {
+            Timber.i("Persons search successful, found: %s", persons.size());
             mView.showPersonsSearchResult(persons);
+        } else {
+            Timber.w("Persons search failed: null or empty list");
+            //mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Persons search error: %s", message);
         mView.showToast(message);
     }
 }

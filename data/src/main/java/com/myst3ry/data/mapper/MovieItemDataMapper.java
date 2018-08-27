@@ -19,7 +19,6 @@ public final class MovieItemDataMapper {
     public static MovieItemModel transform(final MovieEntity entity) {
         return new MovieItemModel(
                 entity.getId(),
-                entity.getType(),
                 entity.getTitle(),
                 entity.getMainPoster(),
                 entity.getReleaseDate(),

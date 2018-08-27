@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @TvShowsScope
 public final class TvShowsPresenter extends BasePresenter<TvShowsView> {
@@ -53,15 +54,16 @@ public final class TvShowsPresenter extends BasePresenter<TvShowsView> {
 
     private void setTvShows(final List<TvShowItemDataModel> tvShows) {
         if (tvShows != null && !tvShows.isEmpty()) {
-            //todo log
+            Timber.i("TV loaded successful, size: %s", tvShows.size());
             mView.setTvShows(tvShows);
         } else {
+            Timber.w("TV load failed: null or empty list");
             mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("TV load error: %s", message);
         mView.showToast(message);
     }
 }

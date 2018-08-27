@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @TvShowsScope
 public final class TvShowCatchPresenter extends BasePresenter<TvShowCatchView> {
@@ -34,14 +35,17 @@ public final class TvShowCatchPresenter extends BasePresenter<TvShowCatchView> {
     }
 
     private void showCatchResult(final TvShowItemDataModel tvShow) {
-        //todo log
         if (tvShow != null) {
+            Timber.i("TV show /" + tvShow.getTvShowTitle() + "/ catch successful");
             mView.showTvShowCatchResult(tvShow);
+        } else {
+            Timber.w("TV catch failed: null object");
+            //mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("TV catch error: %s", message);
         mView.showToast(message);
     }
 }

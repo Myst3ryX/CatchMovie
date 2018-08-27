@@ -19,7 +19,6 @@ public final class MovieItemDataModelMapper {
     public static MovieItemDataModel transform(final MovieItemModel model) {
         return MovieItemDataModel.newBuilder()
                 .setId(model.getId())
-                .setType(model.getType())
                 .setPoster(model.getPoster())
                 .setTitle(model.getTitle())
                 .setReleaseDate(model.getReleaseDate())

@@ -19,7 +19,6 @@ public final class TvShowItemDataMapper {
     public static TvShowItemModel transform(final TvShowEntity entity) {
         return new TvShowItemModel(
                 entity.getId(),
-                entity.getType(),
                 entity.getTitle(),
                 entity.getMainPoster(),
                 entity.getReleaseDate(),

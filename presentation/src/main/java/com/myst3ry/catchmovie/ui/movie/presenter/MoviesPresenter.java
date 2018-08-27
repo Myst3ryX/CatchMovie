@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @MoviesScope
 public final class MoviesPresenter extends BasePresenter<MoviesView> {
@@ -53,14 +54,16 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
 
     private void setMovies(final List<MovieItemDataModel> movies) {
         if (movies != null && !movies.isEmpty()) {
+            Timber.i("Movies loaded successful, size: %s", movies.size());
             mView.setMovies(movies);
         } else {
+            Timber.w("Movies load failed: null or empty list");
             mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Movies load error: %s", message);
         mView.showToast(message);
     }
 }

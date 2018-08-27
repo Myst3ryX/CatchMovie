@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @PersonsScope
 public final class PersonDetailPresenter extends BasePresenter<PersonDetailView> {
@@ -50,14 +51,16 @@ public final class PersonDetailPresenter extends BasePresenter<PersonDetailView>
     }
 
     private void setPersonDetails(final PersonDetailDataModel person) {
-        //todo log
         if (person != null) {
+            Timber.i("Person /" + person.getPersonName() + "/ details loaded successful");
             mView.setPersonDetails(person);
+        } else {
+            Timber.w("Person details load failed: null object");
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Person details load error: %s", message);
         mView.showToast(message);
     }
 

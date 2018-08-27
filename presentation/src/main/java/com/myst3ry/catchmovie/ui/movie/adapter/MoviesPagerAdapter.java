@@ -2,12 +2,12 @@ package com.myst3ry.catchmovie.ui.movie.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.myst3ry.catchmovie.ui.movie.fragment.MoviesFragment;
 import com.myst3ry.domain.types.MovieType;
 
-public final class MoviesPagerAdapter extends FragmentPagerAdapter {
+public final class MoviesPagerAdapter extends FragmentStatePagerAdapter {
 
     private final String[] mMoviesSections;
 

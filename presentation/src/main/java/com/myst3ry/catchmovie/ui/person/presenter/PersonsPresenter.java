@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @PersonsScope
 public final class PersonsPresenter extends BasePresenter<PersonsView> {
@@ -54,15 +55,16 @@ public final class PersonsPresenter extends BasePresenter<PersonsView> {
 
     private void setPersons(final List<PersonItemDataModel> persons) {
         if (persons != null && !persons.isEmpty()) {
-            //todo log
+            Timber.i("Persons loaded successful, size: %s", persons.size());
             mView.setPersons(persons);
         } else {
+            Timber.w("Persons load failed: null or empty list");
             mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Persons load error: %s", message);
         mView.showToast(message);
     }
 }

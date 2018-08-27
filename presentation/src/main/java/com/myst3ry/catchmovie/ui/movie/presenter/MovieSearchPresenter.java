@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @MoviesScope
 public final class MovieSearchPresenter extends BasePresenter<MovieSearchView> {
@@ -36,14 +37,17 @@ public final class MovieSearchPresenter extends BasePresenter<MovieSearchView> {
     }
 
     private void showSearchResult(final List<MovieItemDataModel> movies) {
-        //todo log
         if (movies != null && !movies.isEmpty()) {
+            Timber.i("Movies search successful, found: %s", movies.size());
             mView.showMoviesSearchResult(movies);
+        } else {
+            Timber.w("Movies search failed: null or empty list");
+            //mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("Movies search error: %s", message);
         mView.showToast(message);
     }
 }

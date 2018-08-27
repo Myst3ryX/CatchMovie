@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 @TvShowsScope
 public final class TvShowSearchPresenter extends BasePresenter<TvShowSearchView> {
@@ -36,14 +37,17 @@ public final class TvShowSearchPresenter extends BasePresenter<TvShowSearchView>
     }
 
     private void showSearchResult(final List<TvShowItemDataModel> tvShows) {
-        //todo log
         if (tvShows != null && !tvShows.isEmpty()) {
+            Timber.i("TV search successful, found: %s", tvShows.size());
             mView.showTvShowsSearchResult(tvShows);
+        } else {
+            Timber.w("TV search failed: null or empty list");
+            //mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        //todo log
+        Timber.e("TV search error: %s", message);
         mView.showToast(message);
     }
 }

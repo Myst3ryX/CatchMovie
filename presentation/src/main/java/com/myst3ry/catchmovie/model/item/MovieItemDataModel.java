@@ -5,7 +5,6 @@ import java.util.List;
 public final class MovieItemDataModel {
 
     private final int mMovieId;
-    private final int mMovieType;
     private final String mMovieTitle;
     private final String mMoviePoster;
     private final String mMovieReleaseDate;
@@ -15,7 +14,6 @@ public final class MovieItemDataModel {
 
     private MovieItemDataModel(final Builder builder) {
         this.mMovieId = builder.id;
-        this.mMovieType = builder.type;
         this.mMovieTitle = builder.title;
         this.mMoviePoster = builder.poster;
         this.mMovieReleaseDate = builder.releaseDate;
@@ -30,10 +28,6 @@ public final class MovieItemDataModel {
 
     public int getMovieId() {
         return mMovieId;
-    }
-
-    public int getMovieType() {
-        return mMovieType;
     }
 
     public String getMovieTitle() {
@@ -63,7 +57,6 @@ public final class MovieItemDataModel {
     public static final class Builder {
 
         private int id;
-        private int type;
         private String title;
         private String poster;
         private String releaseDate;
@@ -76,11 +69,6 @@ public final class MovieItemDataModel {
 
         public Builder setId(final int id) {
             this.id = id;
-            return this;
-        }
-
-        public Builder setType(final int type) {
-            this.type = type;
             return this;
         }
 

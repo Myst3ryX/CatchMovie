@@ -5,7 +5,6 @@ import java.util.List;
 public final class TvShowItemDataModel {
 
     private final int mTvShowId;
-    private final int mTvShowType;
     private final String mTvShowTitle;
     private final String mTvShowPoster;
     private final String mTvShowReleaseDate;
@@ -15,7 +14,6 @@ public final class TvShowItemDataModel {
 
     private TvShowItemDataModel(final Builder builder) {
         this.mTvShowId = builder.id;
-        this.mTvShowType = builder.type;
         this.mTvShowTitle = builder.title;
         this.mTvShowPoster = builder.poster;
         this.mTvShowReleaseDate = builder.releaseDate;
@@ -30,10 +28,6 @@ public final class TvShowItemDataModel {
 
     public int getTvShowId() {
         return mTvShowId;
-    }
-
-    public int getTvShowType() {
-        return mTvShowType;
     }
 
     public String getTvShowTitle() {
@@ -63,7 +57,6 @@ public final class TvShowItemDataModel {
     public static final class Builder {
 
         private int id;
-        private int type;
         private String title;
         private String poster;
         private String releaseDate;
@@ -76,11 +69,6 @@ public final class TvShowItemDataModel {
 
         public Builder setId(final int id) {
             this.id = id;
-            return this;
-        }
-
-        public Builder setType(final int type) {
-            this.type = type;
             return this;
         }
 

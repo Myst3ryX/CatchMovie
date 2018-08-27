@@ -63,6 +63,9 @@ dependencies {
     //room
     implementation "android.arch.persistence.room:runtime:$ROOM_VER"
 
+    //timber
+    implementation "com.jakewharton.timber:timber:$TIMBER_VER"
+
     //test
     testImplementation "junit:junit:$JUNIT_VER"
     androidTestImplementation "com.android.support.test:runner:$RUNNER_VER"

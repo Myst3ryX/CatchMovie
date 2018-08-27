@@ -5,7 +5,6 @@ import java.util.List;
 public final class TvShowItemModel {
 
     private final int mId;
-    private final int mType;
     private final String mTitle;
     private final String mPoster;
     private final String mReleaseDate;
@@ -13,10 +12,9 @@ public final class TvShowItemModel {
     private final double mRating;
     private final double mTmdbRating;
 
-    public TvShowItemModel(int id, int type, String title, String poster, String releaseDate,
+    public TvShowItemModel(int id, String title, String poster, String releaseDate,
                            List<String> genres, double rating, double tmdbRating) {
         this.mId = id;
-        this.mType = type;
         this.mTitle = title;
         this.mPoster = poster;
         this.mReleaseDate = releaseDate;
@@ -27,10 +25,6 @@ public final class TvShowItemModel {
 
     public int getId() {
         return mId;
-    }
-
-    public int getType() {
-        return mType;
     }
 
     public String getTitle() {

@@ -2,12 +2,12 @@ package com.myst3ry.catchmovie.ui.tvshow.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowsFragment;
 import com.myst3ry.domain.types.TvShowType;
 
-public final class TvShowsPagerAdapter extends FragmentPagerAdapter {
+public final class TvShowsPagerAdapter extends FragmentStatePagerAdapter {
 
     private final String[] mTvShowsSections;
 
