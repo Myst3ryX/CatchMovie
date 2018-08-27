@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnPersonClickListener;
-import com.myst3ry.catchmovie.model.PersonDataModel;
+import com.myst3ry.catchmovie.model.item.PersonItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.person.adapter.PersonsAdapter;
 import com.myst3ry.catchmovie.ui.person.presenter.PersonsPresenter;
@@ -107,7 +107,7 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
     }
 
     @Override
-    public void setPersons(final List<PersonDataModel> persons) {
+    public void setPersons(final List<PersonItemDataModel> persons) {
         mPersonsAdapter.setPersons(persons);
     }
 

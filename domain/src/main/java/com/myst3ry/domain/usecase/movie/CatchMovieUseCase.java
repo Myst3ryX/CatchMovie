@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.movie;
 
-import com.myst3ry.domain.model.Movie;
+import com.myst3ry.domain.model.item.MovieItemModel;
 import com.myst3ry.domain.repository.MoviesRepository;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public final class CatchMovieUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public Observable<Movie> execute(final Object... params) {
+    public Observable<MovieItemModel> execute(final Object... params) {
         return mMoviesRepository.catchMovieWithParams(params);
     }
 }

@@ -17,14 +17,14 @@ import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
-import com.myst3ry.catchmovie.model.TvShowDataModel;
+import com.myst3ry.catchmovie.model.item.TvShowItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.tvshow.adapter.TvShowsAdapter;
 import com.myst3ry.catchmovie.ui.tvshow.presenter.TvShowsPresenter;
 import com.myst3ry.catchmovie.ui.tvshow.view.TvShowsView;
 import com.myst3ry.catchmovie.utils.LinearSpacingItemDecoration;
 import com.myst3ry.catchmovie.utils.RecyclerViewScrollListener;
-import com.myst3ry.domain.model.types.TvShowType;
+import com.myst3ry.domain.types.TvShowType;
 
 import java.util.List;
 import java.util.Objects;
@@ -122,7 +122,7 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     }
 
     @Override
-    public void setTvShows(final List<TvShowDataModel> tvShows) {
+    public void setTvShows(final List<TvShowItemDataModel> tvShows) {
         mTvShowsAdapter.setTvShows(tvShows);
     }
 

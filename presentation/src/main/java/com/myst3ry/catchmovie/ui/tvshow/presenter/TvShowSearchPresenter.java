@@ -1,8 +1,8 @@
 package com.myst3ry.catchmovie.ui.tvshow.presenter;
 
 import com.myst3ry.catchmovie.di.scope.TvShowsScope;
-import com.myst3ry.catchmovie.model.TvShowDataModel;
-import com.myst3ry.catchmovie.model.mapper.TvShowDataModelMapper;
+import com.myst3ry.catchmovie.mapper.TvShowItemDataModelMapper;
+import com.myst3ry.catchmovie.model.item.TvShowItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.tvshow.view.TvShowSearchView;
 import com.myst3ry.domain.usecase.tvshow.SearchTvShowsUseCase;
@@ -19,12 +19,10 @@ public final class TvShowSearchPresenter extends BasePresenter<TvShowSearchView>
 
     private static final String TAG = "TvShowSearchPresenter";
 
-    private final TvShowDataModelMapper mMapper;
     private final SearchTvShowsUseCase mSearchTvShowsUseCase;
 
     @Inject
-    public TvShowSearchPresenter(final TvShowDataModelMapper mapper, final SearchTvShowsUseCase searchTvShowsUseCase) {
-        this.mMapper = mapper;
+    public TvShowSearchPresenter(final SearchTvShowsUseCase searchTvShowsUseCase) {
         this.mSearchTvShowsUseCase = searchTvShowsUseCase;
     }
 
@@ -32,12 +30,12 @@ public final class TvShowSearchPresenter extends BasePresenter<TvShowSearchView>
         addDisposable(mSearchTvShowsUseCase.execute(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(mMapper::transform)
+                .map(TvShowItemDataModelMapper::transform)
                 .subscribe(this::showSearchResult,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    private void showSearchResult(final List<TvShowDataModel> tvShows) {
+    private void showSearchResult(final List<TvShowItemDataModel> tvShows) {
         //todo log
         if (tvShows != null && !tvShows.isEmpty()) {
             mView.showTvShowsSearchResult(tvShows);

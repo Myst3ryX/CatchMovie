@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
@@ -41,6 +43,24 @@ public final class TvShowsActivity extends NavigationBaseActivity implements OnT
     protected void onResume() {
         super.onResume();
         setTitle(R.string.app_title_tv_shows);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                getNavigator().navigateToSettingsScreen(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initViewPager() {

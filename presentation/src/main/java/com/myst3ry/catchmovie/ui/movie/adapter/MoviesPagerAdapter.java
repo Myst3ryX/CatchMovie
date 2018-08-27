@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.myst3ry.catchmovie.ui.movie.fragment.MoviesFragment;
-import com.myst3ry.domain.model.types.MovieType;
+import com.myst3ry.domain.types.MovieType;
 
 public final class MoviesPagerAdapter extends FragmentPagerAdapter {
 

@@ -8,15 +8,14 @@
     <string name="app_title_persons">Persons</string>
     <string name="app_title_settings">Settings</string>
 
-    <string name="app_title_catch_movie">Catch movie</string>
+    <string name="app_title_catch_movie">Catch Movie</string>
     <string name="app_title_catch_tv_show">Catch TV Show</string>
 
-    <string name="app_title_search_movie">Search movie</string>
-    <string name="app_title_search_tv_show">Search TV Show</string>
-    <string name="app_title_search_person">Search person</string>
+    <string name="app_title_search_movie">Movie Search</string>
+    <string name="app_title_search_tv_show">TV Show Search</string>
+    <string name="app_title_search_person">Person Search</string>
 
     <!--Navigation Drawer-->
-    <string name="app_main_logo_desc">Catch Tonight Movie!</string>
     <string name="nav_title_movies">Movies</string>
     <string name="nav_title_tv_shows">TV Shows</string>
     <string name="nav_title_persons">Persons</string>
@@ -66,12 +65,10 @@
     <string name="mail_body">Device: %s\nBuild: %s\nVersion: %s\n\nMessage:\u0020\u0013</string>
     <string name="mail_chooser_text">Choose app:</string>
 
-    <!--Items-->
+    <!--Image Descriptions-->
+    <string name="app_main_logo_desc">Catch Tonight Movie!</string>
     <string name="movie_poster_desc">Movie Poster</string>
     <string name="tv_show_poster_desc">TV Show Poster</string>
     <string name="person_photo_desc">Person Photo</string>
-
-    <!--Temp-->
-    <string name="fab_click">Clicked!</string>
 
 </resources>

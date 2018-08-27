@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.MovieDataModel;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.movie.presenter.MovieSearchPresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MovieSearchView;
@@ -62,7 +62,7 @@ public final class MovieSearchFragment extends BaseFragment implements MovieSear
     }
 
     @Override
-    public void showMoviesSearchResult(final List<MovieDataModel> movies) {
+    public void showMoviesSearchResult(final List<MovieItemDataModel> movies) {
 
     }
 

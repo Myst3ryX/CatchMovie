@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.person;
 
-import com.myst3ry.domain.model.Person;
+import com.myst3ry.domain.model.item.PersonItemModel;
 import com.myst3ry.domain.repository.PersonsRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public final class SearchPersonsUseCase {
         this.mPersonsRepository = personsRepository;
     }
 
-    public Observable<List<Person>> execute(final String query) {
+    public Observable<List<PersonItemModel>> execute(final String query) {
         return mPersonsRepository.searchPersonsByQuery(query);
     }
 }

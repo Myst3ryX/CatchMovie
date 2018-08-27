@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.listener.OnTvShowMenuClickListener;
-import com.myst3ry.catchmovie.model.TvShowDataModel;
+import com.myst3ry.catchmovie.model.item.TvShowItemDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
 
     private static final int INIT_POS = 0;
 
-    private List<TvShowDataModel> mTvShows;
+    private List<TvShowItemDataModel> mTvShows;
     private final OnTvShowClickListener mListener;
     private final OnTvShowMenuClickListener mMenuListener;
 
@@ -41,13 +41,13 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
 
     @Override
     public void onBindViewHolder(final TvShowHolder holder, final int position) {
-        final TvShowDataModel currentTvShow = mTvShows.get(position);
-        holder.mPosterImageView.setImageResource(currentTvShow.getTvShowPosterImage());
-        holder.mReleaseYearTextView.setText(currentTvShow.getTvShowReleaseYear());
+        final TvShowItemDataModel currentTvShow = mTvShows.get(position);
+        //holder.mPosterImageView.setImageResource(currentTvShow.getTvShowPoster());
+        holder.mReleaseYearTextView.setText(currentTvShow.getTvShowReleaseDate());
         holder.mTitleTextView.setText(currentTvShow.getTvShowTitle());
-        holder.mGenreTextView.setText(currentTvShow.getTvShowGenre());
-        holder.mRatingTextView.setText(currentTvShow.getTvShowRating());
-        holder.mTmdbRatingTextView.setText(currentTvShow.getTvShowTmdbRating());
+        holder.mGenreTextView.setText(currentTvShow.getTvShowGenres().toString()); //todo here
+//        holder.mRatingTextView.setText(currentTvShow.getTvShowRating());
+//        holder.mTmdbRatingTextView.setText(currentTvShow.getTvShowTmdbRating());
     }
 
     @Override
@@ -55,18 +55,18 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         return mTvShows.size();
     }
 
-    public void setTvShows(final List<TvShowDataModel> tvShows) {
+    public void setTvShows(final List<TvShowItemDataModel> tvShows) {
         this.mTvShows = tvShows;
         notifyDataSetChanged();
     }
 
-    public void addTvShow(final TvShowDataModel tvShow) {
+    public void addTvShow(final TvShowItemDataModel tvShow) {
         mTvShows.add(INIT_POS, tvShow);
         notifyItemInserted(INIT_POS);
     }
 
     public void removeTvShow(final int tvShowId) {
-        TvShowDataModel tvShow = null;
+        TvShowItemDataModel tvShow = null;
         int position = Integer.MIN_VALUE;
 
         for (int i = 0; i < mTvShows.size(); i++) {
@@ -90,7 +90,7 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         notifyItemRangeRemoved(INIT_POS, size);
     }
 
-    private TvShowDataModel getTvShow(final int position) {
+    private TvShowItemDataModel getTvShow(final int position) {
         return mTvShows.get(position);
     }
 

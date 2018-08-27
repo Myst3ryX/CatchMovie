@@ -1,7 +1,6 @@
 package com.myst3ry.catchmovie.di.module;
 
 import com.myst3ry.catchmovie.di.scope.MoviesScope;
-import com.myst3ry.catchmovie.model.mapper.MovieDataModelMapper;
 import com.myst3ry.catchmovie.ui.movie.presenter.MoviesPresenter;
 import com.myst3ry.domain.repository.MoviesRepository;
 import com.myst3ry.domain.usecase.movie.AddMovieUseCase;
@@ -16,18 +15,12 @@ public final class MoviesModule {
 
     @Provides
     @MoviesScope
-    MoviesPresenter providesMoviesPresenter(final MovieDataModelMapper mapper,
-                                            final GetMoviesUseCase getMoviesUseCase,
+    MoviesPresenter providesMoviesPresenter(final GetMoviesUseCase getMoviesUseCase,
                                             final AddMovieUseCase addMovieUseCase,
                                             final DeleteMovieUseCase deleteMovieUseCase) {
-        return new MoviesPresenter(mapper, getMoviesUseCase, addMovieUseCase, deleteMovieUseCase);
+        return new MoviesPresenter(getMoviesUseCase, addMovieUseCase, deleteMovieUseCase);
     }
 
-    @Provides
-    @MoviesScope
-    MovieDataModelMapper providesMovieDataModelMapper() {
-        return new MovieDataModelMapper();
-    }
 
     @Provides
     @MoviesScope

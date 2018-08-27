@@ -1,7 +1,7 @@
 package com.myst3ry.domain.usecase.movie;
 
-import com.myst3ry.domain.model.types.MovieType;
 import com.myst3ry.domain.repository.MoviesRepository;
+import com.myst3ry.domain.types.MovieType;
 
 import javax.inject.Inject;
 

@@ -1,0 +1,137 @@
+package com.myst3ry.catchmovie.model.detail;
+
+import com.myst3ry.catchmovie.model.detail.credits.MovieCreditDataModel;
+import com.myst3ry.catchmovie.model.detail.credits.TvShowCreditDataModel;
+
+import java.util.List;
+
+public final class PersonDetailDataModel {
+
+    private final int mPersonId;
+    private final String mPersonPhoto;
+    private final String mPersonName;
+    private final String mPersonBiography;
+    private final String mPersonBirthday;
+    private final String mPersonDeathday;
+    private final String mPersonKnownAs;
+    private final List<MovieCreditDataModel> mPersonMoviesList;
+    private final List<TvShowCreditDataModel> mPersonTvShowsList;
+
+    private PersonDetailDataModel(final Builder builder) {
+        this.mPersonId = builder.id;
+        this.mPersonPhoto = builder.photo;
+        this.mPersonName = builder.name;
+        this.mPersonBiography = builder.biography;
+        this.mPersonBirthday = builder.birthday;
+        this.mPersonDeathday = builder.deathday;
+        this.mPersonKnownAs = builder.knownAs;
+        this.mPersonMoviesList = builder.movies;
+        this.mPersonTvShowsList = builder.tvShows;
+    }
+
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+    public int getPersonId() {
+        return mPersonId;
+    }
+
+    public String getPersonPhotoImage() {
+        return mPersonPhoto;
+    }
+
+    public String getPersonName() {
+        return mPersonName;
+    }
+
+    public String getPersonBiography() {
+        return mPersonBiography;
+    }
+
+    public String getPersonBirthday() {
+        return mPersonBirthday;
+    }
+
+    public String getPersonDeathday() {
+        return mPersonDeathday;
+    }
+
+    public String getPersonKnownAs() {
+        return mPersonKnownAs;
+    }
+
+    public List<MovieCreditDataModel> getPersonMoviesList() {
+        return mPersonMoviesList;
+    }
+
+    public List<TvShowCreditDataModel> getPersonTvShowsList() {
+        return mPersonTvShowsList;
+    }
+
+
+    public static final class Builder {
+
+        private int id;
+        private String photo;
+        private String name;
+        private String biography;
+        private String birthday;
+        private String deathday;
+        private String knownAs;
+        private List<MovieCreditDataModel> movies;
+        private List<TvShowCreditDataModel> tvShows;
+
+        private Builder() {
+        }
+
+        public Builder setId(final int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setPhoto(final String photo) {
+            this.photo = photo;
+            return this;
+        }
+
+        public Builder setName(final String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setBiography(final String biography) {
+            this.biography = biography;
+            return this;
+        }
+
+        public Builder setBirthday(final String birthday) {
+            this.birthday = birthday;
+            return this;
+        }
+
+        public Builder setDeathday(final String deathday) {
+            this.deathday = deathday;
+            return this;
+        }
+
+        public Builder setKnownAs(final String knownAs) {
+            this.knownAs = knownAs;
+            return this;
+        }
+
+        public Builder setMovies(final List<MovieCreditDataModel> movies) {
+            this.movies = movies;
+            return this;
+        }
+
+        public Builder setTvShows(final List<TvShowCreditDataModel> tvShows) {
+            this.tvShows = tvShows;
+            return this;
+        }
+
+        public PersonDetailDataModel build() {
+            return new PersonDetailDataModel(this);
+        }
+    }
+}

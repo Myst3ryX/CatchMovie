@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.tvshow;
 
-import com.myst3ry.domain.model.TvShow;
+import com.myst3ry.domain.model.detail.TvShowDetailModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public final class GetTvShowDetailsUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<TvShow> execute(final int tvShowId) {
+    public Observable<TvShowDetailModel> execute(final int tvShowId) {
         return mTvShowsRepository.getTvShowDetailsById(tvShowId);
     }
 }

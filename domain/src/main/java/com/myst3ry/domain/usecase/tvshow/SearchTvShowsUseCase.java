@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.tvshow;
 
-import com.myst3ry.domain.model.TvShow;
+import com.myst3ry.domain.model.item.TvShowItemModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public final class SearchTvShowsUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<List<TvShow>> execute(final String query) {
+    public Observable<List<TvShowItemModel>> execute(final String query) {
         return mTvShowsRepository.searchTvShowsByQuery(query);
     }
 }

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.PersonDataModel;
+import com.myst3ry.catchmovie.model.item.PersonItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.person.presenter.PersonSearchPresenter;
 import com.myst3ry.catchmovie.ui.person.view.PersonSearchView;
@@ -62,7 +62,7 @@ public final class PersonSearchFragment extends BaseFragment implements PersonSe
     }
 
     @Override
-    public void showPersonsSearchResult(final List<PersonDataModel> persons) {
+    public void showPersonsSearchResult(final List<PersonItemDataModel> persons) {
 
     }
 

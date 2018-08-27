@@ -1,10 +1,9 @@
 package com.myst3ry.domain.usecase.tvshow;
 
-import com.myst3ry.domain.model.TvShow;
-import com.myst3ry.domain.model.types.TvShowType;
+import com.myst3ry.domain.model.item.TvShowItemModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
+import com.myst3ry.domain.types.TvShowType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,16 +19,7 @@ public final class GetTvShowsUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<List<TvShow>> execute(final TvShowType type) {
-        switch (type) {
-            case RECENT:
-                return mTvShowsRepository.getRecentTvShows();
-            case WATCHLIST:
-                return mTvShowsRepository.getWatchlistTvShows();
-            case FAVORITE:
-                return mTvShowsRepository.getFavoriteTvShows();
-            default:
-                return Observable.just(new ArrayList<>());
-        }
+    public Observable<List<TvShowItemModel>> execute(final TvShowType type) {
+        return mTvShowsRepository.getTvShows(type.ordinal());
     }
 }

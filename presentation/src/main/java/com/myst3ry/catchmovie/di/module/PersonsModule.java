@@ -1,7 +1,6 @@
 package com.myst3ry.catchmovie.di.module;
 
 import com.myst3ry.catchmovie.di.scope.PersonsScope;
-import com.myst3ry.catchmovie.model.mapper.PersonDataModelMapper;
 import com.myst3ry.catchmovie.ui.person.presenter.PersonsPresenter;
 import com.myst3ry.domain.repository.PersonsRepository;
 import com.myst3ry.domain.usecase.person.AddPersonToFavoritesUseCase;
@@ -16,18 +15,10 @@ public final class PersonsModule {
 
     @Provides
     @PersonsScope
-    PersonsPresenter providesPersonsPresenter(final PersonDataModelMapper mapper,
-                                              final GetFavoritePersonsUseCase getFavoritePersonsUseCase,
+    PersonsPresenter providesPersonsPresenter(final GetFavoritePersonsUseCase getFavoritePersonsUseCase,
                                               final AddPersonToFavoritesUseCase addPersonToFavoritesUseCase,
                                               final DeleteFavoritePersonUseCase deleteFavoritePersonUseCase) {
-        return new PersonsPresenter(mapper, getFavoritePersonsUseCase, addPersonToFavoritesUseCase,
-                deleteFavoritePersonUseCase);
-    }
-
-    @Provides
-    @PersonsScope
-    PersonDataModelMapper providesPersonDataModelMapper() {
-        return new PersonDataModelMapper();
+        return new PersonsPresenter(getFavoritePersonsUseCase, addPersonToFavoritesUseCase, deleteFavoritePersonUseCase);
     }
 
     @Provides

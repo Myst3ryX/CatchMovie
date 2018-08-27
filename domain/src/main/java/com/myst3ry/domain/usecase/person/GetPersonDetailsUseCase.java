@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.person;
 
-import com.myst3ry.domain.model.Person;
+import com.myst3ry.domain.model.detail.PersonDetailModel;
 import com.myst3ry.domain.repository.PersonsRepository;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public final class GetPersonDetailsUseCase {
         this.mPersonsRepository = personsRepository;
     }
 
-    public Observable<Person> execute(final int personId) {
+    public Observable<PersonDetailModel> execute(final int personId) {
         return mPersonsRepository.getPersonDetailsById(personId);
     }
 }

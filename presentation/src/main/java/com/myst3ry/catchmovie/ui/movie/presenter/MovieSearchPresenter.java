@@ -1,8 +1,8 @@
 package com.myst3ry.catchmovie.ui.movie.presenter;
 
 import com.myst3ry.catchmovie.di.scope.MoviesScope;
-import com.myst3ry.catchmovie.model.MovieDataModel;
-import com.myst3ry.catchmovie.model.mapper.MovieDataModelMapper;
+import com.myst3ry.catchmovie.mapper.MovieItemDataModelMapper;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MovieSearchView;
 import com.myst3ry.domain.usecase.movie.SearchMoviesUseCase;
@@ -19,12 +19,10 @@ public final class MovieSearchPresenter extends BasePresenter<MovieSearchView> {
 
     private static final String TAG = "MovieSearchPresenter";
 
-    private final MovieDataModelMapper mMapper;
     private final SearchMoviesUseCase mSearchMoviesUseCase;
 
     @Inject
-    public MovieSearchPresenter(final MovieDataModelMapper mapper, final SearchMoviesUseCase searchMoviesUseCase) {
-        this.mMapper = mapper;
+    public MovieSearchPresenter(final SearchMoviesUseCase searchMoviesUseCase) {
         this.mSearchMoviesUseCase = searchMoviesUseCase;
     }
 
@@ -32,12 +30,12 @@ public final class MovieSearchPresenter extends BasePresenter<MovieSearchView> {
         addDisposable(mSearchMoviesUseCase.execute(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(mMapper::transform)
+                .map(MovieItemDataModelMapper::transform)
                 .subscribe(this::showSearchResult,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    private void showSearchResult(final List<MovieDataModel> movies) {
+    private void showSearchResult(final List<MovieItemDataModel> movies) {
         //todo log
         if (movies != null && !movies.isEmpty()) {
             mView.showMoviesSearchResult(movies);

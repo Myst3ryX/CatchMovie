@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.PersonDataModel;
+import com.myst3ry.catchmovie.model.detail.PersonDetailDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.person.presenter.PersonDetailPresenter;
 import com.myst3ry.catchmovie.ui.person.view.PersonDetailView;
@@ -53,7 +53,7 @@ public final class PersonDetailFragment extends BaseFragment implements PersonDe
     }
 
     @Override
-    public void setPersonDetails(final PersonDataModel person) {
+    public void setPersonDetails(final PersonDetailDataModel person) {
 
     }
 

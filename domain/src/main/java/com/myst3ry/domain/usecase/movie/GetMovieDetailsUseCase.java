@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.movie;
 
-import com.myst3ry.domain.model.Movie;
+import com.myst3ry.domain.model.detail.MovieDetailModel;
 import com.myst3ry.domain.repository.MoviesRepository;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public final class GetMovieDetailsUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public Observable<Movie> execute(final int movieId) {
+    public Observable<MovieDetailModel> execute(final int movieId) {
         return mMoviesRepository.getMovieDetailsById(movieId);
     }
 }

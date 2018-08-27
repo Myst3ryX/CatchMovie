@@ -1,7 +1,7 @@
 package com.myst3ry.domain.usecase.tvshow;
 
-import com.myst3ry.domain.model.types.TvShowType;
 import com.myst3ry.domain.repository.TvShowsRepository;
+import com.myst3ry.domain.types.TvShowType;
 
 import javax.inject.Inject;
 

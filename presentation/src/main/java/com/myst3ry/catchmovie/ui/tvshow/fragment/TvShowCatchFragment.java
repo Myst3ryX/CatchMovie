@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.TvShowDataModel;
+import com.myst3ry.catchmovie.model.item.TvShowItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.tvshow.presenter.TvShowCatchPresenter;
 import com.myst3ry.catchmovie.ui.tvshow.view.TvShowCatchView;
@@ -61,7 +61,7 @@ public final class TvShowCatchFragment extends BaseFragment implements TvShowCat
     }
 
     @Override
-    public void showTvShowCatchResult(final TvShowDataModel tvShow) {
+    public void showTvShowCatchResult(final TvShowItemDataModel tvShow) {
 
     }
 

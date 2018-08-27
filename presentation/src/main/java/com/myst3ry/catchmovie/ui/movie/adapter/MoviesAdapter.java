@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
 import com.myst3ry.catchmovie.listener.OnMovieMenuClickListener;
-import com.myst3ry.catchmovie.model.MovieDataModel;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
 
     private static final int INIT_POS = 0;
 
-    private List<MovieDataModel> mMovies;
+    private List<MovieItemDataModel> mMovies;
     private final OnMovieClickListener mListener;
     private final OnMovieMenuClickListener mMenuListener;
 
@@ -41,13 +41,13 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
 
     @Override
     public void onBindViewHolder(final MovieHolder holder, final int position) {
-        final MovieDataModel currentMovie = mMovies.get(position);
-        holder.mPosterImageView.setImageResource(currentMovie.getMoviePosterImage());
-        holder.mReleaseYearTextView.setText(currentMovie.getMovieReleaseYear());
+        final MovieItemDataModel currentMovie = mMovies.get(position);
+        //holder.mPosterImageView.setImageResource(currentMovie.getMoviePoster());
+        holder.mReleaseYearTextView.setText(currentMovie.getMovieReleaseDate());
         holder.mTitleTextView.setText(currentMovie.getMovieTitle());
-        holder.mGenreTextView.setText(currentMovie.getMovieGenre());
-        holder.mRatingTextView.setText(currentMovie.getMovieRating());
-        holder.mTmdbRatingTextView.setText(currentMovie.getMovieTmdbRating());
+        holder.mGenreTextView.setText(currentMovie.getMovieGenres().toString()); //todo here
+//        holder.mRatingTextView.setText(currentMovie.getMovieRating());
+//        holder.mTmdbRatingTextView.setText(currentMovie.getMovieTmdbRating());
     }
 
     @Override
@@ -55,18 +55,18 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         return mMovies.size();
     }
 
-    public void setMovies(final List<MovieDataModel> movies) {
+    public void setMovies(final List<MovieItemDataModel> movies) {
         this.mMovies = movies;
         notifyDataSetChanged();
     }
 
-    public void addMovie(final MovieDataModel movie) {
+    public void addMovie(final MovieItemDataModel movie) {
         mMovies.add(INIT_POS, movie);
         notifyItemInserted(INIT_POS);
     }
 
     public void removeMovie(final int movieId) {
-        MovieDataModel movie = null;
+        MovieItemDataModel movie = null;
         int position = Integer.MIN_VALUE;
 
         for (int i = 0; i < mMovies.size(); i++) {
@@ -90,7 +90,7 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         notifyItemRangeRemoved(INIT_POS, size);
     }
 
-    private MovieDataModel getMovie(final int position) {
+    private MovieItemDataModel getMovie(final int position) {
         return mMovies.get(position);
     }
 

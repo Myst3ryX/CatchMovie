@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowsFragment;
-import com.myst3ry.domain.model.types.TvShowType;
+import com.myst3ry.domain.types.TvShowType;
 
 public final class TvShowsPagerAdapter extends FragmentPagerAdapter {
 

@@ -1,11 +1,11 @@
 package com.myst3ry.catchmovie.ui.movie.presenter;
 
 import com.myst3ry.catchmovie.di.scope.MoviesScope;
-import com.myst3ry.catchmovie.model.MovieDataModel;
-import com.myst3ry.catchmovie.model.mapper.MovieDataModelMapper;
+import com.myst3ry.catchmovie.mapper.MovieItemDataModelMapper;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MoviesView;
-import com.myst3ry.domain.model.types.MovieType;
+import com.myst3ry.domain.types.MovieType;
 import com.myst3ry.domain.usecase.movie.AddMovieUseCase;
 import com.myst3ry.domain.usecase.movie.DeleteMovieUseCase;
 import com.myst3ry.domain.usecase.movie.GetMoviesUseCase;
@@ -22,15 +22,13 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
 
     private static final String TAG = "MoviesPresenter";
 
-    private MovieDataModelMapper mMapper;
     private final GetMoviesUseCase mGetMoviesUseCase;
     private final AddMovieUseCase mAddMovieUseCase;
     private final DeleteMovieUseCase mDeleteMovieUseCase;
 
     @Inject
-    public MoviesPresenter(final MovieDataModelMapper mapper, final GetMoviesUseCase getMoviesUseCase,
-                           final AddMovieUseCase addMovieUseCase, final DeleteMovieUseCase deleteMovieUseCase) {
-        this.mMapper = mapper;
+    public MoviesPresenter(final GetMoviesUseCase getMoviesUseCase, final AddMovieUseCase addMovieUseCase,
+                           final DeleteMovieUseCase deleteMovieUseCase) {
         this.mGetMoviesUseCase = getMoviesUseCase;
         this.mAddMovieUseCase = addMovieUseCase;
         this.mDeleteMovieUseCase = deleteMovieUseCase;
@@ -40,7 +38,7 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
         addDisposable(mGetMoviesUseCase.execute(type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(mMapper::transform)
+                .map(MovieItemDataModelMapper::transform)
                 .subscribe(this::setMovies,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
@@ -53,7 +51,7 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
         mDeleteMovieUseCase.execute(movieId, type);
     }
 
-    private void setMovies(final List<MovieDataModel> movies) {
+    private void setMovies(final List<MovieItemDataModel> movies) {
         if (movies != null && !movies.isEmpty()) {
             mView.setMovies(movies);
         } else {

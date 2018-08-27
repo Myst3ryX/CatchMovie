@@ -1,8 +1,8 @@
 package com.myst3ry.catchmovie.ui.movie.presenter;
 
 import com.myst3ry.catchmovie.di.scope.MoviesScope;
-import com.myst3ry.catchmovie.model.MovieDataModel;
-import com.myst3ry.catchmovie.model.mapper.MovieDataModelMapper;
+import com.myst3ry.catchmovie.mapper.MovieItemDataModelMapper;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MovieCatchView;
 import com.myst3ry.domain.usecase.movie.CatchMovieUseCase;
@@ -17,12 +17,10 @@ public final class MovieCatchPresenter extends BasePresenter<MovieCatchView> {
 
     private static final String TAG = "MovieCatchPresenter";
 
-    private final MovieDataModelMapper mMapper;
     private final CatchMovieUseCase mCatchMovieUseCase;
 
     @Inject
-    public MovieCatchPresenter(final MovieDataModelMapper mapper, final CatchMovieUseCase catchMovieUseCase) {
-        this.mMapper = mapper;
+    public MovieCatchPresenter(final CatchMovieUseCase catchMovieUseCase) {
         this.mCatchMovieUseCase = catchMovieUseCase;
     }
 
@@ -30,12 +28,12 @@ public final class MovieCatchPresenter extends BasePresenter<MovieCatchView> {
         addDisposable(mCatchMovieUseCase.execute(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(mMapper::transform)
+                .map(MovieItemDataModelMapper::transform)
                 .subscribe(this::showCatchResult,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    private void showCatchResult(final MovieDataModel movie) {
+    private void showCatchResult(final MovieItemDataModel movie) {
         //todo log
         if (movie != null) {
             mView.showMovieCatchResult(movie);

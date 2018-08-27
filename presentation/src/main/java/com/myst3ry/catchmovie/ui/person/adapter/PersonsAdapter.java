@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnPersonClickListener;
-import com.myst3ry.catchmovie.model.PersonDataModel;
+import com.myst3ry.catchmovie.model.item.PersonItemDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
 
     private static final int INIT_POS = 0;
 
-    private List<PersonDataModel> mPersons;
+    private List<PersonItemDataModel> mPersons;
     private final OnPersonClickListener mListener;
 
     public PersonsAdapter(final OnPersonClickListener listener) {
@@ -38,8 +38,8 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
 
     @Override
     public void onBindViewHolder(final PersonHolder holder, final int position) {
-        final PersonDataModel currentActor = mPersons.get(position);
-        holder.mPersonPhotoImageView.setImageResource(currentActor.getPersonPhotoImage());
+        final PersonItemDataModel currentActor = mPersons.get(position);
+        //holder.mPersonPhotoImageView.setImageResource(currentActor.getPersonPhoto());
         holder.mPersonNameTextView.setText(currentActor.getPersonName());
     }
 
@@ -48,18 +48,18 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
         return mPersons.size();
     }
 
-    public void setPersons(final List<PersonDataModel> persons) {
+    public void setPersons(final List<PersonItemDataModel> persons) {
         this.mPersons = persons;
         notifyDataSetChanged();
     }
 
-    public void addPerson(final PersonDataModel person) {
+    public void addPerson(final PersonItemDataModel person) {
         mPersons.add(INIT_POS, person);
         notifyItemInserted(INIT_POS);
     }
 
     public void removePerson(final int personId) {
-        PersonDataModel person = null;
+        PersonItemDataModel person = null;
         int position = Integer.MIN_VALUE;
 
         for (int i = 0; i < mPersons.size(); i++) {
@@ -83,7 +83,7 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
         notifyItemRangeRemoved(INIT_POS, size);
     }
 
-    private PersonDataModel getPerson(final int position) {
+    private PersonItemDataModel getPerson(final int position) {
         return mPersons.get(position);
     }
 

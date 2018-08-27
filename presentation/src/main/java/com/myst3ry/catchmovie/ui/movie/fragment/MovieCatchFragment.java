@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.MovieDataModel;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.movie.presenter.MovieCatchPresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MovieCatchView;
@@ -61,7 +61,7 @@ public final class MovieCatchFragment extends BaseFragment implements MovieCatch
     }
 
     @Override
-    public void showMovieCatchResult(final MovieDataModel movie) {
+    public void showMovieCatchResult(final MovieItemDataModel movie) {
 
     }
 

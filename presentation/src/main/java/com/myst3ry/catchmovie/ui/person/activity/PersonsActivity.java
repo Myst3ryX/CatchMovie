@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnPersonClickListener;
@@ -39,6 +41,24 @@ public final class PersonsActivity extends NavigationBaseActivity implements OnP
     protected void onResume() {
         super.onResume();
         setTitle(R.string.app_title_persons);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                getNavigator().navigateToSettingsScreen(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void initUI() {

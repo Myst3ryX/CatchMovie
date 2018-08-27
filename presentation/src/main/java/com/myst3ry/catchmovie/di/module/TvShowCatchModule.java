@@ -1,7 +1,6 @@
 package com.myst3ry.catchmovie.di.module;
 
 import com.myst3ry.catchmovie.di.scope.TvShowsScope;
-import com.myst3ry.catchmovie.model.mapper.TvShowDataModelMapper;
 import com.myst3ry.catchmovie.ui.tvshow.presenter.TvShowCatchPresenter;
 import com.myst3ry.domain.repository.TvShowsRepository;
 import com.myst3ry.domain.usecase.tvshow.CatchTvShowUseCase;
@@ -14,9 +13,8 @@ public final class TvShowCatchModule {
 
     @Provides
     @TvShowsScope
-    TvShowCatchPresenter providesTvShowCatchPresenter(final TvShowDataModelMapper mapper,
-                                                      final CatchTvShowUseCase catchTvShowUseCase) {
-        return new TvShowCatchPresenter(mapper, catchTvShowUseCase);
+    TvShowCatchPresenter providesTvShowCatchPresenter(final CatchTvShowUseCase catchTvShowUseCase) {
+        return new TvShowCatchPresenter(catchTvShowUseCase);
     }
 
     @Provides

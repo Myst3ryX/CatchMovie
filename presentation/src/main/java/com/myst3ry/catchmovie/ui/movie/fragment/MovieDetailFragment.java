@@ -11,12 +11,10 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.MovieDataModel;
+import com.myst3ry.catchmovie.model.detail.MovieDetailDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.movie.presenter.MovieDetailPresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MovieDetailView;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -55,12 +53,7 @@ public final class MovieDetailFragment extends BaseFragment implements MovieDeta
     }
 
     @Override
-    public void setMovieDetails(final MovieDataModel movie) {
-
-    }
-
-    @Override
-    public void setMoviePosters(final List<String> posters) {
+    public void setMovieDetails(final MovieDetailDataModel movie) {
 
     }
 

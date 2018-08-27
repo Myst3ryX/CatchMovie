@@ -11,12 +11,10 @@ import android.view.ViewGroup;
 
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.model.TvShowDataModel;
+import com.myst3ry.catchmovie.model.detail.TvShowDetailDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.tvshow.presenter.TvShowDetailPresenter;
 import com.myst3ry.catchmovie.ui.tvshow.view.TvShowDetailView;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -55,12 +53,7 @@ public final class TvShowDetailFragment extends BaseFragment implements TvShowDe
     }
 
     @Override
-    public void setTvShowDetails(final TvShowDataModel tvShow) {
-
-    }
-
-    @Override
-    public void setTvShowPosters(final List<String> posters) {
+    public void setTvShowDetails(final TvShowDetailDataModel tvShow) {
 
     }
 

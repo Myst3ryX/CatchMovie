@@ -1,8 +1,8 @@
 package com.myst3ry.catchmovie.ui.person.presenter;
 
 import com.myst3ry.catchmovie.di.scope.PersonsScope;
-import com.myst3ry.catchmovie.model.PersonDataModel;
-import com.myst3ry.catchmovie.model.mapper.PersonDataModelMapper;
+import com.myst3ry.catchmovie.mapper.PersonItemDataModelMapper;
+import com.myst3ry.catchmovie.model.item.PersonItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.person.view.PersonsView;
 import com.myst3ry.domain.usecase.person.AddPersonToFavoritesUseCase;
@@ -22,16 +22,14 @@ public final class PersonsPresenter extends BasePresenter<PersonsView> {
 
     private static final String TAG = "PersonsPresenter";
 
-    private final PersonDataModelMapper mMapper;
     private final GetFavoritePersonsUseCase mGetFavoritePersonsUseCase;
     private final AddPersonToFavoritesUseCase mAddPersonToFavoritesUseCase;
     private final DeleteFavoritePersonUseCase mDeleteFavoritePersonUseCase;
 
     @Inject
-    public PersonsPresenter(final PersonDataModelMapper mapper, final GetFavoritePersonsUseCase getFavoritePersonsUseCase,
+    public PersonsPresenter(final GetFavoritePersonsUseCase getFavoritePersonsUseCase,
                             final AddPersonToFavoritesUseCase addPersonToFavoritesUseCase,
                             final DeleteFavoritePersonUseCase deleteFavoritePersonUseCase) {
-        this.mMapper = mapper;
         this.mGetFavoritePersonsUseCase = getFavoritePersonsUseCase;
         this.mAddPersonToFavoritesUseCase = addPersonToFavoritesUseCase;
         this.mDeleteFavoritePersonUseCase = deleteFavoritePersonUseCase;
@@ -41,7 +39,7 @@ public final class PersonsPresenter extends BasePresenter<PersonsView> {
         addDisposable(Objects.requireNonNull(mGetFavoritePersonsUseCase.execute())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(mMapper::transform)
+                .map(PersonItemDataModelMapper::transform)
                 .subscribe(this::setPersons,
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
@@ -54,7 +52,7 @@ public final class PersonsPresenter extends BasePresenter<PersonsView> {
         mDeleteFavoritePersonUseCase.execute(personId);
     }
 
-    private void setPersons(final List<PersonDataModel> persons) {
+    private void setPersons(final List<PersonItemDataModel> persons) {
         if (persons != null && !persons.isEmpty()) {
             //todo log
             mView.setPersons(persons);

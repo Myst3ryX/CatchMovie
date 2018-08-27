@@ -17,14 +17,14 @@ import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
-import com.myst3ry.catchmovie.model.MovieDataModel;
+import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.movie.adapter.MoviesAdapter;
 import com.myst3ry.catchmovie.ui.movie.presenter.MoviesPresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MoviesView;
 import com.myst3ry.catchmovie.utils.LinearSpacingItemDecoration;
 import com.myst3ry.catchmovie.utils.RecyclerViewScrollListener;
-import com.myst3ry.domain.model.types.MovieType;
+import com.myst3ry.domain.types.MovieType;
 
 import java.util.List;
 import java.util.Objects;
@@ -121,7 +121,7 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
     }
 
     @Override
-    public void setMovies(final List<MovieDataModel> movies) {
+    public void setMovies(final List<MovieItemDataModel> movies) {
         mMoviesAdapter.setMovies(movies);
     }
 

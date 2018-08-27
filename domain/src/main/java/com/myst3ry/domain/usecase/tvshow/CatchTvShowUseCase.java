@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.tvshow;
 
-import com.myst3ry.domain.model.TvShow;
+import com.myst3ry.domain.model.item.TvShowItemModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
 
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ public final class CatchTvShowUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<TvShow> execute(final Object... params) {
+    public Observable<TvShowItemModel> execute(final Object... params) {
         return mTvShowsRepository.catchTvShowWithParams(params);
     }
 }

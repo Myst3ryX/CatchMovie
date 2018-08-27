@@ -1,7 +1,7 @@
 package com.myst3ry.domain.repository;
 
-import com.myst3ry.domain.model.Person;
-import com.myst3ry.domain.model.TvShow;
+import com.myst3ry.domain.model.detail.TvShowDetailModel;
+import com.myst3ry.domain.model.item.TvShowItemModel;
 
 import java.util.List;
 
@@ -9,23 +9,13 @@ import io.reactivex.Observable;
 
 public interface TvShowsRepository {
 
-    Observable<List<TvShow>> getRecentTvShows();
+    Observable<List<TvShowItemModel>> getTvShows(final int type);
 
-    Observable<List<TvShow>> getWatchlistTvShows();
+    Observable<List<TvShowItemModel>> searchTvShowsByQuery(final String query);
 
-    Observable<List<TvShow>> getFavoriteTvShows();
+    Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId);
 
-    Observable<List<TvShow>> getTvShowsByPersonId(final int personId);
-
-    Observable<List<TvShow>> searchTvShowsByQuery(final String query);
-
-    Observable<List<Person>> getTvShowCreditsById(final int tvShowId); //todo ?
-
-    Observable<TvShow> getTvShowDetailsById(final int tvShowId);
-
-    Observable<TvShow> catchTvShowWithParams(final Object... params);
-
-    Observable<List<String>> getTvShowPostersById(final int tvShowId);
+    Observable<TvShowItemModel> catchTvShowWithParams(final Object... params);
 
     void setTvShowRating(final int tvShowId, final double rating);
 
@@ -33,9 +23,5 @@ public interface TvShowsRepository {
 
     void addTvShowToFavorites(final int tvShowId);
 
-    void deleteRecentTvShowById(final int tvShowId);
-
-    void deleteWatchlistTvShowById(final int tvShowId);
-
-    void deleteFavoriteTvShowById(final int tvShowId);
+    void deleteTvShowById(final int tvShowId, final int type);
 }

@@ -1,6 +1,7 @@
 package com.myst3ry.domain.repository;
 
-import com.myst3ry.domain.model.Person;
+import com.myst3ry.domain.model.detail.PersonDetailModel;
+import com.myst3ry.domain.model.item.PersonItemModel;
 
 import java.util.List;
 
@@ -8,11 +9,11 @@ import io.reactivex.Observable;
 
 public interface PersonsRepository {
 
-    Observable<List<Person>> getFavoriteActors();
+    Observable<List<PersonItemModel>> getPersons();
 
-    Observable<List<Person>> searchPersonsByQuery(final String query);
+    Observable<List<PersonItemModel>> searchPersonsByQuery(final String query);
 
-    Observable<Person> getPersonDetailsById(final int personId);
+    Observable<PersonDetailModel> getPersonDetailsById(final int personId);
 
     void addPersonToFavorites(final int personId);
 
