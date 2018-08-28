@@ -14,11 +14,11 @@ buildscript {
         GSON_VER = '2.8.5'
         RXJAVA_VER = '2.1.1'
         RXANDROID_VER = '2.0.1'
+        GLIDE_VER = '4.7.1'
 
         ROOM_VER = '1.1.1'
 
         TIMBER_VER = '4.7.0'
-
         JUNIT_VER = '4.12'
         RUNNER_VER = '1.0.2'
         ESPRESSO_VER = '3.0.2'

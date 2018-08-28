@@ -52,15 +52,15 @@ public final class PersonDetailPresenter extends BasePresenter<PersonDetailView>
 
     private void setPersonDetails(final PersonDetailDataModel person) {
         if (person != null) {
-            Timber.i("Person /" + person.getPersonName() + "/ details loaded successful");
+            Timber.i("PersonDetail /" + person.getPersonName() + "/ details loaded successful");
             mView.setPersonDetails(person);
         } else {
-            Timber.w("Person details load failed: null object");
+            Timber.w("PersonDetail details load failed: null object");
         }
     }
 
     private void showErrorMessage(final String message) {
-        Timber.e("Person details load error: %s", message);
+        Timber.e("PersonDetail details load error: %s", message);
         mView.showToast(message);
     }
 

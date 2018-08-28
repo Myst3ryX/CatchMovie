@@ -1,5 +1,7 @@
 package com.myst3ry.catchmovie.mapper;
 
+import com.myst3ry.catchmovie.mapper.utils.ConvertUtils;
+import com.myst3ry.catchmovie.mapper.utils.DateUtils;
 import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.domain.model.item.MovieItemModel;
 
@@ -21,10 +23,10 @@ public final class MovieItemDataModelMapper {
                 .setId(model.getId())
                 .setPoster(model.getPoster())
                 .setTitle(model.getTitle())
-                .setReleaseDate(model.getReleaseDate())
-                .setGenres(model.getGenres())
-                .setRating(model.getRating())
-                .setTmdbRating(model.getTmdbRating())
+                .setReleaseDate(DateUtils.parseDateToYear(model.getReleaseDate()))
+                .setGenres(ConvertUtils.convertGenresToString(model.getGenres()))
+                .setRating(ConvertUtils.convertRating(model.getRating()))
+                .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
                 .build();
     }
 }

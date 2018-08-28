@@ -1,4 +1,4 @@
-package com.myst3ry.catchmovie.utils;
+package com.myst3ry.catchmovie;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;

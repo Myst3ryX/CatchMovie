@@ -8,7 +8,7 @@ import com.myst3ry.domain.model.detail.credits.PersonCreditModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class TvShowDataMapper {
+public final class TvShowDetailDataMapper {
 
     public static List<TvShowDetailModel> transform(final List<TvShowEntity> entities) {
         final List<TvShowDetailModel> models = new ArrayList<>();
@@ -24,14 +24,14 @@ public final class TvShowDataMapper {
                 entity.getType(),
                 entity.getTitle(),
                 entity.getOriginalTitle(),
-                entity.getTagLine(),
-                entity.getReleaseDate(),
+                entity.getFirstAirDate(),
                 entity.getGenres(),
-                entity.getMainPoster(),
-                entity.getPosters(),
+                entity.getPoster(),
+                entity.getPosterPreview(),
+                entity.getAllPosters(),
                 entity.getDescription(),
                 entity.getStatus(),
-                entity.getProductionStatus(),
+                entity.isIsInProduction(),
                 entity.getEpisodesCount(),
                 entity.getSeasonsCount(),
                 entity.getLanguage(),

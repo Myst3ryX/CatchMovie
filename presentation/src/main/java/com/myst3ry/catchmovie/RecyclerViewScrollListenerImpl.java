@@ -1,15 +1,15 @@
-package com.myst3ry.catchmovie.utils;
+package com.myst3ry.catchmovie;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 
-public final class RecyclerViewScrollListener extends RecyclerView.OnScrollListener {
+public final class RecyclerViewScrollListenerImpl extends RecyclerView.OnScrollListener {
 
     private static final int DY_POS = 0;
 
     private final FloatingActionButton mFab;
 
-    public RecyclerViewScrollListener(final FloatingActionButton fab) {
+    public RecyclerViewScrollListenerImpl(final FloatingActionButton fab) {
         this.mFab = fab;
     }
 

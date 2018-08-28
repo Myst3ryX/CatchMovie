@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.myst3ry.catchmovie.GlideApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
 import com.myst3ry.catchmovie.listener.OnMovieMenuClickListener;
@@ -42,12 +45,19 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
     @Override
     public void onBindViewHolder(final MovieHolder holder, final int position) {
         final MovieItemDataModel currentMovie = mMovies.get(position);
-        //holder.mPosterImageView.setImageResource(currentMovie.getMoviePoster());
         holder.mReleaseYearTextView.setText(currentMovie.getMovieReleaseDate());
         holder.mTitleTextView.setText(currentMovie.getMovieTitle());
-        holder.mGenreTextView.setText(currentMovie.getMovieGenres().toString()); //todo here
-//        holder.mRatingTextView.setText(currentMovie.getMovieRating());
-//        holder.mTmdbRatingTextView.setText(currentMovie.getMovieTmdbRating());
+        holder.mGenreTextView.setText(currentMovie.getMovieGenres());
+        holder.mRatingTextView.setText(currentMovie.getMovieRating());
+        holder.mTmdbRatingTextView.setText(currentMovie.getMovieTmdbRating());
+
+        GlideApp.with(holder.itemView.getContext())
+                .load(currentMovie.getMoviePoster())
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.color.color_image_placeholder)
+                .into(holder.mPosterImageView);
     }
 
     @Override

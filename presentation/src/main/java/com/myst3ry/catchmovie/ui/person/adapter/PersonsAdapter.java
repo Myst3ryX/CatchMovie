@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.myst3ry.catchmovie.GlideApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.model.item.PersonItemDataModel;
@@ -38,9 +41,16 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
 
     @Override
     public void onBindViewHolder(final PersonHolder holder, final int position) {
-        final PersonItemDataModel currentActor = mPersons.get(position);
-        //holder.mPersonPhotoImageView.setImageResource(currentActor.getPersonPhoto());
-        holder.mPersonNameTextView.setText(currentActor.getPersonName());
+        final PersonItemDataModel currentPerson = mPersons.get(position);
+        holder.mPersonNameTextView.setText(currentPerson.getPersonName());
+
+        GlideApp.with(holder.itemView.getContext())
+                .load(currentPerson.getPersonPhoto())
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.color.color_image_placeholder)
+                .into(holder.mPersonPhotoImageView);
     }
 
     @Override

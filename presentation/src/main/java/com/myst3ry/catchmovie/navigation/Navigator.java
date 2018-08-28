@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.myst3ry.catchmovie.R;
-import com.myst3ry.catchmovie.constants.IntentConstants;
 import com.myst3ry.catchmovie.ui.movie.activity.MovieDetailActivity;
 import com.myst3ry.catchmovie.ui.movie.activity.MovieFindActivity;
 import com.myst3ry.catchmovie.ui.movie.activity.MoviesActivity;
@@ -37,19 +36,19 @@ public final class Navigator {
 
     public void navigateToMovieDetailScreen(@NonNull final Context context, final int movieId) {
         final Intent movieDetailIntent = MovieDetailActivity.newIntent(context);
-        movieDetailIntent.putExtra(IntentConstants.EXTRA_MOVIE_ID, movieId);
+        movieDetailIntent.putExtra(MovieDetailActivity.EXTRA_MOVIE_ID, movieId);
         context.startActivity(movieDetailIntent);
     }
 
     public void navigateToTvShowDetailScreen(@NonNull final Context context, final int tvShowId) {
         final Intent tvShowDetailIntent = TvShowDetailActivity.newIntent(context);
-        tvShowDetailIntent.putExtra(IntentConstants.EXTRA_TV_SHOW_ID, tvShowId);
+        tvShowDetailIntent.putExtra(TvShowDetailActivity.EXTRA_TV_SHOW_ID, tvShowId);
         context.startActivity(tvShowDetailIntent);
     }
 
     public void navigateToPersonDetailScreen(@NonNull final Context context, final int personId) {
         final Intent personDetailIntent = PersonDetailActivity.newIntent(context);
-        personDetailIntent.putExtra(IntentConstants.EXTRA_PERSON_ID, personId);
+        personDetailIntent.putExtra(PersonDetailActivity.EXTRA_PERSON_ID, personId);
         context.startActivity(personDetailIntent);
     }
 

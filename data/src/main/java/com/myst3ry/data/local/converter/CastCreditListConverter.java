@@ -46,6 +46,6 @@ public final class CastCreditListConverter {
 //
 //    @TypeConverter
 //    public static String toString(final PersonCredit person) {
-//        return person.getId() + STR_DIV + person.getName() + STR_DIV + person.getPhoto();
+//        return person.getId() + STR_DIV + person.getTitle() + STR_DIV + person.getPhoto();
 //    }
 }

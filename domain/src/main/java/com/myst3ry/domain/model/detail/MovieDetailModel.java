@@ -13,8 +13,9 @@ public final class MovieDetailModel {
     private final String mTagLine;
     private final String mReleaseDate;
     private final List<String> mGenres;
-    private final String mMainPoster;
-    private final List<String> mPosters;
+    private final String mPoster;
+    private final String mPosterPreview;
+    private final List<String> mAllPosters;
     private final String mDescription;
     private final int mBudget;
     private final int mRevenue;
@@ -30,10 +31,11 @@ public final class MovieDetailModel {
 
     public MovieDetailModel(int id, int type, String title, String originalTitle,
                             String tagLine, String releaseDate, List<String> genres,
-                            String mainPoster, List<String> posters, String description,
-                            int budget, int revenue, String status, String language,
-                            int runtime, double rating, double tmdbRating, int votesCount,
-                            List<PersonCreditModel> actors, List<PersonCreditModel> directors, List<PersonCreditModel> writers) {
+                            String poster, String posterPreview, List<String> allPosters,
+                            String description, int budget, int revenue, String status,
+                            String language, int runtime, double rating, double tmdbRating,
+                            int votesCount, List<PersonCreditModel> actors,
+                            List<PersonCreditModel> directors, List<PersonCreditModel> writers) {
         this.mId = id;
         this.mType = type;
         this.mTitle = title;
@@ -41,8 +43,9 @@ public final class MovieDetailModel {
         this.mTagLine = tagLine;
         this.mReleaseDate = releaseDate;
         this.mGenres = genres;
-        this.mMainPoster = mainPoster;
-        this.mPosters = posters;
+        this.mPoster = poster;
+        this.mPosterPreview = posterPreview;
+        this.mAllPosters = allPosters;
         this.mDescription = description;
         this.mBudget = budget;
         this.mRevenue = revenue;
@@ -85,12 +88,16 @@ public final class MovieDetailModel {
         return mGenres;
     }
 
-    public String getMainPoster() {
-        return mMainPoster;
+    public String getPoster() {
+        return mPoster;
     }
 
-    public List<String> getPosters() {
-        return mPosters;
+    public String getPosterPreview() {
+        return mPosterPreview;
+    }
+
+    public List<String> getAllPosters() {
+        return mAllPosters;
     }
 
     public String getDescription() {

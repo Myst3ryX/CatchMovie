@@ -15,15 +15,15 @@ import android.widget.TextView;
 
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.CatchMovieApp;
+import com.myst3ry.catchmovie.LinearSpacingItemDecoration;
 import com.myst3ry.catchmovie.R;
+import com.myst3ry.catchmovie.RecyclerViewScrollListenerImpl;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.model.item.TvShowItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.tvshow.adapter.TvShowsAdapter;
 import com.myst3ry.catchmovie.ui.tvshow.presenter.TvShowsPresenter;
 import com.myst3ry.catchmovie.ui.tvshow.view.TvShowsView;
-import com.myst3ry.catchmovie.utils.LinearSpacingItemDecoration;
-import com.myst3ry.catchmovie.utils.RecyclerViewScrollListener;
 import com.myst3ry.domain.types.TvShowType;
 
 import java.util.List;
@@ -104,12 +104,11 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
         mTvShowsAdapter = new TvShowsAdapter(mTvShowClickListener, this::onTvShowMenuClick);
     }
 
-    //todo callback to fab
     private void prepareRecyclerView() {
         final FloatingActionButton fab = Objects.requireNonNull(getActivity()).findViewById(R.id.fab_find_tv_show);
         mTvShowsRecyclerView.setAdapter(mTvShowsAdapter);
         mTvShowsRecyclerView.setWillNotDraw(false);
-        mTvShowsRecyclerView.addOnScrollListener(new RecyclerViewScrollListener(fab));
+        mTvShowsRecyclerView.addOnScrollListener(new RecyclerViewScrollListenerImpl(fab));
         mTvShowsRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
                 .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
                 .setOrientation(LinearLayoutManager.VERTICAL)

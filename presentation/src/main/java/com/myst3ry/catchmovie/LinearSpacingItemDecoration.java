@@ -1,4 +1,4 @@
-package com.myst3ry.catchmovie.utils;
+package com.myst3ry.catchmovie;
 
 import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;

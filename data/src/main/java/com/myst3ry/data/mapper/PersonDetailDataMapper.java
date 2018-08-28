@@ -10,7 +10,7 @@ import com.myst3ry.domain.model.detail.credits.TvShowCreditModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class PersonDataMapper {
+public final class PersonDetailDataMapper {
 
     public static List<PersonDetailModel> transform(final List<PersonEntity> entities) {
         final List<PersonDetailModel> models = new ArrayList<>();
@@ -28,7 +28,8 @@ public final class PersonDataMapper {
                 entity.getBirthday(),
                 entity.getDeathday(),
                 entity.getBiography(),
-                entity.getPhotoImage(),
+                entity.getPhoto(),
+                entity.getPhotoPreview(),
                 transformTvShowsCredits(entity.getTvShowsCredits()),
                 transformMoviesCredits(entity.getMoviesCredits())
         );

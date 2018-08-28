@@ -9,11 +9,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
 
+import com.myst3ry.catchmovie.DeviceConfigurationHelper;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.ui.movie.activity.MoviesActivity;
 import com.myst3ry.catchmovie.ui.person.activity.PersonsActivity;
 import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowsActivity;
-import com.myst3ry.catchmovie.utils.Utils;
 
 import butterknife.BindView;
 
@@ -86,9 +86,9 @@ public abstract class NavigationBaseActivity extends BaseActivity {
                 getNavigator().navigateToSettingsScreen(this);
                 break;
             case R.id.nav_item_contact:
-                final String subject = String.format(getString(R.string.mail_subject), Utils.getAppVersionInfo());
-                final String body = String.format(getString(R.string.mail_body), Utils.getDeviceInfo(),
-                        Utils.getBuildInfo(), Utils.getVersionInfo());
+                final String subject = String.format(getString(R.string.mail_subject), DeviceConfigurationHelper.getAppVersionInfo());
+                final String body = String.format(getString(R.string.mail_body), DeviceConfigurationHelper.getDeviceInfo(),
+                        DeviceConfigurationHelper.getBuildInfo(), DeviceConfigurationHelper.getVersionInfo());
                 final String mail = getString(R.string.mail_address);
                 getNavigator().navigateToContactScreen(this, subject, body, mail);
                 break;

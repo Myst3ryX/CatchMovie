@@ -9,11 +9,14 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowDetailFragment;
 
 public final class TvShowDetailActivity extends BaseActivity {
+
+    public static final String EXTRA_TV_SHOW_ID = BuildConfig.APPLICATION_ID + "EXTRA.TV_SHOW_ID";
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, TvShowDetailActivity.class);

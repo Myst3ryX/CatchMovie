@@ -9,11 +9,14 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.movie.fragment.MovieDetailFragment;
 
 public final class MovieDetailActivity extends BaseActivity {
+
+    public static final String EXTRA_MOVIE_ID = BuildConfig.APPLICATION_ID + "EXTRA.MOVIE_ID";
 
     public static Intent newIntent(final Context context) {
         return new Intent(context, MovieDetailActivity.class);

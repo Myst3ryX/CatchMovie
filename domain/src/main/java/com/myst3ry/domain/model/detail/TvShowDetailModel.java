@@ -10,14 +10,14 @@ public final class TvShowDetailModel {
     private final int mType;
     private final String mTitle;
     private final String mOriginalTitle;
-    private final String mTagLine;
     private final String mReleaseDate;
     private final List<String> mGenres;
-    private final String mMainPoster;
-    private final List<String> mPosters;
+    private final String mPoster;
+    private final String mPosterPreview;
+    private final List<String> mAllPosters;
     private final String mDescription;
     private final String mStatus;
-    private final String mProductionStatus;
+    private final boolean mIsInProduction;
     private final int mEpisodesCount;
     private final int mSeasonsCount;
     private final String mLanguage;
@@ -30,23 +30,23 @@ public final class TvShowDetailModel {
     private final List<PersonCreditModel> mActors;
 
     public TvShowDetailModel(int id, int type, String title, String originalTitle,
-                             String tagLine, String releaseDate, List<String> genres,
-                             String mainPoster, List<String> posters, String description,
-                             String status, String productionStatus, int episodesCount, int seasonsCount,
+                             String releaseDate, List<String> genres, String poster,
+                             String posterPreview, List<String> allPosters, String description,
+                             String status, boolean isInProduction, int episodesCount, int seasonsCount,
                              String language, String network, int episodeRuntime, double rating, double tmdbRating,
                              int votesCount, List<PersonCreditModel> creators, List<PersonCreditModel> actors) {
         this.mId = id;
         this.mType = type;
         this.mTitle = title;
         this.mOriginalTitle = originalTitle;
-        this.mTagLine = tagLine;
         this.mReleaseDate = releaseDate;
         this.mGenres = genres;
-        this.mMainPoster = mainPoster;
-        this.mPosters = posters;
+        this.mPoster = poster;
+        this.mPosterPreview = posterPreview;
+        this.mAllPosters = allPosters;
         this.mDescription = description;
         this.mStatus = status;
-        this.mProductionStatus = productionStatus;
+        this.mIsInProduction = isInProduction;
         this.mEpisodesCount = episodesCount;
         this.mSeasonsCount = seasonsCount;
         this.mLanguage = language;
@@ -75,10 +75,6 @@ public final class TvShowDetailModel {
         return mOriginalTitle;
     }
 
-    public String getTagLine() {
-        return mTagLine;
-    }
-
     public String getReleaseDate() {
         return mReleaseDate;
     }
@@ -87,12 +83,16 @@ public final class TvShowDetailModel {
         return mGenres;
     }
 
-    public String getMainPoster() {
-        return mMainPoster;
+    public String getPoster() {
+        return mPoster;
     }
 
-    public List<String> getPosters() {
-        return mPosters;
+    public String getPosterPreview() {
+        return mPosterPreview;
+    }
+
+    public List<String> getAllPosters() {
+        return mAllPosters;
     }
 
     public String getDescription() {
@@ -103,8 +103,8 @@ public final class TvShowDetailModel {
         return mStatus;
     }
 
-    public String getProductionStatus() {
-        return mProductionStatus;
+    public boolean isInProduction() {
+        return mIsInProduction;
     }
 
     public int getEpisodesCount() {

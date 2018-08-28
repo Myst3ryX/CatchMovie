@@ -35,12 +35,15 @@ public final class MovieEntity {
     @TypeConverters(ArrayListConverter.class)
     private final List<String> mGenres;
 
-    @ColumnInfo(name = "main_poster")
-    private final String mMainPoster;
+    @ColumnInfo(name = "poster")
+    private final String mPoster;
+
+    @ColumnInfo(name = "poster_preview")
+    private final String mPosterPreview;
 
     @ColumnInfo(name = "posters")
     @TypeConverters(ArrayListConverter.class)
-    private final List<String> mPosters;
+    private final List<String> mAllPosters;
 
     @ColumnInfo(name = "description")
     private final String mDescription;
@@ -61,7 +64,7 @@ public final class MovieEntity {
     private final int mRuntime;
 
     @ColumnInfo(name = "rating")
-    private final double mRating;
+    private double mRating;
 
     @ColumnInfo(name = "tmdb_rating")
     private final double mTmdbRating;
@@ -83,7 +86,7 @@ public final class MovieEntity {
 
     public MovieEntity(int id, int type, String title, String originalTitle,
                        String tagLine, String releaseDate, List<String> genres,
-                       String mainPoster, List<String> posters, String description,
+                       String poster, String posterPreview, List<String> allPosters, String description,
                        int budget, int revenue, String status, String language,
                        int runtime, double rating, double tmdbRating, int votesCount,
                        List<PersonCredit> actors, List<PersonCredit> directors, List<PersonCredit> writers) {
@@ -94,8 +97,9 @@ public final class MovieEntity {
         this.mTagLine = tagLine;
         this.mReleaseDate = releaseDate;
         this.mGenres = genres;
-        this.mMainPoster = mainPoster;
-        this.mPosters = posters;
+        this.mPoster = poster;
+        this.mPosterPreview = posterPreview;
+        this.mAllPosters = allPosters;
         this.mDescription = description;
         this.mBudget = budget;
         this.mRevenue = revenue;
@@ -138,12 +142,16 @@ public final class MovieEntity {
         return mGenres;
     }
 
-    public String getMainPoster() {
-        return mMainPoster;
+    public String getPoster() {
+        return mPoster;
     }
 
-    public List<String> getPosters() {
-        return mPosters;
+    public String getPosterPreview() {
+        return mPosterPreview;
+    }
+
+    public List<String> getAllPosters() {
+        return mAllPosters;
     }
 
     public String getDescription() {
@@ -192,5 +200,9 @@ public final class MovieEntity {
 
     public List<PersonCredit> getWriters() {
         return mWriters;
+    }
+
+    public void setRating(final double rating) {
+        this.mRating = rating;
     }
 }

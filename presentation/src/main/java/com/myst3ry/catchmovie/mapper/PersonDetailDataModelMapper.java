@@ -1,5 +1,6 @@
 package com.myst3ry.catchmovie.mapper;
 
+import com.myst3ry.catchmovie.mapper.utils.DateUtils;
 import com.myst3ry.catchmovie.model.detail.PersonDetailDataModel;
 import com.myst3ry.catchmovie.model.detail.credits.MovieCreditDataModel;
 import com.myst3ry.catchmovie.model.detail.credits.TvShowCreditDataModel;
@@ -24,10 +25,11 @@ public final class PersonDetailDataModelMapper {
         return PersonDetailDataModel.newBuilder()
                 .setId(model.getId())
                 .setPhoto(model.getPhoto())
+                .setPhotoPreview(model.getPhotoPreview())
                 .setName(model.getName())
                 .setBiography(model.getBiography())
-                .setBirthday(model.getBirthday())
-                .setDeathday(model.getDeathday())
+                .setBirthday(DateUtils.parseDate(model.getBirthday()))
+                .setDeathday(DateUtils.parseDate(model.getDeathday()))
                 .setKnownAs(model.getKnownAs())
                 .setMovies(transformMoviesCredits(model.getMoviesCredits()))
                 .setTvShows(transformTvShowsCredits(model.getTvShowsCredits()))

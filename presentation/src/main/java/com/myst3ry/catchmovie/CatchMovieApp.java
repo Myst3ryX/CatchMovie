@@ -7,7 +7,6 @@ import android.support.annotation.NonNull;
 import com.myst3ry.catchmovie.di.component.AppComponent;
 import com.myst3ry.catchmovie.di.component.DaggerAppComponent;
 import com.myst3ry.catchmovie.di.module.AppModule;
-import com.myst3ry.catchmovie.utils.TimberReleaseTree;
 import com.myst3ry.data.local.database.CMDatabase;
 
 import timber.log.Timber;

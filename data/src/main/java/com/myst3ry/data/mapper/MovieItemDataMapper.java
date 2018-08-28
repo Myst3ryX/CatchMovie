@@ -20,7 +20,7 @@ public final class MovieItemDataMapper {
         return new MovieItemModel(
                 entity.getId(),
                 entity.getTitle(),
-                entity.getMainPoster(),
+                entity.getPosterPreview(),
                 entity.getReleaseDate(),
                 entity.getGenres(),
                 entity.getRating(),

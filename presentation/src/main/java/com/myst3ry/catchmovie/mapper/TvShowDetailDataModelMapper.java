@@ -1,5 +1,7 @@
 package com.myst3ry.catchmovie.mapper;
 
+import com.myst3ry.catchmovie.mapper.utils.ConvertUtils;
+import com.myst3ry.catchmovie.mapper.utils.DateUtils;
 import com.myst3ry.catchmovie.model.detail.TvShowDetailDataModel;
 import com.myst3ry.catchmovie.model.detail.credits.PersonCreditDataModel;
 import com.myst3ry.domain.model.detail.TvShowDetailModel;
@@ -22,23 +24,23 @@ public final class TvShowDetailDataModelMapper {
         return TvShowDetailDataModel.newBuilder()
                 .setId(model.getId())
                 .setType(model.getType())
-                .setMainPoster(model.getMainPoster())
+                .setPoster(model.getPoster())
+                .setPosterPreview(model.getPosterPreview())
                 .setTitle(model.getTitle())
                 .setOriginalTitle(model.getOriginalTitle())
-                .setTagLine(model.getTagLine())
-                .setReleaseDate(model.getReleaseDate())
+                .setReleaseDate(DateUtils.parseDate(model.getReleaseDate()))
                 .setGenres(model.getGenres())
-                .setPosters(model.getPosters())
+                .setAllPosters(model.getAllPosters())
                 .setDescription(model.getDescription())
                 .setStatus(model.getStatus())
-                .setProductionStatus(model.getProductionStatus())
+                .setIsInProduction(model.isInProduction())
                 .setEpisodesCount(model.getEpisodesCount())
                 .setSeasonsCount(model.getSeasonsCount())
                 .setLanguage(model.getLanguage())
                 .setNetwork(model.getNetwork())
                 .setEpisodeRuntime(model.getEpisodeRuntime())
-                .setRating(model.getRating())
-                .setTmdbRating(model.getTmdbRating())
+                .setRating(ConvertUtils.convertRating(model.getRating()))
+                .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
                 .setVotesCount(model.getVotesCount())
                 .setCreators(transformPersonsCredits(model.getCreators()))
                 .setActors(transformPersonsCredits(model.getActors()))

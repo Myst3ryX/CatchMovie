@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.myst3ry.catchmovie.GlideApp;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.listener.OnTvShowMenuClickListener;
@@ -42,12 +45,19 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
     @Override
     public void onBindViewHolder(final TvShowHolder holder, final int position) {
         final TvShowItemDataModel currentTvShow = mTvShows.get(position);
-        //holder.mPosterImageView.setImageResource(currentTvShow.getTvShowPoster());
         holder.mReleaseYearTextView.setText(currentTvShow.getTvShowReleaseDate());
         holder.mTitleTextView.setText(currentTvShow.getTvShowTitle());
-        holder.mGenreTextView.setText(currentTvShow.getTvShowGenres().toString()); //todo here
-//        holder.mRatingTextView.setText(currentTvShow.getTvShowRating());
-//        holder.mTmdbRatingTextView.setText(currentTvShow.getTvShowTmdbRating());
+        holder.mGenreTextView.setText(currentTvShow.getTvShowGenres());
+        holder.mRatingTextView.setText(currentTvShow.getTvShowRating());
+        holder.mTmdbRatingTextView.setText(currentTvShow.getTvShowTmdbRating());
+
+        GlideApp.with(holder.itemView.getContext())
+                .load(currentTvShow.getTvShowPoster())
+                .centerCrop()
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.color.color_image_placeholder)
+                .into(holder.mPosterImageView);
     }
 
     @Override

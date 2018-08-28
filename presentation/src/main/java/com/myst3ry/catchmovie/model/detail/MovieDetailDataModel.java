@@ -8,21 +8,22 @@ public final class MovieDetailDataModel {
 
     private final int mMovieId;
     private final int mMovieType;
-    private final String mMovieMainPoster;
+    private final String mMoviePoster;
+    private final String mMoviePosterPreview;
     private final String mMovieTitle;
     private final String mMovieOriginalTitle;
     private final String mMovieTagLine;
     private final String mMovieReleaseDate;
     private final List<String> mMovieGenres;
-    private final List<String> mMoviePosters;
+    private final List<String> mMovieAllPosters;
     private final String mMovieDescription;
     private final int mMovieBudget;
     private final int mMovieRevenue;
     private final String mMovieStatus;
     private final String mMovieLanguage;
     private final int mMovieRuntime;
-    private final double mMovieRating;
-    private final double mMovieTmdbRating;
+    private final String mMovieRating;
+    private final String mMovieTmdbRating;
     private final int mMovieVotesCount;
     private final List<PersonCreditDataModel> mMovieActors;
     private final List<PersonCreditDataModel> mMovieDirectors;
@@ -31,13 +32,14 @@ public final class MovieDetailDataModel {
     private MovieDetailDataModel(final Builder builder) {
         this.mMovieId = builder.id;
         this.mMovieType = builder.type;
-        this.mMovieMainPoster = builder.mainPoster;
+        this.mMoviePoster = builder.poster;
+        this.mMoviePosterPreview = builder.posterPreview;
         this.mMovieTitle = builder.title;
         this.mMovieOriginalTitle = builder.originalTitle;
         this.mMovieTagLine = builder.tagLine;
         this.mMovieReleaseDate = builder.releaseDate;
         this.mMovieGenres = builder.genres;
-        this.mMoviePosters = builder.posters;
+        this.mMovieAllPosters = builder.allPosters;
         this.mMovieDescription = builder.description;
         this.mMovieBudget = builder.budget;
         this.mMovieRevenue = builder.revenue;
@@ -65,7 +67,11 @@ public final class MovieDetailDataModel {
     }
 
     public String getMoviePoster() {
-        return mMovieMainPoster;
+        return mMoviePoster;
+    }
+
+    public String getMoviePosterPreview() {
+        return mMoviePosterPreview;
     }
 
     public String getMovieTitle() {
@@ -88,8 +94,8 @@ public final class MovieDetailDataModel {
         return mMovieGenres;
     }
 
-    public List<String> getMoviePosters() {
-        return mMoviePosters;
+    public List<String> getAllMoviePosters() {
+        return mMovieAllPosters;
     }
 
     public String getMovieDescription() {
@@ -116,11 +122,11 @@ public final class MovieDetailDataModel {
         return mMovieRuntime;
     }
 
-    public double getMovieRating() {
+    public String getMovieRating() {
         return mMovieRating;
     }
 
-    public double getMovieTmdbRating() {
+    public String getMovieTmdbRating() {
         return mMovieTmdbRating;
     }
 
@@ -144,21 +150,22 @@ public final class MovieDetailDataModel {
 
         private int id;
         private int type;
-        private String mainPoster;
+        private String poster;
+        private String posterPreview;
         private String title;
         private String originalTitle;
         private String tagLine;
         private String releaseDate;
         private List<String> genres;
-        private List<String> posters;
+        private List<String> allPosters;
         private String description;
         private int budget;
         private int revenue;
         private String status;
         private String language;
         private int runtime;
-        private double rating;
-        private double tmdbRating;
+        private String rating;
+        private String tmdbRating;
         private int votesCount;
         private List<PersonCreditDataModel> actors;
         private List<PersonCreditDataModel> directors;
@@ -177,8 +184,13 @@ public final class MovieDetailDataModel {
             return this;
         }
 
-        public Builder setMainPoster(final String mainPoster) {
-            this.mainPoster = mainPoster;
+        public Builder setPoster(final String poster) {
+            this.poster = poster;
+            return this;
+        }
+
+        public Builder setPosterPreview(final String posterPreview) {
+            this.posterPreview = posterPreview;
             return this;
         }
 
@@ -207,8 +219,8 @@ public final class MovieDetailDataModel {
             return this;
         }
 
-        public Builder setPosters(final List<String> posters) {
-            this.posters = posters;
+        public Builder setAllPosters(final List<String> allPosters) {
+            this.allPosters = allPosters;
             return this;
         }
 
@@ -242,12 +254,12 @@ public final class MovieDetailDataModel {
             return this;
         }
 
-        public Builder setRating(final double rating) {
+        public Builder setRating(final String rating) {
             this.rating = rating;
             return this;
         }
 
-        public Builder setTmdbRating(final double tmdbRating) {
+        public Builder setTmdbRating(final String tmdbRating) {
             this.tmdbRating = tmdbRating;
             return this;
         }

@@ -14,11 +14,12 @@ public final class PersonDetailModel {
     private final String mDeathday;
     private final String mBiography;
     private final String mPhoto;
+    private final String mPhotoPreview;
     private final List<TvShowCreditModel> mTvShowsCredits;
     private final List<MovieCreditModel> mMoviesCredits;
 
     public PersonDetailModel(int id, String name, String knownAs, String birthday,
-                             String deathday, String biography, String photo,
+                             String deathday, String biography, String photo, String photoPreview,
                              List<TvShowCreditModel> tvShowsCredits, List<MovieCreditModel> moviesCredits) {
         this.mId = id;
         this.mName = name;
@@ -27,6 +28,7 @@ public final class PersonDetailModel {
         this.mDeathday = deathday;
         this.mBiography = biography;
         this.mPhoto = photo;
+        this.mPhotoPreview = photoPreview;
         this.mTvShowsCredits = tvShowsCredits;
         this.mMoviesCredits = moviesCredits;
     }
@@ -57,6 +59,10 @@ public final class PersonDetailModel {
 
     public String getPhoto() {
         return mPhoto;
+    }
+
+    public String getPhotoPreview() {
+        return mPhotoPreview;
     }
 
     public List<TvShowCreditModel> getTvShowsCredits() {

@@ -15,15 +15,15 @@ import android.widget.TextView;
 
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.CatchMovieApp;
+import com.myst3ry.catchmovie.LinearSpacingItemDecoration;
 import com.myst3ry.catchmovie.R;
+import com.myst3ry.catchmovie.RecyclerViewScrollListenerImpl;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
 import com.myst3ry.catchmovie.model.item.MovieItemDataModel;
 import com.myst3ry.catchmovie.ui.base.BaseFragment;
 import com.myst3ry.catchmovie.ui.movie.adapter.MoviesAdapter;
 import com.myst3ry.catchmovie.ui.movie.presenter.MoviesPresenter;
 import com.myst3ry.catchmovie.ui.movie.view.MoviesView;
-import com.myst3ry.catchmovie.utils.LinearSpacingItemDecoration;
-import com.myst3ry.catchmovie.utils.RecyclerViewScrollListener;
 import com.myst3ry.domain.types.MovieType;
 
 import java.util.List;
@@ -108,7 +108,7 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
         final FloatingActionButton fab = Objects.requireNonNull(getActivity()).findViewById(R.id.fab_find_movie);
         mMoviesRecyclerView.setAdapter(mMoviesAdapter);
         mMoviesRecyclerView.setWillNotDraw(false);
-        mMoviesRecyclerView.addOnScrollListener(new RecyclerViewScrollListener(fab));
+        mMoviesRecyclerView.addOnScrollListener(new RecyclerViewScrollListenerImpl(fab));
         mMoviesRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
                 .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
                 .setOrientation(LinearLayoutManager.VERTICAL)

@@ -5,6 +5,7 @@ import com.myst3ry.data.local.database.CMDatabase;
 import com.myst3ry.data.local.database.dao.MoviesDAO;
 import com.myst3ry.data.local.database.dao.PersonsDAO;
 import com.myst3ry.data.local.database.dao.TvShowsDAO;
+import com.myst3ry.data.remote.api.ApiMapper;
 import com.myst3ry.data.repository.MoviesRepositoryImpl;
 import com.myst3ry.data.repository.PersonsRepositoryImpl;
 import com.myst3ry.data.repository.TvShowsRepositoryImpl;
@@ -22,20 +23,20 @@ public final class DataModule {
 
     @Provides
     @Singleton
-    MoviesRepository providesMoviesRepository(final MoviesDAO moviesDAO) {
-        return new MoviesRepositoryImpl(moviesDAO);
+    MoviesRepository providesMoviesRepository(final MoviesDAO moviesDAO, final ApiMapper apiMapper) {
+        return new MoviesRepositoryImpl(moviesDAO, apiMapper);
     }
 
     @Provides
     @Singleton
-    TvShowsRepository providesTvShowsRepository(final TvShowsDAO tvShowsDAO) {
-        return new TvShowsRepositoryImpl(tvShowsDAO);
+    TvShowsRepository providesTvShowsRepository(final TvShowsDAO tvShowsDAO, final ApiMapper apiMapper) {
+        return new TvShowsRepositoryImpl(tvShowsDAO, apiMapper);
     }
 
     @Provides
     @Singleton
-    PersonsRepository providesPersonsRepository(final PersonsDAO personsDAO) {
-        return new PersonsRepositoryImpl(personsDAO);
+    PersonsRepository providesPersonsRepository(final PersonsDAO personsDAO, final ApiMapper apiMapper) {
+        return new PersonsRepositoryImpl(personsDAO, apiMapper);
     }
 
     @Provides

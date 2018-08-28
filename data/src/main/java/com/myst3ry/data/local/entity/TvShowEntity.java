@@ -25,22 +25,22 @@ public final class TvShowEntity {
     @ColumnInfo(name = "original_title")
     private final String mOriginalTitle;
 
-    @ColumnInfo(name = "tagline")
-    private final String mTagLine;
-
-    @ColumnInfo(name = "release_date")
-    private final String mReleaseDate;
+    @ColumnInfo(name = "first_air_date")
+    private final String mFirstAirDate;
 
     @ColumnInfo(name = "genres")
     @TypeConverters(ArrayListConverter.class)
     private final List<String> mGenres;
 
-    @ColumnInfo(name = "main_poster")
-    private final String mMainPoster;
+    @ColumnInfo(name = "poster")
+    private final String mPoster;
+
+    @ColumnInfo(name = "poster_preview")
+    private final String mPosterPreview;
 
     @ColumnInfo(name = "posters")
     @TypeConverters(ArrayListConverter.class)
-    private final List<String> mPosters;
+    private final List<String> mAllPosters;
 
     @ColumnInfo(name = "description")
     private final String mDescription;
@@ -48,8 +48,8 @@ public final class TvShowEntity {
     @ColumnInfo(name = "status")
     private final String mStatus;
 
-    @ColumnInfo(name = "production_status")
-    private final String mProductionStatus;
+    @ColumnInfo(name = "is_in_production")
+    private final boolean mIsInProduction;
 
     @ColumnInfo(name = "episodes_count")
     private final int mEpisodesCount;
@@ -67,7 +67,7 @@ public final class TvShowEntity {
     private final int mEpisodeRuntime;
 
     @ColumnInfo(name = "rating")
-    private final double mRating;
+    private double mRating;
 
     @ColumnInfo(name = "tmdb_rating")
     private final double mTmdbRating;
@@ -84,23 +84,23 @@ public final class TvShowEntity {
     private final List<PersonCredit> mActors;
 
     public TvShowEntity(int id, int type, String title, String originalTitle,
-                        String tagLine, String releaseDate, List<String> genres,
-                        String mainPoster, List<String> posters, String description,
-                        String status, String productionStatus, int episodesCount, int seasonsCount,
-                        String language, String network, int episodeRuntime, double rating, double tmdbRating,
-                        int votesCount, List<PersonCredit> creators, List<PersonCredit> actors) {
+                        String firstAirDate, List<String> genres, String poster,
+                        String posterPreview, List<String> allPosters, String description,
+                        String status, boolean isInProduction, int episodesCount, int seasonsCount,
+                        String language, String network, int episodeRuntime, double rating,
+                        double tmdbRating, int votesCount, List<PersonCredit> creators, List<PersonCredit> actors) {
         this.mId = id;
         this.mType = type;
         this.mTitle = title;
         this.mOriginalTitle = originalTitle;
-        this.mTagLine = tagLine;
-        this.mReleaseDate = releaseDate;
+        this.mFirstAirDate = firstAirDate;
         this.mGenres = genres;
-        this.mMainPoster = mainPoster;
-        this.mPosters = posters;
+        this.mPoster = poster;
+        this.mPosterPreview = posterPreview;
+        this.mAllPosters = allPosters;
         this.mDescription = description;
         this.mStatus = status;
-        this.mProductionStatus = productionStatus;
+        this.mIsInProduction = isInProduction;
         this.mEpisodesCount = episodesCount;
         this.mSeasonsCount = seasonsCount;
         this.mLanguage = language;
@@ -129,24 +129,24 @@ public final class TvShowEntity {
         return mOriginalTitle;
     }
 
-    public String getTagLine() {
-        return mTagLine;
-    }
-
-    public String getReleaseDate() {
-        return mReleaseDate;
+    public String getFirstAirDate() {
+        return mFirstAirDate;
     }
 
     public List<String> getGenres() {
         return mGenres;
     }
 
-    public String getMainPoster() {
-        return mMainPoster;
+    public String getPoster() {
+        return mPoster;
     }
 
-    public List<String> getPosters() {
-        return mPosters;
+    public String getPosterPreview() {
+        return mPosterPreview;
+    }
+
+    public List<String> getAllPosters() {
+        return mAllPosters;
     }
 
     public String getDescription() {
@@ -157,8 +157,8 @@ public final class TvShowEntity {
         return mStatus;
     }
 
-    public String getProductionStatus() {
-        return mProductionStatus;
+    public boolean isIsInProduction() {
+        return mIsInProduction;
     }
 
     public int getEpisodesCount() {
@@ -199,5 +199,9 @@ public final class TvShowEntity {
 
     public List<PersonCredit> getActors() {
         return mActors;
+    }
+
+    public void setRating(final double rating) {
+        this.mRating = rating;
     }
 }

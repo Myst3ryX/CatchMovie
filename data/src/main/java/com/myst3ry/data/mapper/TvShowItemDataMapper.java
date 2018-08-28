@@ -20,8 +20,8 @@ public final class TvShowItemDataMapper {
         return new TvShowItemModel(
                 entity.getId(),
                 entity.getTitle(),
-                entity.getMainPoster(),
-                entity.getReleaseDate(),
+                entity.getPosterPreview(),
+                entity.getFirstAirDate(),
                 entity.getGenres(),
                 entity.getRating(),
                 entity.getTmdbRating()

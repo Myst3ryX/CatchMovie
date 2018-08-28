@@ -35,7 +35,10 @@ public final class PersonEntity {
     private final String mBiography;
 
     @ColumnInfo(name = "photo")
-    private final String mPhotoImage;
+    private final String mPhoto;
+
+    @ColumnInfo(name = "photo_preview")
+    private final String mPhotoPreview;
 
     @ColumnInfo(name = "tv_show_credits")
     @TypeConverters(TvShowsCreditsListConverter.class)
@@ -46,7 +49,7 @@ public final class PersonEntity {
     private final List<MovieCredit> mMoviesCredits;
 
     public PersonEntity(int id, String name, String knownAs, String birthday,
-                        String deathday, String biography, String photoImage,
+                        String deathday, String biography, String photo, String photoPreview,
                         List<TvShowCredit> tvShowsCredits, List<MovieCredit> moviesCredits) {
         this.mId = id;
         this.mName = name;
@@ -54,7 +57,8 @@ public final class PersonEntity {
         this.mBirthday = birthday;
         this.mDeathday = deathday;
         this.mBiography = biography;
-        this.mPhotoImage = photoImage;
+        this.mPhoto = photo;
+        this.mPhotoPreview = photoPreview;
         this.mTvShowsCredits = tvShowsCredits;
         this.mMoviesCredits = moviesCredits;
     }
@@ -83,8 +87,12 @@ public final class PersonEntity {
         return mBiography;
     }
 
-    public String getPhotoImage() {
-        return mPhotoImage;
+    public String getPhoto() {
+        return mPhoto;
+    }
+
+    public String getPhotoPreview() {
+        return mPhotoPreview;
     }
 
     public List<TvShowCredit> getTvShowsCredits() {

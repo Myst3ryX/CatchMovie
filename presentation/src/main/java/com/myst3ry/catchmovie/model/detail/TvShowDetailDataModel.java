@@ -8,23 +8,23 @@ public final class TvShowDetailDataModel {
 
     private final int mTvShowId;
     private final int mTvShowType;
-    private final String mTvShowMainPoster;
+    private final String mTvShowPoster;
+    private final String mTvShowPosterPreview;
     private final String mTvShowTitle;
     private final String mTvShowOriginalTitle;
-    private final String mTvShowTagLine;
     private final String mTvShowReleaseDate;
     private final List<String> mTvShowGenres;
-    private final List<String> mTvShowPosters;
+    private final List<String> mTvShowAllPosters;
     private final String mTvShowDescription;
     private final String mTvShowStatus;
-    private final String mTvShowProductionStatus;
+    private final boolean mTvShowIsInProduction;
     private final int mTvShowEpisodesCount;
     private final int mTvShowSeasonsCount;
     private final String mTvShowLanguage;
     private final String mTvShowNetwork;
     private final int mTvShowEpisodeRuntime;
-    private final double mTvShowRating;
-    private final double mTvShowTmdbRating;
+    private final String mTvShowRating;
+    private final String mTvShowTmdbRating;
     private final int mTvShowVotesCount;
     private final List<PersonCreditDataModel> mTvShowCreators;
     private final List<PersonCreditDataModel> mTvShowActors;
@@ -32,16 +32,16 @@ public final class TvShowDetailDataModel {
     private TvShowDetailDataModel(final Builder builder) {
         this.mTvShowId = builder.id;
         this.mTvShowType = builder.type;
-        this.mTvShowMainPoster = builder.mainPoster;
+        this.mTvShowPoster = builder.poster;
+        this.mTvShowPosterPreview = builder.posterPreview;
         this.mTvShowTitle = builder.title;
         this.mTvShowOriginalTitle = builder.originalTitle;
-        this.mTvShowTagLine = builder.tagLine;
         this.mTvShowReleaseDate = builder.releaseDate;
         this.mTvShowGenres = builder.genres;
-        this.mTvShowPosters = builder.posters;
+        this.mTvShowAllPosters = builder.allPosters;
         this.mTvShowDescription = builder.description;
         this.mTvShowStatus = builder.status;
-        this.mTvShowProductionStatus = builder.productionStatus;
+        this.mTvShowIsInProduction = builder.isInProduction;
         this.mTvShowEpisodesCount = builder.episodesCount;
         this.mTvShowSeasonsCount = builder.seasonsCount;
         this.mTvShowLanguage = builder.language;
@@ -67,7 +67,11 @@ public final class TvShowDetailDataModel {
     }
 
     public String getTvShowPoster() {
-        return mTvShowMainPoster;
+        return mTvShowPoster;
+    }
+
+    public String getTvShowPosterPreview() {
+        return mTvShowPosterPreview;
     }
 
     public String getTvShowTitle() {
@@ -78,10 +82,6 @@ public final class TvShowDetailDataModel {
         return mTvShowOriginalTitle;
     }
 
-    public String getTvShowTagLine() {
-        return mTvShowTagLine;
-    }
-
     public String getTvShowReleaseDate() {
         return mTvShowReleaseDate;
     }
@@ -90,8 +90,8 @@ public final class TvShowDetailDataModel {
         return mTvShowGenres;
     }
 
-    public List<String> getTvShowPosters() {
-        return mTvShowPosters;
+    public List<String> getAllTvShowPosters() {
+        return mTvShowAllPosters;
     }
 
     public String getTvShowDescription() {
@@ -102,8 +102,8 @@ public final class TvShowDetailDataModel {
         return mTvShowStatus;
     }
 
-    public String getTvShowProductionStatus() {
-        return mTvShowProductionStatus;
+    public boolean getTvShowIsInProduction() {
+        return mTvShowIsInProduction;
     }
 
     public int getTvShowEpisodesCount() {
@@ -126,11 +126,11 @@ public final class TvShowDetailDataModel {
         return mTvShowEpisodeRuntime;
     }
 
-    public double getTvShowRating() {
+    public String getTvShowRating() {
         return mTvShowRating;
     }
 
-    public double getTvShowTmdbRating() {
+    public String getTvShowTmdbRating() {
         return mTvShowTmdbRating;
     }
 
@@ -150,23 +150,23 @@ public final class TvShowDetailDataModel {
 
         private int id;
         private int type;
-        private String mainPoster;
+        private String poster;
+        private String posterPreview;
         private String title;
         private String originalTitle;
-        private String tagLine;
         private String releaseDate;
         private List<String> genres;
-        private List<String> posters;
+        private List<String> allPosters;
         private String description;
         private String status;
-        private String productionStatus;
+        private boolean isInProduction;
         private int episodesCount;
         private int seasonsCount;
         private String language;
         private String network;
         private int episodeRuntime;
-        private double rating;
-        private double tmdbRating;
+        private String rating;
+        private String tmdbRating;
         private int votesCount;
         private List<PersonCreditDataModel> creators;
         private List<PersonCreditDataModel> actors;
@@ -185,8 +185,13 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setMainPoster(final String mainPoster) {
-            this.mainPoster = mainPoster;
+        public Builder setPoster(final String poster) {
+            this.poster = poster;
+            return this;
+        }
+
+        public Builder setPosterPreview(final String posterPreview) {
+            this.posterPreview = posterPreview;
             return this;
         }
 
@@ -200,11 +205,6 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setTagLine(final String tagLine) {
-            this.tagLine = tagLine;
-            return this;
-        }
-
         public Builder setReleaseDate(final String releaseDate) {
             this.releaseDate = releaseDate;
             return this;
@@ -215,8 +215,8 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setPosters(final List<String> posters) {
-            this.posters = posters;
+        public Builder setAllPosters(final List<String> allPosters) {
+            this.allPosters = allPosters;
             return this;
         }
 
@@ -230,8 +230,8 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setProductionStatus(final String productionStatus) {
-            this.productionStatus = productionStatus;
+        public Builder setIsInProduction(final boolean isInProduction) {
+            this.isInProduction = isInProduction;
             return this;
         }
 
@@ -260,12 +260,12 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setRating(final double rating) {
+        public Builder setRating(final String rating) {
             this.rating = rating;
             return this;
         }
 
-        public Builder setTmdbRating(final double tmdbRating) {
+        public Builder setTmdbRating(final String tmdbRating) {
             this.tmdbRating = tmdbRating;
             return this;
         }

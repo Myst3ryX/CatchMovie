@@ -1,16 +1,14 @@
 package com.myst3ry.catchmovie.model.item;
 
-import java.util.List;
-
 public final class TvShowItemDataModel {
 
     private final int mTvShowId;
     private final String mTvShowTitle;
     private final String mTvShowPoster;
     private final String mTvShowReleaseDate;
-    private final List<String> mTvShowGenres;
-    private final double mTvShowRating;
-    private final double mTvShowTmdbRating;
+    private final String mTvShowGenres;
+    private final String mTvShowRating;
+    private final String mTvShowTmdbRating;
 
     private TvShowItemDataModel(final Builder builder) {
         this.mTvShowId = builder.id;
@@ -42,15 +40,15 @@ public final class TvShowItemDataModel {
         return mTvShowReleaseDate;
     }
 
-    public List<String> getTvShowGenres() {
+    public String getTvShowGenres() {
         return mTvShowGenres;
     }
 
-    public double getTvShowRating() {
+    public String getTvShowRating() {
         return mTvShowRating;
     }
 
-    public double getTvShowTmdbRating() {
+    public String getTvShowTmdbRating() {
         return mTvShowTmdbRating;
     }
 
@@ -60,9 +58,9 @@ public final class TvShowItemDataModel {
         private String title;
         private String poster;
         private String releaseDate;
-        private List<String> genres;
-        private double rating;
-        private double tmdbRating;
+        private String genres;
+        private String rating;
+        private String tmdbRating;
 
         private Builder() {
         }
@@ -87,17 +85,17 @@ public final class TvShowItemDataModel {
             return this;
         }
 
-        public Builder setGenres(final List<String> genres) {
+        public Builder setGenres(final String genres) {
             this.genres = genres;
             return this;
         }
 
-        public Builder setRating(final double rating) {
+        public Builder setRating(final String rating) {
             this.rating = rating;
             return this;
         }
 
-        public Builder setTmdbRating(final double tmdbRating) {
+        public Builder setTmdbRating(final String tmdbRating) {
             this.tmdbRating = tmdbRating;
             return this;
         }

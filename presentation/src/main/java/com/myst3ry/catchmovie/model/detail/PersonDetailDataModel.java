@@ -9,6 +9,7 @@ public final class PersonDetailDataModel {
 
     private final int mPersonId;
     private final String mPersonPhoto;
+    private final String mPersonPhotoPreview;
     private final String mPersonName;
     private final String mPersonBiography;
     private final String mPersonBirthday;
@@ -20,6 +21,7 @@ public final class PersonDetailDataModel {
     private PersonDetailDataModel(final Builder builder) {
         this.mPersonId = builder.id;
         this.mPersonPhoto = builder.photo;
+        this.mPersonPhotoPreview = builder.photoPreview;
         this.mPersonName = builder.name;
         this.mPersonBiography = builder.biography;
         this.mPersonBirthday = builder.birthday;
@@ -37,8 +39,12 @@ public final class PersonDetailDataModel {
         return mPersonId;
     }
 
-    public String getPersonPhotoImage() {
+    public String getPersonPhoto() {
         return mPersonPhoto;
+    }
+
+    public String getPersonPhotoPreview() {
+        return mPersonPhotoPreview;
     }
 
     public String getPersonName() {
@@ -74,6 +80,7 @@ public final class PersonDetailDataModel {
 
         private int id;
         private String photo;
+        private String photoPreview;
         private String name;
         private String biography;
         private String birthday;
@@ -92,6 +99,11 @@ public final class PersonDetailDataModel {
 
         public Builder setPhoto(final String photo) {
             this.photo = photo;
+            return this;
+        }
+
+        public Builder setPhotoPreview(final String photoPreview) {
+            this.photoPreview = photoPreview;
             return this;
         }
 

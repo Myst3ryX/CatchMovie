@@ -1,5 +1,7 @@
 package com.myst3ry.catchmovie.mapper;
 
+import com.myst3ry.catchmovie.mapper.utils.ConvertUtils;
+import com.myst3ry.catchmovie.mapper.utils.DateUtils;
 import com.myst3ry.catchmovie.model.detail.MovieDetailDataModel;
 import com.myst3ry.catchmovie.model.detail.credits.PersonCreditDataModel;
 import com.myst3ry.domain.model.detail.MovieDetailModel;
@@ -22,21 +24,22 @@ public final class MovieDetailDataModelMapper {
         return MovieDetailDataModel.newBuilder()
                 .setId(model.getId())
                 .setType(model.getType())
-                .setMainPoster(model.getMainPoster())
+                .setPoster(model.getPoster())
+                .setPosterPreview(model.getPosterPreview())
                 .setTitle(model.getTitle())
                 .setOriginalTitle(model.getOriginalTitle())
                 .setTagLine(model.getTagLine())
-                .setReleaseDate(model.getReleaseDate())
+                .setReleaseDate(DateUtils.parseDate(model.getReleaseDate()))
                 .setGenres(model.getGenres())
-                .setPosters(model.getPosters())
+                .setAllPosters(model.getAllPosters())
                 .setDescription(model.getDescription())
                 .setBudget(model.getBudget())
                 .setRevenue(model.getRevenue())
                 .setStatus(model.getStatus())
                 .setLanguage(model.getLanguage())
                 .setRuntime(model.getRuntime())
-                .setRating(model.getRating())
-                .setTmdbRating(model.getTmdbRating())
+                .setRating(ConvertUtils.convertRating(model.getRating()))
+                .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
                 .setVotesCount(model.getVotesCount())
                 .setActors(transformPersonsCredits(model.getActors()))
                 .setDirectors(transformPersonsCredits(model.getDirectors()))
