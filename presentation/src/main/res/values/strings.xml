@@ -7,13 +7,9 @@
     <string name="app_title_tv_shows">TV Shows</string>
     <string name="app_title_persons">Persons</string>
     <string name="app_title_settings">Settings</string>
-
-    <string name="app_title_catch_movie">Catch Movie</string>
-    <string name="app_title_catch_tv_show">Catch TV Show</string>
-
-    <string name="app_title_search_movie">Movie Search</string>
-    <string name="app_title_search_tv_show">TV Show Search</string>
-    <string name="app_title_search_person">Person Search</string>
+    <string name="app_title_search_movies">Search Movies</string>
+    <string name="app_title_search_tv_shows">Search TV Shows</string>
+    <string name="app_title_search_persons">Search Persons</string>
 
     <!--Navigation Drawer-->
     <string name="nav_title_movies">Movies</string>
@@ -43,6 +39,7 @@
 
     <!--Menu Actions-->
     <string name="action_search">Search</string>
+    <string name="action_delete">Delete</string>
     <string name="action_catch">Catch It!</string>
     <string name="action_settings">Settings</string>
 
@@ -70,5 +67,11 @@
     <string name="movie_poster_desc">Movie Poster</string>
     <string name="tv_show_poster_desc">TV Show Poster</string>
     <string name="person_photo_desc">Person Photo</string>
+
+    <!--Details-->
+    <string name="movie_actors_cast">Cast:</string>
+
+    <string name="hint_search">Search…</string>
+    <string name="app_title_popular">Popular:</string>
 
 </resources>

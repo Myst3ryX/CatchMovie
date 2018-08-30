@@ -62,21 +62,21 @@ public interface TMDbApi {
                                              @Query("page") final int page,
                                              @Query("include_adult") final boolean isAdult);
 
-    //+ more args
-    @GET("{api_version}/discover/movie")
-    Single<MovieFindResponse> catchMovie(@Path("api_version") final int apiVersion,
-                                         @Query("api_key") final String key,
-                                         @Query("language") final String language,
-                                         @Query("page") final int page,
-                                         @Query("include_adult") final boolean isAdult,
-                                         @Query("sort_by") final String sortBy);
+    @GET("{api_version}/movie/popular")
+    Single<MovieFindResponse> getPopularMovies(@Path("api_version") final int apiVersion,
+                                               @Query("api_key") final String key,
+                                               @Query("language") final String language,
+                                               @Query("page") final int page);
 
-    //+ more args
-    @GET("{api_version}/discover/tv")
-    Single<TvShowFindResponse> catchTvShow(@Path("api_version") final int apiVersion,
-                                           @Query("api_key") final String key,
-                                           @Query("language") final String language,
-                                           @Query("page") final int page,
-                                           @Query("include_adult") final boolean isAdult,
-                                           @Query("sort_by") final String sortBy);
+    @GET("{api_version}/tv/popular")
+    Single<TvShowFindResponse> getPopularTvShows(@Path("api_version") final int apiVersion,
+                                                 @Query("api_key") final String key,
+                                                 @Query("language") final String language,
+                                                 @Query("page") final int page);
+
+    @GET("{api_version}/person/popular")
+    Single<PersonFindResponse> getPopularPersons(@Path("api_version") final int apiVersion,
+                                                 @Query("api_key") final String key,
+                                                 @Query("language") final String language,
+                                                 @Query("page") final int page);
 }

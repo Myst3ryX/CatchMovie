@@ -2,6 +2,7 @@ package com.myst3ry.domain.repository;
 
 import com.myst3ry.domain.model.detail.TvShowDetailModel;
 import com.myst3ry.domain.model.item.TvShowItemModel;
+import com.myst3ry.domain.model.result.TvShowResultModel;
 
 import java.util.List;
 
@@ -11,11 +12,11 @@ public interface TvShowsRepository {
 
     Observable<List<TvShowItemModel>> getTvShows(final int type);
 
-    Observable<List<TvShowItemModel>> searchTvShowsByQuery(final String query);
-
     Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId);
 
-    Observable<TvShowItemModel> catchTvShowWithParams(final Object... params);
+    Observable<List<TvShowResultModel>> getPopularTvShows();
+
+    Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query);
 
     void setTvShowRating(final int tvShowId, final double rating);
 

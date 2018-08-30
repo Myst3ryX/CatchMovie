@@ -4,11 +4,13 @@ public final class PersonItemDataModel {
 
     private final int mPersonId;
     private final String mPersonName;
+    private final String mPersonKnownAs;
     private final String mPersonPhoto;
 
     private PersonItemDataModel(final Builder builder) {
         this.mPersonId = builder.id;
         this.mPersonName = builder.name;
+        this.mPersonKnownAs = builder.knownAs;
         this.mPersonPhoto = builder.photo;
     }
 
@@ -24,6 +26,10 @@ public final class PersonItemDataModel {
         return mPersonName;
     }
 
+    public String getPersonKnownAs() {
+        return mPersonKnownAs;
+    }
+
     public String getPersonPhoto() {
         return mPersonPhoto;
     }
@@ -32,6 +38,7 @@ public final class PersonItemDataModel {
 
         private int id;
         private String name;
+        private String knownAs;
         private String photo;
 
         private Builder() {
@@ -44,6 +51,11 @@ public final class PersonItemDataModel {
 
         public Builder setName(final String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder setKnownAs(final String knownAs) {
+            this.knownAs = knownAs;
             return this;
         }
 

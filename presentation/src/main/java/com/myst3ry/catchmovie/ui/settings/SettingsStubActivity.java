@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.R;
@@ -28,12 +27,6 @@ public final class SettingsStubActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         setTitle("");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_detail, menu);
-        return true;
     }
 
     @Override

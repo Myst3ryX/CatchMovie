@@ -7,15 +7,15 @@ import android.support.annotation.NonNull;
 
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.ui.movie.activity.MovieDetailActivity;
-import com.myst3ry.catchmovie.ui.movie.activity.MovieFindActivity;
 import com.myst3ry.catchmovie.ui.movie.activity.MoviesActivity;
+import com.myst3ry.catchmovie.ui.movie.activity.MoviesSearchActivity;
 import com.myst3ry.catchmovie.ui.person.activity.PersonDetailActivity;
-import com.myst3ry.catchmovie.ui.person.activity.PersonFindActivity;
 import com.myst3ry.catchmovie.ui.person.activity.PersonsActivity;
+import com.myst3ry.catchmovie.ui.person.activity.PersonsSearchActivity;
 import com.myst3ry.catchmovie.ui.settings.SettingsStubActivity;
 import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowDetailActivity;
-import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowFindActivity;
 import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowsActivity;
+import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowsSearchActivity;
 
 public final class Navigator {
 
@@ -58,17 +58,17 @@ public final class Navigator {
     }
 
     public void navigateToMovieFindScreen(@NonNull final Context context) {
-        final Intent movieFindIntent = MovieFindActivity.newIntent(context);
+        final Intent movieFindIntent = MoviesSearchActivity.newIntent(context);
         context.startActivity(movieFindIntent);
     }
 
     public void navigateToTvShowFindScreen(@NonNull final Context context) {
-        final Intent tvShowFindIntent = TvShowFindActivity.newIntent(context);
+        final Intent tvShowFindIntent = TvShowsSearchActivity.newIntent(context);
         context.startActivity(tvShowFindIntent);
     }
 
     public void navigateToPersonSearchScreen(@NonNull final Context context) {
-        final Intent personFindIntent = PersonFindActivity.newIntent(context);
+        final Intent personFindIntent = PersonsSearchActivity.newIntent(context);
         context.startActivity(personFindIntent);
     }
 

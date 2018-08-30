@@ -2,9 +2,11 @@ package com.myst3ry.data.repository;
 
 import com.myst3ry.data.local.database.dao.PersonsDAO;
 import com.myst3ry.data.mapper.PersonItemDataMapper;
+import com.myst3ry.data.mapper.PersonResultDataMapper;
 import com.myst3ry.data.remote.api.ApiMapper;
 import com.myst3ry.domain.model.detail.PersonDetailModel;
 import com.myst3ry.domain.model.item.PersonItemModel;
+import com.myst3ry.domain.model.result.PersonResultModel;
 import com.myst3ry.domain.repository.PersonsRepository;
 
 import java.util.List;
@@ -32,13 +34,20 @@ public final class PersonsRepositoryImpl implements PersonsRepository {
     }
 
     @Override
-    public Observable<List<PersonItemModel>> searchPersonsByQuery(final String query) {
-        return null; //todo api
+    public Observable<PersonDetailModel> getPersonDetailsById(final int personId) {
+        return null; //todo api+db
     }
 
     @Override
-    public Observable<PersonDetailModel> getPersonDetailsById(final int personId) {
-        return null; //todo api+db
+    public Observable<List<PersonResultModel>> getPopularPersons() {
+        return mApiMapper.getPopularPersons(1)
+                .map(PersonResultDataMapper::transform);
+    }
+
+    @Override
+    public Observable<List<PersonResultModel>> searchPersonsByQuery(final String query) {
+        return mApiMapper.searchPersonsByQuery(query, 1)
+                .map(PersonResultDataMapper::transform);
     }
 
     @Override

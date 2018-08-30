@@ -20,6 +20,7 @@ public final class PersonItemDataMapper {
         return new PersonItemModel(
                 entity.getId(),
                 entity.getName(),
+                entity.getKnownAs(),
                 entity.getPhotoPreview()
         );
     }

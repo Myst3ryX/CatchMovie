@@ -43,6 +43,7 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
     public void onBindViewHolder(final PersonHolder holder, final int position) {
         final PersonItemDataModel currentPerson = mPersons.get(position);
         holder.mPersonNameTextView.setText(currentPerson.getPersonName());
+        holder.mPersonKnownAsTextView.setText(currentPerson.getPersonKnownAs());
 
         GlideApp.with(holder.itemView.getContext())
                 .load(currentPerson.getPersonPhoto())
@@ -97,14 +98,17 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
         return mPersons.get(position);
     }
 
+
     public final class PersonHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.person_photo_image)
         ImageView mPersonPhotoImageView;
         @BindView(R.id.person_name)
         TextView mPersonNameTextView;
+        @BindView(R.id.person_known_as)
+        TextView mPersonKnownAsTextView;
 
-        @OnClick(R.id.person_container)
+        @OnClick(R.id.person_result_container)
         void onClick() {
             mListener.onPersonClick(getPerson(getLayoutPosition()).getPersonId());
         }

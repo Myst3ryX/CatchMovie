@@ -58,8 +58,8 @@ public final class PersonDetailFragment extends BaseFragment implements PersonDe
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

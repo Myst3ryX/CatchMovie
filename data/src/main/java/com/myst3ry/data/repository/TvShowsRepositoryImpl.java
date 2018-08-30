@@ -2,9 +2,11 @@ package com.myst3ry.data.repository;
 
 import com.myst3ry.data.local.database.dao.TvShowsDAO;
 import com.myst3ry.data.mapper.TvShowItemDataMapper;
+import com.myst3ry.data.mapper.TvShowResultDataMapper;
 import com.myst3ry.data.remote.api.ApiMapper;
 import com.myst3ry.domain.model.detail.TvShowDetailModel;
 import com.myst3ry.domain.model.item.TvShowItemModel;
+import com.myst3ry.domain.model.result.TvShowResultModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 
 public final class TvShowsRepositoryImpl implements TvShowsRepository {
 
@@ -32,23 +35,29 @@ public final class TvShowsRepositoryImpl implements TvShowsRepository {
     }
 
     @Override
-    public Observable<List<TvShowItemModel>> searchTvShowsByQuery(final String query) {
-        return null; //todo api
-    }
-
-    @Override
     public Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId) {
         return null; //todo api+db
     }
 
     @Override
-    public Observable<TvShowItemModel> catchTvShowWithParams(final Object... params) {
-        return null; //todo api + save recent
+    public Observable<List<TvShowResultModel>> getPopularTvShows() {
+        return mApiMapper.getPopularTvShows(1)
+                .map(TvShowResultDataMapper::transform);
+    }
+
+    @Override
+    public Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query) {
+        return mApiMapper.searchTvShowsByQuery(query, 1)
+                .map(TvShowResultDataMapper::transform);
     }
 
     @Override
     public void setTvShowRating(final int tvShowId, final double rating) {
-        //todo db
+        mTvShowsDao.getTvShowById(tvShowId)
+                .toObservable()
+                .observeOn(Schedulers.computation())
+                .doOnNext(movie -> movie.setRating(rating))
+                .subscribe();
     }
 
     @Override

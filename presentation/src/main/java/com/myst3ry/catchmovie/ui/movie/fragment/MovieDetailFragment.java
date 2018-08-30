@@ -58,8 +58,8 @@ public final class MovieDetailFragment extends BaseFragment implements MovieDeta
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

@@ -21,6 +21,7 @@ public final class PersonItemDataModelMapper {
                 .setId(model.getId())
                 .setPhoto(model.getPhoto())
                 .setName(model.getName())
+                .setKnownAs(model.getKnownAs())
                 .build();
     }
 }

@@ -4,6 +4,7 @@ import com.myst3ry.data.local.entity.credits.MovieCredit;
 import com.myst3ry.data.local.entity.credits.TvShowCredit;
 import com.myst3ry.data.remote.api.TMDbApi;
 import com.myst3ry.data.remote.pojo.person.detail.PersonCast;
+import com.myst3ry.data.remote.pojo.person.find.KnownFor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,25 @@ public final class PersonConvertUtils {
             ));
         }
         return movieCredits;
+    }
+
+    public static String convertKnownForDesc(final List<KnownFor> knownForList) {
+        if (knownForList == null) {
+            return "";
+        }
+
+        int knownForIndex = 0;
+        double popularity = 0;
+
+        for (int i = 0; i < knownForList.size(); i++) {
+            final KnownFor knownForItem = knownForList.get(i);
+            if (knownForItem.getPopularity() > popularity) {
+                popularity = knownForItem.getPopularity();
+                knownForIndex = i;
+            }
+        }
+
+        return knownForList.get(knownForIndex).getTitle();
     }
 
     private PersonConvertUtils() {

@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_detail_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_main_background"
+    tools:context=".ui.movie.fragment.MovieDetailFragment">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/movie_detail_cover"
+            android:layout_width="@dimen/detail_image_width"
+            android:layout_height="@dimen/detail_image_height"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/margin_standard"
+            android:scaleType="centerInside"
+            android:background="@color/color_image_placeholder"
+            android:contentDescription="@string/movie_poster_desc" />
+
+        <TextView
+            android:id="@+id/movie_detail_title"
+            android:text="Movie Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:layout_toEndOf="@+id/movie_detail_cover"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/color_main_text" />
+
+        <TextView
+            android:id="@+id/movie_detail_release_date"
+            android:text="10.10.1988"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_detail_title"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:layout_toEndOf="@+id/movie_detail_cover"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/color_main_text" />
+
+        <TextView
+            android:id="@+id/movie_detail_watchlist_btn"
+            android:text="ADD TO WATCHLIST"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_detail_cover"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@color/color_main_text" />
+
+        <TextView
+            android:id="@+id/movie_detail_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="There was a long path to get in there, so they decide to go another way to find his girlfriend..."
+            android:layout_below="@+id/movie_detail_watchlist_btn"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:textColor="@color/color_main_text" />
+
+        <TextView
+            android:id="@+id/movie_cast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_detail_desc"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:text="@string/movie_actors_cast"
+            android:textColor="@color/color_main_text" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_movie_cast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_cast"
+            android:overScrollMode="never"
+            android:scrollbars="horizontal" />
+
+    </RelativeLayout>
+
+</ScrollView>

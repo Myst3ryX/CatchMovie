@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/person_container"
+    android:id="@+id/person_result_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardBackgroundColor="@android:color/transparent"
@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/item_main_image_height">
+        android:minHeight="@dimen/item_horizontal_min_height">
 
         <ImageView
             android:id="@+id/person_photo_image"
@@ -30,9 +30,24 @@
             android:layout_marginStart="@dimen/margin_half"
             android:layout_toEndOf="@+id/person_photo_image"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="@integer/item_title_max_lines"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/color_main_text" />
+
+        <TextView
+            android:id="@+id/person_known_as"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/person_name"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:layout_toEndOf="@+id/person_photo_image"
+            android:ellipsize="end"
+            android:maxLines="@integer/item_person_desc_max_lines"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/color_sub_text" />
+
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

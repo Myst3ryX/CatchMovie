@@ -37,7 +37,7 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
     }
 
     @Override
-    public MoviesAdapter.MovieHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+    public MovieHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         return new MovieHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_movie, parent, false));
     }
@@ -112,14 +112,14 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         TextView mReleaseYearTextView;
         @BindView(R.id.movie_title)
         TextView mTitleTextView;
-        @BindView(R.id.movie_genre)
+        @BindView(R.id.movie_genres)
         TextView mGenreTextView;
         @BindView(R.id.movie_rating)
         TextView mRatingTextView;
         @BindView(R.id.tmdb_rating)
         TextView mTmdbRatingTextView;
 
-        @OnClick(R.id.movie_container)
+        @OnClick(R.id.movie_result_container)
         void onItemClick() {
             mListener.onMovieClick(getMovie(getLayoutPosition()).getMovieId());
         }

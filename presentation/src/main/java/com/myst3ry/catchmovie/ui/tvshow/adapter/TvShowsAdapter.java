@@ -37,7 +37,7 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
     }
 
     @Override
-    public TvShowsAdapter.TvShowHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+    public TvShowHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         return new TvShowHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_tv_show, parent, false));
     }
@@ -112,14 +112,14 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         TextView mReleaseYearTextView;
         @BindView(R.id.tv_show_title)
         TextView mTitleTextView;
-        @BindView(R.id.tv_show_genre)
+        @BindView(R.id.tv_show_genres)
         TextView mGenreTextView;
         @BindView(R.id.tv_show_rating)
         TextView mRatingTextView;
         @BindView(R.id.tmdb_rating)
         TextView mTmdbRatingTextView;
 
-        @OnClick(R.id.tv_show_container)
+        @OnClick(R.id.tv_show_result_container)
         void onItemClick() {
             mListener.onTvShowClick(getTvShow(getLayoutPosition()).getTvShowId());
         }

@@ -19,7 +19,6 @@ import static com.myst3ry.data.remote.api.RequestsConstants.IS_ADULT_ENABLED;
 import static com.myst3ry.data.remote.api.RequestsConstants.LANGUAGE;
 import static com.myst3ry.data.remote.api.RequestsConstants.MOVIE_REQUEST_APPEND;
 import static com.myst3ry.data.remote.api.RequestsConstants.PERSON_REQUEST_APPEND;
-import static com.myst3ry.data.remote.api.RequestsConstants.SORT_BY;
 import static com.myst3ry.data.remote.api.RequestsConstants.TV_SHOW_REQUEST_APPEND;
 
 public final class ApiMapper {
@@ -71,17 +70,24 @@ public final class ApiMapper {
 
     }
 
-    public Observable<List<MovieResult>> catchMovieWithParams(final int page, final Object... params) {
-        return mApiService.catchMovie(API_VERSION, API_KEY, LANGUAGE, page, IS_ADULT_ENABLED, SORT_BY)
+    public Observable<List<MovieResult>> getPopularMovies(final int page) {
+        return mApiService.getPopularMovies(API_VERSION, API_KEY, LANGUAGE, page)
                 .observeOn(Schedulers.computation())
                 .map(MovieFindResponse::getResults)
                 .toObservable();
     }
 
-    public Observable<List<TvShowResult>> catchTvShowWithParams(final int page, final Object... params) {
-        return mApiService.catchTvShow(API_VERSION, API_KEY, LANGUAGE, page, IS_ADULT_ENABLED, SORT_BY)
+    public Observable<List<TvShowResult>> getPopularTvShows(final int page) {
+        return mApiService.getPopularTvShows(API_VERSION, API_KEY, LANGUAGE, page)
                 .observeOn(Schedulers.computation())
                 .map(TvShowFindResponse::getResults)
+                .toObservable();
+    }
+
+    public Observable<List<PersonResult>> getPopularPersons(final int page) {
+        return mApiService.getPopularPersons(API_VERSION, API_KEY, LANGUAGE, page)
+                .observeOn(Schedulers.computation())
+                .map(PersonFindResponse::getResults)
                 .toObservable();
     }
 }

@@ -2,6 +2,7 @@ package com.myst3ry.domain.repository;
 
 import com.myst3ry.domain.model.detail.PersonDetailModel;
 import com.myst3ry.domain.model.item.PersonItemModel;
+import com.myst3ry.domain.model.result.PersonResultModel;
 
 import java.util.List;
 
@@ -11,9 +12,11 @@ public interface PersonsRepository {
 
     Observable<List<PersonItemModel>> getPersons();
 
-    Observable<List<PersonItemModel>> searchPersonsByQuery(final String query);
-
     Observable<PersonDetailModel> getPersonDetailsById(final int personId);
+
+    Observable<List<PersonResultModel>> getPopularPersons();
+
+    Observable<List<PersonResultModel>> searchPersonsByQuery(final String query);
 
     void addPersonToFavorites(final int personId);
 

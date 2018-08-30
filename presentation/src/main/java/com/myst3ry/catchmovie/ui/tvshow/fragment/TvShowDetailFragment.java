@@ -58,8 +58,8 @@ public final class TvShowDetailFragment extends BaseFragment implements TvShowDe
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

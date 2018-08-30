@@ -2,6 +2,7 @@ package com.myst3ry.domain.repository;
 
 import com.myst3ry.domain.model.detail.MovieDetailModel;
 import com.myst3ry.domain.model.item.MovieItemModel;
+import com.myst3ry.domain.model.result.MovieResultModel;
 
 import java.util.List;
 
@@ -11,11 +12,11 @@ public interface MoviesRepository {
 
     Observable<List<MovieItemModel>> getMovies(final int type);
 
-    Observable<List<MovieItemModel>> searchMoviesByQuery(final String query);
-
     Observable<MovieDetailModel> getMovieDetailsById(final int movieId);
 
-    Observable<MovieItemModel> catchMovieWithParams(final Object... params);
+    Observable<List<MovieResultModel>> getPopularMovies();
+
+    Observable<List<MovieResultModel>> searchMoviesByQuery(final String query);
 
     void setMovieRating(final int movieId, final double rating);
 

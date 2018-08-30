@@ -31,7 +31,9 @@ public final class CatchMovieApp extends Application {
     }
 
     private void initDatabase() {
-        mCMDatabase = Room.databaseBuilder(this, CMDatabase.class, "catch_movie_db").build();
+        mCMDatabase = Room.databaseBuilder(this, CMDatabase.class, "catch_movie_db")
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     private void configureTimber() {

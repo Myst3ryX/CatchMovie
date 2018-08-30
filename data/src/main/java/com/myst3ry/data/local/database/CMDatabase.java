@@ -10,7 +10,7 @@ import com.myst3ry.data.local.entity.MovieEntity;
 import com.myst3ry.data.local.entity.PersonEntity;
 import com.myst3ry.data.local.entity.TvShowEntity;
 
-@Database(entities = {MovieEntity.class, TvShowEntity.class, PersonEntity.class}, version = 1)
+@Database(entities = {MovieEntity.class, TvShowEntity.class, PersonEntity.class}, version = 2)
 public abstract class CMDatabase extends RoomDatabase {
 
     public abstract MoviesDAO getMoviesDao();

@@ -41,7 +41,7 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
 
     @BindView(R.id.rv_movies)
     RecyclerView mMoviesRecyclerView;
-    @BindView(R.id.tv_empty_movies)
+    @BindView(R.id.empty_movies)
     TextView mEmptyMoviesTextView;
 
     @Inject
@@ -109,6 +109,8 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
         mMoviesRecyclerView.setAdapter(mMoviesAdapter);
         mMoviesRecyclerView.setWillNotDraw(false);
         mMoviesRecyclerView.addOnScrollListener(new RecyclerViewScrollListenerImpl(fab));
+        mMoviesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false));
         mMoviesRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
                 .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
                 .setOrientation(LinearLayoutManager.VERTICAL)
@@ -154,8 +156,8 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

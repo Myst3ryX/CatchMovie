@@ -2,9 +2,11 @@ package com.myst3ry.data.repository;
 
 import com.myst3ry.data.local.database.dao.MoviesDAO;
 import com.myst3ry.data.mapper.MovieItemDataMapper;
+import com.myst3ry.data.mapper.MovieResultDataMapper;
 import com.myst3ry.data.remote.api.ApiMapper;
 import com.myst3ry.domain.model.detail.MovieDetailModel;
 import com.myst3ry.domain.model.item.MovieItemModel;
+import com.myst3ry.domain.model.result.MovieResultModel;
 import com.myst3ry.domain.repository.MoviesRepository;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 
 public final class MoviesRepositoryImpl implements MoviesRepository {
 
@@ -32,23 +35,29 @@ public final class MoviesRepositoryImpl implements MoviesRepository {
     }
 
     @Override
-    public Observable<List<MovieItemModel>> searchMoviesByQuery(final String query) {
-        return null; //todo api
-    }
-
-    @Override
     public Observable<MovieDetailModel> getMovieDetailsById(final int movieId) {
         return null; //todo db+api
     }
 
     @Override
-    public Observable<MovieItemModel> catchMovieWithParams(final Object... params) {
-        return null; //todo api + save recent
+    public Observable<List<MovieResultModel>> getPopularMovies() {
+        return mApiMapper.getPopularMovies(1)
+                .map(MovieResultDataMapper::transform);
+    }
+
+    @Override
+    public Observable<List<MovieResultModel>> searchMoviesByQuery(final String query) {
+        return mApiMapper.searchMoviesByQuery(query, 1)
+                .map(MovieResultDataMapper::transform);
     }
 
     @Override
     public void setMovieRating(final int movieId, final double rating) {
-        //mMoviesDao.getMovieById(movieId).map(setRating(rating)).
+        mMoviesDao.getMovieById(movieId)
+                .toObservable()
+                .observeOn(Schedulers.computation())
+                .doOnNext(movie -> movie.setRating(rating))
+                .subscribe();
     }
 
     @Override

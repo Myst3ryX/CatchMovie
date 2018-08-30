@@ -41,7 +41,7 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
 
     @BindView(R.id.rv_tv_shows)
     RecyclerView mTvShowsRecyclerView;
-    @BindView(R.id.tv_empty_tv_shows)
+    @BindView(R.id.empty_tv_shows)
     TextView mEmptyTvShowsTextView;
 
     @Inject
@@ -74,6 +74,8 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter.attachView(this);
+
         if (getArguments() != null) {
             mType = (TvShowType) getArguments().getSerializable(TvShowsFragment.ARG_TV_SHOWS_TYPE);
         }
@@ -88,8 +90,6 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPresenter.attachView(this);
-
         initAdapter();
         prepareRecyclerView();
     }
@@ -109,6 +109,8 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
         mTvShowsRecyclerView.setAdapter(mTvShowsAdapter);
         mTvShowsRecyclerView.setWillNotDraw(false);
         mTvShowsRecyclerView.addOnScrollListener(new RecyclerViewScrollListenerImpl(fab));
+        mTvShowsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false));
         mTvShowsRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
                 .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
                 .setOrientation(LinearLayoutManager.VERTICAL)
@@ -155,8 +157,8 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

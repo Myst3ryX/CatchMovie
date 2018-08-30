@@ -37,7 +37,7 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
 
     @BindView(R.id.rv_persons)
     RecyclerView mPersonsRecyclerView;
-    @BindView(R.id.tv_empty_persons)
+    @BindView(R.id.empty_persons)
     TextView mEmptyPersonsTextView;
 
     @Inject
@@ -95,6 +95,8 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
         mPersonsRecyclerView.setAdapter(mPersonsAdapter);
         mPersonsRecyclerView.setWillNotDraw(false);
         mPersonsRecyclerView.addOnScrollListener(new RecyclerViewScrollListenerImpl(fab));
+        mPersonsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false));
         mPersonsRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
                 .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_half))
                 .setOrientation(LinearLayoutManager.VERTICAL)
@@ -122,8 +124,8 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         mPresenter.detachView();
         mPresenter.disposeAll();
     }

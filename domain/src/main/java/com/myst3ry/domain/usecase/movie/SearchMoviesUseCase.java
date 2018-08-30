@@ -1,6 +1,6 @@
 package com.myst3ry.domain.usecase.movie;
 
-import com.myst3ry.domain.model.item.MovieItemModel;
+import com.myst3ry.domain.model.result.MovieResultModel;
 import com.myst3ry.domain.repository.MoviesRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public final class SearchMoviesUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public Observable<List<MovieItemModel>> execute(final String query) {
+    public Observable<List<MovieResultModel>> execute(final String query) {
         return mMoviesRepository.searchMoviesByQuery(query);
     }
 }
