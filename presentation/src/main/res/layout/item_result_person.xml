@@ -13,7 +13,7 @@
         android:minWidth="@dimen/item_vertical_min_width">
 
         <ImageView
-            android:id="@+id/person_photo_image"
+            android:id="@+id/person_photo"
             android:layout_width="@dimen/item_main_image_width"
             android:layout_height="@dimen/item_main_image_height"
             android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/color_image_placeholder"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/person_photo_desc"
             android:scaleType="centerInside" />
 
@@ -30,7 +30,7 @@
             android:id="@+id/person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/person_photo_image"
+            android:layout_below="@+id/person_photo"
             android:layout_centerHorizontal="true"
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"

@@ -69,9 +69,19 @@
     <string name="person_photo_desc">Person Photo</string>
 
     <!--Details-->
-    <string name="movie_actors_cast">Cast:</string>
+    <string name="detail_overview_title">Overview:</string>
+    <string name="detail_actors_cast_title">Cast:</string>
+    <string name="detail_movie_directors_title">Director:</string>
+    <string name="detail_movie_writers_title">Writer:</string>
 
+    <string name="detail_tv_show_creators_title">Creator:</string>
+
+    <string name="detail_person_biography_title">Biography:</string>
+    <string name="detail_person_filmography_title">Filmography:</string>
+    <string name="detail_person_movies_credits">Movies</string>
+    <string name="detail_person_tv_shows_credits">TV Shows</string>
+
+    <!--Search-->
     <string name="hint_search">Search…</string>
-    <string name="app_title_popular">Popular:</string>
 
 </resources>

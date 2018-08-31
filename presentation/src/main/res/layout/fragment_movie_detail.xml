@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_detail_container"
     android:layout_width="match_parent"
@@ -7,91 +8,353 @@
     android:background="@color/color_main_background"
     tools:context=".ui.movie.fragment.MovieDetailFragment">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/movie_detail_cover"
+            android:id="@+id/detail_movie_poster"
             android:layout_width="@dimen/detail_image_width"
             android:layout_height="@dimen/detail_image_height"
-            android:layout_alignParentStart="true"
             android:layout_margin="@dimen/margin_standard"
-            android:scaleType="centerInside"
             android:background="@color/color_image_placeholder"
-            android:contentDescription="@string/movie_poster_desc" />
+            android:contentDescription="@string/movie_poster_desc"
+            android:scaleType="centerInside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/movie_detail_title"
-            android:text="Movie Title"
+        <ImageView
+            android:id="@+id/detail_movie_watchlist_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:layout_marginStart="@dimen/margin_half"
-            android:layout_marginTop="@dimen/margin_half"
-            android:layout_toEndOf="@+id/movie_detail_cover"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/color_main_text" />
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_standard"
+            app:layout_constraintEnd_toStartOf="@+id/detail_movie_favorite_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_watchlist_unchecked_24dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/detail_movie_favorite_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_standard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_unchecked_24dp"
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/movie_detail_release_date"
+            android:id="@+id/detail_movie_release_date"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_small"
             android:text="10.10.1988"
-            android:layout_width="wrap_content"
+            android:textColor="@color/color_sub_text"
+            app:layout_constraintBottom_toTopOf="@+id/detail_movie_title"
+            app:layout_constraintEnd_toStartOf="@+id/detail_movie_watchlist_btn"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/detail_movie_title"
+            android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_detail_title"
-            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_half"
-            android:layout_toEndOf="@+id/movie_detail_cover"
             android:ellipsize="end"
-            android:maxLines="1"
-            android:textColor="@color/color_main_text" />
+            android:gravity="start"
+            android:maxLines="@integer/detail_movie_title_max_lines"
+            android:text="Star Wars: A New Hope"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_watchlist_btn" />
 
         <TextView
-            android:id="@+id/movie_detail_watchlist_btn"
-            android:text="ADD TO WATCHLIST"
-            android:layout_width="wrap_content"
+            android:id="@+id/detail_movie_tagline"
+            android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_detail_cover"
-            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
-            android:layout_marginTop="@dimen/margin_half"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:textColor="@color/color_main_text" />
+            android:layout_marginTop="@dimen/margin_standard"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:maxLines="@integer/detail_movie_tagline_max_lines"
+            android:text="\u00AB You are never been been so close to the ending before and again and again... \u00BB"
+            android:textColor="@color/color_sub_text"
+            android:textStyle="italic"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_title" />
+
+        <View
+            android:id="@+id/detail_movie_divider_one"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="@dimen/detail_divider_height"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:background="@color/color_main_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_tagline" />
 
         <TextView
-            android:id="@+id/movie_detail_desc"
-            android:layout_width="wrap_content"
+            android:id="@+id/detail_movie_info"
+            android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
-            android:text="There was a long path to get in there, so they decide to go another way to find his girlfriend..."
-            android:layout_below="@+id/movie_detail_watchlist_btn"
-            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_half"
             android:layout_marginStart="@dimen/margin_half"
-            android:layout_marginTop="@dimen/margin_half"
-            android:textColor="@color/color_main_text" />
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="English | 145 min | Released"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@id/detail_movie_divider_one" />
 
         <TextView
-            android:id="@+id/movie_cast"
+            android:id="@+id/detail_movie_budget"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="Budget: $459 594 934"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_info" />
+
+        <TextView
+            android:id="@+id/detail_movie_revenue"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_half"
+            android:text="Revenue: $1 459 594 934"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_movie_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_poster"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_budget" />
+
+        <ImageView
+            android:id="@+id/detail_movie_rating_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_detail_desc"
-            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_standard"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_movie_rating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_movie_rating"
+            app:srcCompat="@drawable/ic_star_white_24dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/detail_movie_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="10/10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_rating_logo"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_poster" />
+
+        <ImageView
+            android:id="@+id/detail_movie_tmdb_rating_logo"
+            android:layout_width="@dimen/tmdb_logo_image_width"
+            android:layout_height="@dimen/tmdb_logo_image_height"
+            android:layout_marginStart="@dimen/margin_standard"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_movie_rating"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_rating"
+            app:layout_constraintTop_toTopOf="@+id/detail_movie_rating"
+            app:srcCompat="@drawable/tmdb_logo_stacked"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/detail_movie_tmdb_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="9.8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_tmdb_rating_logo"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_poster" />
+
+        <View
+            android:id="@+id/detail_movie_divider_two"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="@dimen/detail_divider_height"
+            android:layout_margin="@dimen/margin_standard"
+            android:background="@color/color_main_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_rating_logo" />
+
+        <TextView
+            android:id="@+id/detail_movie_genre_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="Приключения"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_divider_two" />
+
+        <TextView
+            android:id="@+id/detail_movie_genre_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="Экшн"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_genre_one"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_divider_two" />
+
+        <TextView
+            android:id="@+id/detail_movie_genre_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="Фантастика"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintStart_toEndOf="@+id/detail_movie_genre_two"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_divider_two" />
+
+        <View
+            android:id="@+id/detail_movie_divider_three"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="@dimen/detail_divider_height"
+            android:layout_margin="@dimen/margin_standard"
+            android:background="@color/color_main_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_genre_one" />
+
+        <TextView
+            android:id="@+id/detail_movie_overview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="@string/detail_overview_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_divider_three" />
+
+
+        <TextView
+            android:id="@+id/detail_movie_overview"
+            android:layout_width="@dimen/detail_field_zero_width"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_half"
-            android:text="@string/movie_actors_cast"
-            android:textColor="@color/color_main_text" />
+            android:ellipsize="end"
+            android:maxLines="@integer/detail_movie_overview_max_lines"
+            android:text="Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the evil Darth Vader."
+            android:textColor="@color/color_main_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_overview_title" />
+
+        <TextView
+            android:id="@+id/detail_movie_directors_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="@string/detail_movie_directors_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_overview" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_movie_cast"
+            android:id="@+id/rv_detail_movie_directors"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_cast"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_small"
             android:overScrollMode="never"
-            android:scrollbars="horizontal" />
+            android:scrollbars="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_directors_title" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/detail_movie_writers_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="@string/detail_movie_writers_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_movie_directors" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_detail_movie_writers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_small"
+            android:overScrollMode="never"
+            android:scrollbars="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_writers_title" />
+
+        <TextView
+            android:id="@+id/detail_movie_cast_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:text="@string/detail_actors_cast_title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/color_main_text"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_movie_writers" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_detail_movie_cast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:layout_marginEnd="@dimen/margin_standard"
+            android:layout_marginStart="@dimen/margin_standard"
+            android:layout_marginTop="@dimen/margin_small"
+            android:overScrollMode="never"
+            android:scrollbars="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_cast_title" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

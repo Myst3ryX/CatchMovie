@@ -22,7 +22,7 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_standard"
-            android:background="@color/color_image_placeholder"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/movie_poster_desc"
             android:scaleType="centerInside" />
 

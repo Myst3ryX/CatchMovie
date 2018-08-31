@@ -20,6 +20,7 @@
             android:layout_height="@dimen/item_main_image_height"
             android:layout_alignParentStart="true"
             android:layout_margin="@dimen/margin_small"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/tv_show_poster_desc"
             android:scaleType="centerInside" />
 
@@ -82,8 +83,8 @@
 
         <ImageView
             android:id="@+id/rate_star_image"
-            android:layout_width="@dimen/item_logo_image_width"
-            android:layout_height="@dimen/item_logo_image_height"
+            android:layout_width="@dimen/tmdb_logo_image_width"
+            android:layout_height="@dimen/tmdb_logo_image_height"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/tv_show_genres"
             android:layout_marginStart="@dimen/margin_half"
@@ -106,8 +107,8 @@
 
         <ImageView
             android:id="@+id/tmdb_logo_image"
-            android:layout_width="@dimen/item_logo_image_width"
-            android:layout_height="@dimen/item_logo_image_height"
+            android:layout_width="@dimen/tmdb_logo_image_width"
+            android:layout_height="@dimen/tmdb_logo_image_height"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/tv_show_genres"
             android:layout_marginStart="@dimen/margin_half"

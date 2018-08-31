@@ -68,7 +68,7 @@ public final class PersonsResultAdapter extends RecyclerView.Adapter<PersonsResu
 
     public final class PersonResultHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.person_photo_image)
+        @BindView(R.id.person_photo)
         ImageView mPersonPhotoImageView;
         @BindView(R.id.person_name)
         TextView mPersonNameTextView;

@@ -101,7 +101,7 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
 
     public final class PersonHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.person_photo_image)
+        @BindView(R.id.person_photo)
         ImageView mPersonPhotoImageView;
         @BindView(R.id.person_name)
         TextView mPersonNameTextView;
