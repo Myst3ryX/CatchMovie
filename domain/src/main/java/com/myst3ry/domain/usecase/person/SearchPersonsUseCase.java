@@ -18,7 +18,7 @@ public final class SearchPersonsUseCase {
         this.mPersonsRepository = personsRepository;
     }
 
-    public Observable<List<PersonResultModel>> execute(final String query) {
-        return mPersonsRepository.searchPersonsByQuery(query);
+    public Observable<List<PersonResultModel>> execute(final String query, final int page) {
+        return mPersonsRepository.searchPersonsByQuery(query, page);
     }
 }

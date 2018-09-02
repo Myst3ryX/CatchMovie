@@ -42,11 +42,15 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    public void addMovie(final int movieId, final MovieType type) {
-        addDisposable(mAddMovieUseCase.execute(movieId, type));
+    public void addToWatchlist(final int movieId) {
+        addDisposable(mAddMovieUseCase.execute(movieId, MovieType.WATCHLIST));
     }
 
-    public void deleteMovie(final int movieId, final MovieType type) {
+    public void addToFavorites(final int movieId) {
+        addDisposable(mAddMovieUseCase.execute(movieId, MovieType.FAVORITE));
+    }
+
+    public void deleteFrom(final int movieId, final MovieType type) {
         addDisposable(mDeleteMovieUseCase.execute(movieId, type));
     }
 

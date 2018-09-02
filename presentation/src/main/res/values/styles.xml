@@ -13,23 +13,14 @@
         <item name="colorAccent">@color/color_accent</item>
     </style>
 
+    <style name="AppTheme.PopupStyle" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/color_main_text</item>
+        <item name="android:itemBackground">@color/color_main_background</item>
+    </style>
+
     <style name="ThemeOverlay.AppCompat.NavigationView">
         <item name="android:listDivider">@color/color_nav_divider</item>
         <item name="colorControlHighlight">@color/color_nav_item_selected_background</item>
     </style>
-
-    <!--<style name="MovieItemMainText">-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--</style>-->
-
-    <!--<style name="MovieItemSubText">-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--<item name=""></item>-->
-    <!--</style>-->
 
 </resources>

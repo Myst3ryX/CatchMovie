@@ -19,6 +19,7 @@ import timber.log.Timber;
 public final class MoviesPopularPresenter extends BasePresenter<MoviesPopularView> {
 
     private final GetPopularMoviesUseCase mGetPopularMoviesUseCase;
+    private static final int mPage = 1; //todo stub
 
     @Inject
     public MoviesPopularPresenter(final GetPopularMoviesUseCase getPopularMoviesUseCase) {
@@ -26,7 +27,7 @@ public final class MoviesPopularPresenter extends BasePresenter<MoviesPopularVie
     }
 
     public void getPopularMovies() {
-        addDisposable(mGetPopularMoviesUseCase.execute()
+        addDisposable(mGetPopularMoviesUseCase.execute(mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(MovieResultDataModelMapper::transform)

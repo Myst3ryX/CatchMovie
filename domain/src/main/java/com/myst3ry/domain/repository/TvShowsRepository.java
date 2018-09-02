@@ -19,9 +19,9 @@ public interface TvShowsRepository {
 
     Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId);
 
-    Observable<List<TvShowResultModel>> getPopularTvShows();
+    Observable<List<TvShowResultModel>> getPopularTvShows(final int page);
 
-    Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query);
+    Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query, final int page);
 
     Disposable setTvShowRating(final int tvShowId, final double rating);
 

@@ -6,7 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -163,8 +165,26 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
         }
     }
 
-    private void onTvShowMenuClick(final int tvShowId) {
-        //todo implement
+    private void onTvShowMenuClick(final int tvShowId, final View view) {
+        final Context wrapper = new ContextThemeWrapper(getActivity(), R.style.AppTheme_PopupStyle);
+        final PopupMenu popupMenu = new PopupMenu(wrapper, view);
+        popupMenu.inflate(R.menu.menu_popup_tv_show);
+        popupMenu.setOnMenuItemClickListener(item -> {
+            final int id = item.getItemId();
+            switch (id) {
+                case R.id.menu_add_to_watchlist:
+                    mPresenter.addToWatchlist(tvShowId);
+                    break;
+                case R.id.menu_add_to_favorites:
+                    mPresenter.addToFavorites(tvShowId);
+                    break;
+                case R.id.menu_delete:
+                    mPresenter.deleteFrom(tvShowId, mType);
+                    break;
+            }
+            return true;
+        });
+        popupMenu.show();
     }
 
     @Override

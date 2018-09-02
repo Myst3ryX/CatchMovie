@@ -18,7 +18,7 @@ public final class SearchMoviesUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public Observable<List<MovieResultModel>> execute(final String query) {
-        return mMoviesRepository.searchMoviesByQuery(query);
+    public Observable<List<MovieResultModel>> execute(final String query, final int page) {
+        return mMoviesRepository.searchMoviesByQuery(query, page);
     }
 }

@@ -19,6 +19,7 @@ import timber.log.Timber;
 public final class PersonsPopularPresenter extends BasePresenter<PersonsPopularView> {
 
     private final GetPopularPersonsUseCase mGetPopularPersonsUseCase;
+    private static final int mPage = 1; //todo stub
 
     @Inject
     public PersonsPopularPresenter(final GetPopularPersonsUseCase getPopularPersonsUseCase) {
@@ -26,7 +27,7 @@ public final class PersonsPopularPresenter extends BasePresenter<PersonsPopularV
     }
 
     public void getPopularPersons() {
-        addDisposable(mGetPopularPersonsUseCase.execute()
+        addDisposable(mGetPopularPersonsUseCase.execute(mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(PersonResultDataModelMapper::transform)

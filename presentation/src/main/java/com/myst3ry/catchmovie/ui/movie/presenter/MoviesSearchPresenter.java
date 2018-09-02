@@ -19,6 +19,7 @@ import timber.log.Timber;
 public final class MoviesSearchPresenter extends BasePresenter<MoviesSearchView> {
 
     private final SearchMoviesUseCase mSearchMoviesUseCase;
+    private static final int mPage = 1; //todo stub
 
     @Inject
     public MoviesSearchPresenter(final SearchMoviesUseCase searchMoviesUseCase) {
@@ -26,7 +27,7 @@ public final class MoviesSearchPresenter extends BasePresenter<MoviesSearchView>
     }
 
     public void searchMoviesByQuery(final String query) {
-        addDisposable(mSearchMoviesUseCase.execute(query)
+        addDisposable(mSearchMoviesUseCase.execute(query, mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(MovieResultDataModelMapper::transform)

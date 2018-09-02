@@ -18,7 +18,7 @@ public final class SearchTvShowsUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<List<TvShowResultModel>> execute(final String query) {
-        return mTvShowsRepository.searchTvShowsByQuery(query);
+    public Observable<List<TvShowResultModel>> execute(final String query, final int page) {
+        return mTvShowsRepository.searchTvShowsByQuery(query, page);
     }
 }

@@ -98,8 +98,8 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         }
 
         @OnClick(R.id.tv_show_context_menu)
-        void onContextMenuClick() {
-            mMenuListener.onTvShowMenuClick(getTvShow(getLayoutPosition()).getTvShowId());
+        void onContextMenuClick(final View view) {
+            mMenuListener.onTvShowMenuClick(getTvShow(getLayoutPosition()).getTvShowId(), view);
         }
 
         TvShowHolder(final View itemView) {

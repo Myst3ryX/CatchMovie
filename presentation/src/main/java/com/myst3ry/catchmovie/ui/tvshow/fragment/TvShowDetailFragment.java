@@ -254,7 +254,7 @@ public final class TvShowDetailFragment extends BaseFragment implements TvShowDe
     }
 
     private void performRatingClick() {
-        final double rating = 7.5; //stub
+        final double rating = 7.5; //todo stub
         mPresenter.setTvShowRating(mTvShowId, rating);
     }
 

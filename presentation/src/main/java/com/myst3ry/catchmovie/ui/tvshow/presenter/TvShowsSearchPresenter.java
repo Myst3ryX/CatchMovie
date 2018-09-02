@@ -19,6 +19,7 @@ import timber.log.Timber;
 public final class TvShowsSearchPresenter extends BasePresenter<TvShowsSearchView> {
 
     private final SearchTvShowsUseCase mSearchTvShowsUseCase;
+    private static final int mPage = 1; //todo stub
 
     @Inject
     public TvShowsSearchPresenter(final SearchTvShowsUseCase searchTvShowsUseCase) {
@@ -26,7 +27,7 @@ public final class TvShowsSearchPresenter extends BasePresenter<TvShowsSearchVie
     }
 
     public void searchTvShowsByQuery(final String query) {
-        addDisposable(mSearchTvShowsUseCase.execute(query)
+        addDisposable(mSearchTvShowsUseCase.execute(query, mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(TvShowResultDataModelMapper::transform)

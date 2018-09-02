@@ -19,6 +19,7 @@ import timber.log.Timber;
 public final class TvShowsPopularPresenter extends BasePresenter<TvShowsPopularView> {
 
     private final GetPopularTvShowsUseCase mGetPopularTvShowsUseCase;
+    private static final int mPage = 1; //todo stub
 
     @Inject
     public TvShowsPopularPresenter(final GetPopularTvShowsUseCase getPopularTvShowsUseCase) {
@@ -26,7 +27,7 @@ public final class TvShowsPopularPresenter extends BasePresenter<TvShowsPopularV
     }
 
     public void getPopularTvShows() {
-        addDisposable(mGetPopularTvShowsUseCase.execute()
+        addDisposable(mGetPopularTvShowsUseCase.execute(mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(TvShowResultDataModelMapper::transform)

@@ -98,8 +98,8 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         }
 
         @OnClick(R.id.movie_context_menu)
-        void onContextMenuClick() {
-            mMenuListener.onMovieMenuClick(getMovie(getLayoutPosition()).getMovieId());
+        void onContextMenuClick(final View view) {
+            mMenuListener.onMovieMenuClick(getMovie(getLayoutPosition()).getMovieId(), view);
         }
 
         MovieHolder(final View itemView) {

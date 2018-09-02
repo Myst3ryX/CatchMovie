@@ -68,14 +68,14 @@ public final class MoviesRepositoryImpl implements MoviesRepository {
     }
 
     @Override
-    public Observable<List<MovieResultModel>> getPopularMovies() {
-        return mApiMapper.getPopularMovies(1)
+    public Observable<List<MovieResultModel>> getPopularMovies(final int page) {
+        return mApiMapper.getPopularMovies(page)
                 .map(MovieResultDataMapper::transform);
     }
 
     @Override
-    public Observable<List<MovieResultModel>> searchMoviesByQuery(final String query) {
-        return mApiMapper.searchMoviesByQuery(query, 1)
+    public Observable<List<MovieResultModel>> searchMoviesByQuery(final String query, final int page) {
+        return mApiMapper.searchMoviesByQuery(query, page)
                 .map(MovieResultDataMapper::transform);
     }
 

@@ -53,14 +53,14 @@ public final class PersonsRepositoryImpl implements PersonsRepository {
     }
 
     @Override
-    public Observable<List<PersonResultModel>> getPopularPersons() {
-        return mApiMapper.getPopularPersons(1)
+    public Observable<List<PersonResultModel>> getPopularPersons(final int page) {
+        return mApiMapper.getPopularPersons(page)
                 .map(PersonResultDataMapper::transform);
     }
 
     @Override
-    public Observable<List<PersonResultModel>> searchPersonsByQuery(final String query) {
-        return mApiMapper.searchPersonsByQuery(query, 1)
+    public Observable<List<PersonResultModel>> searchPersonsByQuery(final String query, final int page) {
+        return mApiMapper.searchPersonsByQuery(query, page)
                 .map(PersonResultDataMapper::transform);
     }
 

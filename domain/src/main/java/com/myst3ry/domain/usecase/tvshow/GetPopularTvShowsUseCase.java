@@ -18,7 +18,7 @@ public final class GetPopularTvShowsUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public Observable<List<TvShowResultModel>> execute() {
-        return mTvShowsRepository.getPopularTvShows();
+    public Observable<List<TvShowResultModel>> execute(final int page) {
+        return mTvShowsRepository.getPopularTvShows(page);
     }
 }

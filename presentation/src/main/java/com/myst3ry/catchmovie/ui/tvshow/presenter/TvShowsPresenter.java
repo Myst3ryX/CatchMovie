@@ -42,12 +42,16 @@ public final class TvShowsPresenter extends BasePresenter<TvShowsView> {
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    public void addTvShow(final int tvShowId, final TvShowType type) {
-        addDisposable(mAddTvShowUseCase.execute(tvShowId, type));
+    public void addToWatchlist(final int movieId) {
+        addDisposable(mAddTvShowUseCase.execute(movieId, TvShowType.WATCHLIST));
     }
 
-    public void deleteTvShow(final int tvShowId, final TvShowType type) {
-        addDisposable(mDeleteTvShowUseCase.execute(tvShowId, type));
+    public void addToFavorites(final int movieId) {
+        addDisposable(mAddTvShowUseCase.execute(movieId, TvShowType.FAVORITE));
+    }
+
+    public void deleteFrom(final int movieId, final TvShowType type) {
+        addDisposable(mDeleteTvShowUseCase.execute(movieId, type));
     }
 
     private void setTvShows(final List<TvShowItemDataModel> tvShows) {

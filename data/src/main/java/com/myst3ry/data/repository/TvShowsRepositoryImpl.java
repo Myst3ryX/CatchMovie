@@ -68,14 +68,14 @@ public final class TvShowsRepositoryImpl implements TvShowsRepository {
     }
 
     @Override
-    public Observable<List<TvShowResultModel>> getPopularTvShows() {
-        return mApiMapper.getPopularTvShows(1)
+    public Observable<List<TvShowResultModel>> getPopularTvShows(final int page) {
+        return mApiMapper.getPopularTvShows(page)
                 .map(TvShowResultDataMapper::transform);
     }
 
     @Override
-    public Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query) {
-        return mApiMapper.searchTvShowsByQuery(query, 1)
+    public Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query, final int page) {
+        return mApiMapper.searchTvShowsByQuery(query, page)
                 .map(TvShowResultDataMapper::transform);
     }
 

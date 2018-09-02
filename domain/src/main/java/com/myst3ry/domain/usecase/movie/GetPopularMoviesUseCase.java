@@ -18,7 +18,7 @@ public final class GetPopularMoviesUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public Observable<List<MovieResultModel>> execute() {
-        return mMoviesRepository.getPopularMovies();
+    public Observable<List<MovieResultModel>> execute(final int page) {
+        return mMoviesRepository.getPopularMovies(page);
     }
 }

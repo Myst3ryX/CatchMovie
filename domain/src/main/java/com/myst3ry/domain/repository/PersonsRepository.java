@@ -15,9 +15,9 @@ public interface PersonsRepository {
 
     Observable<PersonDetailModel> getPersonDetailsById(final int personId);
 
-    Observable<List<PersonResultModel>> getPopularPersons();
+    Observable<List<PersonResultModel>> getPopularPersons(final int page);
 
-    Observable<List<PersonResultModel>> searchPersonsByQuery(final String query);
+    Observable<List<PersonResultModel>> searchPersonsByQuery(final String query, final int page);
 
     Disposable addPersonById(final int personId);
 

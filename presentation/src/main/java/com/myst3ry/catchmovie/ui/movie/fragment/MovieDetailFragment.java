@@ -262,7 +262,7 @@ public final class MovieDetailFragment extends BaseFragment implements MovieDeta
     }
 
     private void performRatingClick() {
-        final double rating = 7.0; //stub
+        final double rating = 7.0; //todo stub
         mPresenter.setMovieRating(mMovieId, rating);
     }
 

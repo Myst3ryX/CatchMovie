@@ -19,9 +19,9 @@ public interface MoviesRepository {
 
     Observable<MovieDetailModel> getMovieDetailsById(final int movieId);
 
-    Observable<List<MovieResultModel>> getPopularMovies();
+    Observable<List<MovieResultModel>> getPopularMovies(final int page);
 
-    Observable<List<MovieResultModel>> searchMoviesByQuery(final String query);
+    Observable<List<MovieResultModel>> searchMoviesByQuery(final String query, final int page);
 
     Disposable setMovieRating(final int movieId, final double rating);
 
