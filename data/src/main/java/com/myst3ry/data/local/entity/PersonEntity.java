@@ -5,11 +5,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 
+import com.myst3ry.data.local.converter.DateConverter;
 import com.myst3ry.data.local.converter.MoviesCreditsListConverter;
 import com.myst3ry.data.local.converter.TvShowsCreditsListConverter;
 import com.myst3ry.data.local.entity.credits.MovieCredit;
 import com.myst3ry.data.local.entity.credits.TvShowCredit;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity(tableName = "Persons")
@@ -39,6 +41,13 @@ public final class PersonEntity {
 
     @ColumnInfo(name = "photo_preview")
     private final String mPhotoPreview;
+
+    @ColumnInfo(name = "favorite")
+    private boolean mFavorite;
+
+    @ColumnInfo(name = "creation_date")
+    @TypeConverters(DateConverter.class)
+    private Date mCreationDate;
 
     @ColumnInfo(name = "tv_show_credits")
     @TypeConverters(TvShowsCreditsListConverter.class)
@@ -95,11 +104,27 @@ public final class PersonEntity {
         return mPhotoPreview;
     }
 
+    public boolean isFavorite() {
+        return mFavorite;
+    }
+
+    public Date getCreationDate() {
+        return mCreationDate;
+    }
+
     public List<TvShowCredit> getTvShowsCredits() {
         return mTvShowsCredits;
     }
 
     public List<MovieCredit> getMoviesCredits() {
         return mMoviesCredits;
+    }
+
+    public void setFavorite(final boolean isFavorite) {
+        this.mFavorite = isFavorite;
+    }
+
+    public void setCreationDate(final Date creationDate) {
+        this.mCreationDate = creationDate;
     }
 }

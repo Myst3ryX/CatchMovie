@@ -15,6 +15,7 @@ public final class PersonDetailDataModel {
     private final String mPersonBirthday;
     private final String mPersonDeathday;
     private final String mPersonKnownAs;
+    private final boolean mPersonFavorite;
     private final List<MovieCreditDataModel> mPersonMoviesList;
     private final List<TvShowCreditDataModel> mPersonTvShowsList;
 
@@ -27,6 +28,7 @@ public final class PersonDetailDataModel {
         this.mPersonBirthday = builder.birthday;
         this.mPersonDeathday = builder.deathday;
         this.mPersonKnownAs = builder.knownAs;
+        this.mPersonFavorite = builder.favorite;
         this.mPersonMoviesList = builder.movies;
         this.mPersonTvShowsList = builder.tvShows;
     }
@@ -67,6 +69,10 @@ public final class PersonDetailDataModel {
         return mPersonKnownAs;
     }
 
+    public boolean isPersonFavorite() {
+        return mPersonFavorite;
+    }
+
     public List<MovieCreditDataModel> getPersonMoviesList() {
         return mPersonMoviesList;
     }
@@ -86,6 +92,7 @@ public final class PersonDetailDataModel {
         private String birthday;
         private String deathday;
         private String knownAs;
+        private boolean favorite;
         private List<MovieCreditDataModel> movies;
         private List<TvShowCreditDataModel> tvShows;
 
@@ -129,6 +136,11 @@ public final class PersonDetailDataModel {
 
         public Builder setKnownAs(final String knownAs) {
             this.knownAs = knownAs;
+            return this;
+        }
+
+        public Builder setFavorite(final boolean isFavorite) {
+            this.favorite = isFavorite;
             return this;
         }
 

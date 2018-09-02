@@ -18,7 +18,7 @@ public final class PersonCrew {
     @SerializedName("video")
     private boolean mVideo;
 
-    @SerializedName("title")
+    @SerializedName(value = "title", alternate = {"name"})
     private String mTitle;
 
     @SerializedName("genre_ids")

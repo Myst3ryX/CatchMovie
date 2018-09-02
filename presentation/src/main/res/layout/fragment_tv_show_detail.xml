@@ -52,7 +52,6 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_small"
-            android:text="10.10.1988"
             android:textColor="@color/color_sub_text"
             app:layout_constraintBottom_toTopOf="@+id/detail_tv_show_title"
             app:layout_constraintEnd_toStartOf="@+id/detail_tv_show_watchlist_btn"
@@ -69,7 +68,6 @@
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="@integer/detail_tv_show_title_max_lines"
-            android:text="Star Wars: The Series"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/color_main_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +83,6 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:ellipsize="end"
             android:maxLines="@integer/detail_tv_show_status_max_lines"
-            android:text="Returning Series"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,59 +103,44 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_status" />
 
         <TextView
-            android:id="@+id/detail_tv_show_seasons_count"
+            android:id="@+id/detail_tv_show_seasons_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="Seasons: 10"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/detail_tv_show_episodes_count"
+            android:text="@string/detail_tv_show_seasons_title"
             app:layout_constraintStart_toEndOf="@+id/detail_tv_show_poster"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_one" />
 
         <TextView
-            android:id="@+id/detail_tv_show_episodes_count"
+            android:id="@+id/detail_tv_show_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="(238)"
+            android:layout_marginEnd="@dimen/margin_standard"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/detail_tv_show_seasons_count"
+            app:layout_constraintStart_toEndOf="@+id/detail_tv_show_seasons_title"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_one" />
 
         <TextView
-            android:id="@+id/detail_tv_show_runtime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_standard"
-            android:layout_marginTop="@dimen/margin_standard"
-            android:text="| 22 min"
-            android:textColor="@color/color_main_text"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/detail_tv_show_episodes_count"
-            app:layout_constraintTop_toBottomOf="@id/detail_tv_show_divider_one" />
-
-        <TextView
-            android:id="@+id/detail_tv_show_network"
+            android:id="@+id/detail_tv_show_network_info"
             android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_half"
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_half"
-            android:text="English | USA Network"
-            android:maxLines="@integer/detail_tv_show_network_max_lines"
             android:ellipsize="end"
+            android:maxLines="@integer/detail_tv_show_network_max_lines"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/detail_tv_show_poster"
-            app:layout_constraintTop_toBottomOf="@id/detail_tv_show_seasons_count" />
+            app:layout_constraintTop_toBottomOf="@id/detail_tv_show_seasons_title" />
 
         <ImageView
             android:id="@+id/detail_tv_show_rating_logo"
@@ -177,7 +159,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="10/10"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
@@ -202,7 +183,6 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="9.8"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
@@ -224,7 +204,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_standard"
-            android:text="Приключения"
             android:textColor="@color/color_main_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_two" />
@@ -234,7 +213,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_standard"
-            android:text="Экшн"
             android:textColor="@color/color_main_text"
             app:layout_constraintStart_toEndOf="@+id/detail_tv_show_genre_one"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_two" />
@@ -244,9 +222,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_standard"
-            android:text="Фантастика"
             android:textColor="@color/color_main_text"
             app:layout_constraintStart_toEndOf="@+id/detail_tv_show_genre_two"
+            app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_two" />
+
+        <TextView
+            android:id="@+id/detail_tv_show_genre_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_standard"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintStart_toEndOf="@+id/detail_tv_show_genre_three"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_two" />
 
         <View
@@ -268,6 +254,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_divider_three" />
 
@@ -281,7 +268,6 @@
             android:layout_marginTop="@dimen/margin_half"
             android:ellipsize="end"
             android:maxLines="@integer/detail_tv_show_overview_max_lines"
-            android:text="Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the evil Darth Vader."
             android:textColor="@color/color_main_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -296,6 +282,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_overview" />
 
@@ -307,8 +294,6 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_small"
-            android:overScrollMode="never"
-            android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_creators_title" />
@@ -318,10 +303,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_standard"
-            android:text="@string/detail_actors_cast_title"
+            android:text="@string/detail_cast_title"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_detail_tv_show_creators" />
 
@@ -333,10 +319,9 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_small"
-            android:overScrollMode="never"
-            android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_tv_show_cast_title" />
 
     </android.support.constraint.ConstraintLayout>

@@ -9,6 +9,8 @@ public interface PersonsView extends BaseView {
 
     void setPersons(final List<PersonItemDataModel> persons);
 
+    void clearPersons();
+
     void showEmptyText();
 
     void hideEmptyText();

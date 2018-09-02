@@ -9,16 +9,16 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
-public final class GetFavoritePersonsUseCase {
+public final class GetPersonsUseCase {
 
     private final PersonsRepository mPersonsRepository;
 
     @Inject
-    public GetFavoritePersonsUseCase(final PersonsRepository personsRepository) {
+    public GetPersonsUseCase(final PersonsRepository personsRepository) {
         this.mPersonsRepository = personsRepository;
     }
 
     public Observable<List<PersonItemModel>> execute() {
-        return mPersonsRepository.getPersons();
+        return mPersonsRepository.getFavoritePersons();
     }
 }

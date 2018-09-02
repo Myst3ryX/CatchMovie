@@ -23,25 +23,23 @@ public final class TvShowDetailDataModelMapper {
     public static TvShowDetailDataModel transform(final TvShowDetailModel model) {
         return TvShowDetailDataModel.newBuilder()
                 .setId(model.getId())
-                .setType(model.getType())
                 .setPoster(model.getPoster())
                 .setPosterPreview(model.getPosterPreview())
                 .setTitle(model.getTitle())
                 .setOriginalTitle(model.getOriginalTitle())
-                .setReleaseDate(DateUtils.parseDate(model.getReleaseDate()))
+                .setReleaseDate(DateUtils.parseReleaseDate(model.getReleaseDate()))
                 .setGenres(model.getGenres())
                 .setAllPosters(model.getAllPosters())
                 .setDescription(model.getDescription())
                 .setStatus(model.getStatus())
-                .setIsInProduction(model.isInProduction())
-                .setEpisodesCount(model.getEpisodesCount())
-                .setSeasonsCount(model.getSeasonsCount())
-                .setLanguage(model.getLanguage())
-                .setNetwork(model.getNetwork())
-                .setEpisodeRuntime(model.getEpisodeRuntime())
+                .setInProduction(model.isInProduction())
+                .setInfo(ConvertUtils.convertTvShowInfo(model.getSeasonsCount(), model.getEpisodesCount(), model.getEpisodeRuntime()))
+                .setNetworkInfo(ConvertUtils.convertTvShowNetworkInfo(model.getLanguage(), model.getNetwork()))
                 .setRating(ConvertUtils.convertRating(model.getRating()))
                 .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
-                .setVotesCount(model.getVotesCount())
+                .setVotesCount(String.valueOf(model.getVotesCount()))
+                .setWatchlist(model.isWatchlist())
+                .setFavorite(model.isFavorite())
                 .setCreators(transformPersonsCredits(model.getCreators()))
                 .setActors(transformPersonsCredits(model.getActors()))
                 .build();
@@ -50,7 +48,12 @@ public final class TvShowDetailDataModelMapper {
     private static List<PersonCreditDataModel> transformPersonsCredits(final List<PersonCreditModel> persons) {
         final List<PersonCreditDataModel> credits = new ArrayList<>();
         for (final PersonCreditModel person : persons) {
-            credits.add(new PersonCreditDataModel(person.getId(), person.getName(), person.getCharacter(), person.getPhoto()));
+            credits.add(new PersonCreditDataModel(
+                    person.getId(),
+                    person.getName(),
+                    person.getCharacter(),
+                    person.getPhoto())
+            );
         }
         return credits;
     }

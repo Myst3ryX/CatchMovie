@@ -56,13 +56,9 @@ public final class MoviesSearchFragment extends BaseFragment implements MoviesSe
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnMovieClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getMoviesSubComponent().inject(this);
-        if (context instanceof OnMovieClickListener) {
-            this.mMovieClickListener = (OnMovieClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -86,6 +82,14 @@ public final class MoviesSearchFragment extends BaseFragment implements MoviesSe
         super.onStart();
         if (getArguments() != null) {
             performSearch(getArguments().getString(ARG_MOVIES_SEARCH_QUERY));
+        }
+    }
+
+    private void initOnMovieClickListener(final Context context) {
+        if (context instanceof OnMovieClickListener) {
+            this.mMovieClickListener = (OnMovieClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
         }
     }
 

@@ -49,13 +49,9 @@ public final class MoviesPopularFragment extends BaseFragment implements MoviesP
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnMovieClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getMoviesSubComponent().inject(this);
-        if (context instanceof OnMovieClickListener) {
-            this.mMovieClickListener = (OnMovieClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -78,6 +74,14 @@ public final class MoviesPopularFragment extends BaseFragment implements MoviesP
     public void onStart() {
         super.onStart();
         getPopularMovies();
+    }
+
+    private void initOnMovieClickListener(final Context context) {
+        if (context instanceof OnMovieClickListener) {
+            this.mMovieClickListener = (OnMovieClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {

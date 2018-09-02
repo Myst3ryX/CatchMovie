@@ -20,7 +20,7 @@ public final class LastEpisodeToAir {
     private int mShowId;
 
     @SerializedName("vote_average")
-    private int mVoteAverage;
+    private double mVoteAverage;
 
     @SerializedName("name")
     private String mName;
@@ -54,7 +54,7 @@ public final class LastEpisodeToAir {
         return mShowId;
     }
 
-    public int getVoteAverage() {
+    public double getVoteAverage() {
         return mVoteAverage;
     }
 

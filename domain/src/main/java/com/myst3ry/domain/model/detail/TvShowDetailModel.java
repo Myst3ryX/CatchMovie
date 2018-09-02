@@ -7,7 +7,6 @@ import java.util.List;
 public final class TvShowDetailModel {
 
     private final int mId;
-    private final int mType;
     private final String mTitle;
     private final String mOriginalTitle;
     private final String mReleaseDate;
@@ -26,17 +25,19 @@ public final class TvShowDetailModel {
     private final double mRating;
     private final double mTmdbRating;
     private final int mVotesCount;
+    private final boolean mWatchlist;
+    private final boolean mFavorite;
     private final List<PersonCreditModel> mCreators;
     private final List<PersonCreditModel> mActors;
 
-    public TvShowDetailModel(int id, int type, String title, String originalTitle,
+    public TvShowDetailModel(int id, String title, String originalTitle,
                              String releaseDate, List<String> genres, String poster,
                              String posterPreview, List<String> allPosters, String description,
                              String status, boolean isInProduction, int episodesCount, int seasonsCount,
                              String language, String network, int episodeRuntime, double rating, double tmdbRating,
-                             int votesCount, List<PersonCreditModel> creators, List<PersonCreditModel> actors) {
+                             int votesCount, boolean isWatchlist, boolean isFavorite, List<PersonCreditModel> creators,
+                             List<PersonCreditModel> actors) {
         this.mId = id;
-        this.mType = type;
         this.mTitle = title;
         this.mOriginalTitle = originalTitle;
         this.mReleaseDate = releaseDate;
@@ -55,16 +56,14 @@ public final class TvShowDetailModel {
         this.mRating = rating;
         this.mTmdbRating = tmdbRating;
         this.mVotesCount = votesCount;
+        this.mWatchlist = isWatchlist;
+        this.mFavorite = isFavorite;
         this.mCreators = creators;
         this.mActors = actors;
     }
 
     public int getId() {
         return mId;
-    }
-
-    public int getType() {
-        return mType;
     }
 
     public String getTitle() {
@@ -137,6 +136,14 @@ public final class TvShowDetailModel {
 
     public int getVotesCount() {
         return mVotesCount;
+    }
+
+    public boolean isWatchlist() {
+        return mWatchlist;
+    }
+
+    public boolean isFavorite() {
+        return mFavorite;
     }
 
     public List<PersonCreditModel> getCreators() {

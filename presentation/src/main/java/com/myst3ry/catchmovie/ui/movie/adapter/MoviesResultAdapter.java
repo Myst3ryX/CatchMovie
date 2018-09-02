@@ -68,14 +68,14 @@ public final class MoviesResultAdapter extends RecyclerView.Adapter<MoviesResult
 
     public final class MovieResultHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.movie_poster_image)
+        @BindView(R.id.result_movie_poster)
         ImageView mPosterImageView;
-        @BindView(R.id.movie_title)
+        @BindView(R.id.result_movie_title)
         TextView mTitleTextView;
-        @BindView(R.id.movie_release_year)
+        @BindView(R.id.result_movie_release_year)
         TextView mReleaseYearTextView;
 
-        @OnClick(R.id.movie_result_container)
+        @OnClick(R.id.result_movie_container)
         void onItemClick() {
             mListener.onMovieClick(getMovie(getLayoutPosition()).getMovieId());
         }

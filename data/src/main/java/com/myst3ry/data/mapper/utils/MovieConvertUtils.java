@@ -17,25 +17,31 @@ public final class MovieConvertUtils {
     private static final String PREVIEW_IMAGE_SIZE = "w200";
 
     private static final String JOB_DIRECTOR = "Director";
-    private static final String JOB_WRITER = "Screenplay";
+    private static final String JOB_WRITER = "Writer";
 
-    private static final String LANG_SEPARATOR = ", ";
-    private static final int ELEM_OFFSET = 1;
-    private static final int LANGUAGES_MAX = 3;
+    private static final int FIRST_SPOKEN_LANGUAGE = 0;
+    private static final int GENRES_MAX = 3;
 
     public static String convertOriginalImageUrl(final String path) {
-        return TMDbApi.IMAGES_URL + ORIGINAL_IMAGE_SIZE + path;
+        if (path != null) {
+            return TMDbApi.IMAGES_URL + ORIGINAL_IMAGE_SIZE + path;
+        }
+        return null;
     }
 
     public static String convertPreviewImageUrl(final String path) {
-        return TMDbApi.IMAGES_URL + PREVIEW_IMAGE_SIZE + path;
+        if (path != null) {
+            return TMDbApi.IMAGES_URL + PREVIEW_IMAGE_SIZE + path;
+        }
+        return null;
     }
 
     public static List<String> convertGenres(final List<Genres> genresList) {
-        final List<String> genres = new ArrayList<>();
-        for (final Genres genre : genresList) {
-            if (genre.getName() != null) {
-                genres.add(genre.getName());
+        final int size = genresList.size() > GENRES_MAX ? GENRES_MAX : genresList.size();
+        final List<String> genres = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            if (genresList.get(i).getName() != null) {
+                genres.add(genresList.get(i).getName());
             }
         }
         return genres;
@@ -45,26 +51,17 @@ public final class MovieConvertUtils {
         final List<String> posters = new ArrayList<>();
         for (final Poster poster : postersList) {
             if (poster.getFilePath() != null) {
-                posters.add(poster.getFilePath());
+                posters.add(convertOriginalImageUrl(poster.getFilePath()));
             }
         }
         return posters;
     }
 
     public static String convertLanguages(final List<SpokenLanguage> languagesList) {
-        if (languagesList == null) {
-            return "";
+        if (languagesList != null && !languagesList.isEmpty()) {
+            return languagesList.get(FIRST_SPOKEN_LANGUAGE).getName();
         }
-
-        final StringBuilder genres = new StringBuilder();
-        final int size = languagesList.size() > LANGUAGES_MAX ? LANGUAGES_MAX : languagesList.size();
-        for (int i = 0; i < size; i++) {
-            genres.append(languagesList.get(i));
-            if (i != languagesList.size() - ELEM_OFFSET) {
-                genres.append(LANG_SEPARATOR);
-            }
-        }
-        return genres.toString();
+        return null;
     }
 
     public static List<PersonCredit> convertCastToActorsCredits(final List<Cast> castList) {

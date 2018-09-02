@@ -7,10 +7,11 @@ import com.myst3ry.domain.model.result.PersonResultModel;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 public interface PersonsRepository {
 
-    Observable<List<PersonItemModel>> getPersons();
+    Observable<List<PersonItemModel>> getFavoritePersons();
 
     Observable<PersonDetailModel> getPersonDetailsById(final int personId);
 
@@ -18,7 +19,7 @@ public interface PersonsRepository {
 
     Observable<List<PersonResultModel>> searchPersonsByQuery(final String query);
 
-    void addPersonToFavorites(final int personId);
+    Disposable addPersonById(final int personId);
 
-    void deletePersonById(final int personId);
+    Disposable deletePersonById(final int personId);
 }

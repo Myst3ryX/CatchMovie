@@ -7,7 +7,6 @@ import java.util.List;
 public final class TvShowDetailDataModel {
 
     private final int mTvShowId;
-    private final int mTvShowType;
     private final String mTvShowPoster;
     private final String mTvShowPosterPreview;
     private final String mTvShowTitle;
@@ -17,21 +16,19 @@ public final class TvShowDetailDataModel {
     private final List<String> mTvShowAllPosters;
     private final String mTvShowDescription;
     private final String mTvShowStatus;
-    private final boolean mTvShowIsInProduction;
-    private final int mTvShowEpisodesCount;
-    private final int mTvShowSeasonsCount;
-    private final String mTvShowLanguage;
-    private final String mTvShowNetwork;
-    private final int mTvShowEpisodeRuntime;
+    private final boolean mTvShowInProduction;
+    private final String mTvShowInfo;
+    private final String mTvShowNetworkInfo;
     private final String mTvShowRating;
     private final String mTvShowTmdbRating;
-    private final int mTvShowVotesCount;
+    private final String mTvShowVotesCount;
+    private final boolean mTvShowWatchlist;
+    private final boolean mTvShowFavorite;
     private final List<PersonCreditDataModel> mTvShowCreators;
     private final List<PersonCreditDataModel> mTvShowActors;
 
     private TvShowDetailDataModel(final Builder builder) {
         this.mTvShowId = builder.id;
-        this.mTvShowType = builder.type;
         this.mTvShowPoster = builder.poster;
         this.mTvShowPosterPreview = builder.posterPreview;
         this.mTvShowTitle = builder.title;
@@ -41,15 +38,14 @@ public final class TvShowDetailDataModel {
         this.mTvShowAllPosters = builder.allPosters;
         this.mTvShowDescription = builder.description;
         this.mTvShowStatus = builder.status;
-        this.mTvShowIsInProduction = builder.isInProduction;
-        this.mTvShowEpisodesCount = builder.episodesCount;
-        this.mTvShowSeasonsCount = builder.seasonsCount;
-        this.mTvShowLanguage = builder.language;
-        this.mTvShowNetwork = builder.network;
-        this.mTvShowEpisodeRuntime = builder.episodeRuntime;
+        this.mTvShowInProduction = builder.inProduction;
+        this.mTvShowInfo = builder.info;
+        this.mTvShowNetworkInfo = builder.networkInfo;
         this.mTvShowRating = builder.rating;
         this.mTvShowTmdbRating = builder.tmdbRating;
         this.mTvShowVotesCount = builder.votesCount;
+        this.mTvShowWatchlist = builder.watchlist;
+        this.mTvShowFavorite = builder.favorite;
         this.mTvShowCreators = builder.creators;
         this.mTvShowActors = builder.actors;
     }
@@ -60,10 +56,6 @@ public final class TvShowDetailDataModel {
 
     public int getTvShowId() {
         return mTvShowId;
-    }
-
-    public int getTvShowType() {
-        return mTvShowType;
     }
 
     public String getTvShowPoster() {
@@ -103,27 +95,15 @@ public final class TvShowDetailDataModel {
     }
 
     public boolean getTvShowIsInProduction() {
-        return mTvShowIsInProduction;
+        return mTvShowInProduction;
     }
 
-    public int getTvShowEpisodesCount() {
-        return mTvShowEpisodesCount;
+    public String getTvShowInfo() {
+        return mTvShowInfo;
     }
 
-    public int getTvShowSeasonsCount() {
-        return mTvShowSeasonsCount;
-    }
-
-    public String getTvShowLanguage() {
-        return mTvShowLanguage;
-    }
-
-    public String getTvShowNetwork() {
-        return mTvShowNetwork;
-    }
-
-    public int getTvShowEpisodeRuntime() {
-        return mTvShowEpisodeRuntime;
+    public String getTvShowNetworkInfo() {
+        return mTvShowNetworkInfo;
     }
 
     public String getTvShowRating() {
@@ -134,8 +114,16 @@ public final class TvShowDetailDataModel {
         return mTvShowTmdbRating;
     }
 
-    public int getTvShowVotesCount() {
+    public String getTvShowVotesCount() {
         return mTvShowVotesCount;
+    }
+
+    public boolean isTvShowWatchlist() {
+        return mTvShowWatchlist;
+    }
+
+    public boolean isTvShowFavorite() {
+        return mTvShowFavorite;
     }
 
     public List<PersonCreditDataModel> getTvShowCreators() {
@@ -149,7 +137,6 @@ public final class TvShowDetailDataModel {
     public static final class Builder {
 
         private int id;
-        private int type;
         private String poster;
         private String posterPreview;
         private String title;
@@ -159,15 +146,14 @@ public final class TvShowDetailDataModel {
         private List<String> allPosters;
         private String description;
         private String status;
-        private boolean isInProduction;
-        private int episodesCount;
-        private int seasonsCount;
-        private String language;
-        private String network;
-        private int episodeRuntime;
+        private boolean inProduction;
+        private String info;
+        private String networkInfo;
         private String rating;
         private String tmdbRating;
-        private int votesCount;
+        private String votesCount;
+        private boolean watchlist;
+        private boolean favorite;
         private List<PersonCreditDataModel> creators;
         private List<PersonCreditDataModel> actors;
 
@@ -177,11 +163,6 @@ public final class TvShowDetailDataModel {
 
         public Builder setId(final int mId) {
             this.id = mId;
-            return this;
-        }
-
-        public Builder setType(final int type) {
-            this.type = type;
             return this;
         }
 
@@ -230,33 +211,18 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setIsInProduction(final boolean isInProduction) {
-            this.isInProduction = isInProduction;
+        public Builder setInProduction(final boolean isInProduction) {
+            this.inProduction = isInProduction;
             return this;
         }
 
-        public Builder setEpisodesCount(final int episodesCount) {
-            this.episodesCount = episodesCount;
+        public Builder setInfo(final String info) {
+            this.info = info;
             return this;
         }
 
-        public Builder setSeasonsCount(final int seasonsCount) {
-            this.seasonsCount = seasonsCount;
-            return this;
-        }
-
-        public Builder setLanguage(final String language) {
-            this.language = language;
-            return this;
-        }
-
-        public Builder setNetwork(final String network) {
-            this.network = network;
-            return this;
-        }
-
-        public Builder setEpisodeRuntime(final int episodeRuntime) {
-            this.episodeRuntime = episodeRuntime;
+        public Builder setNetworkInfo(final String networkInfo) {
+            this.networkInfo = networkInfo;
             return this;
         }
 
@@ -270,8 +236,18 @@ public final class TvShowDetailDataModel {
             return this;
         }
 
-        public Builder setVotesCount(final int votesCount) {
+        public Builder setVotesCount(final String votesCount) {
             this.votesCount = votesCount;
+            return this;
+        }
+
+        public Builder setWatchlist(final boolean isWatchlist) {
+            this.watchlist = isWatchlist;
+            return this;
+        }
+
+        public Builder setFavorite(final boolean isFavorite) {
+            this.favorite = isFavorite;
             return this;
         }
 

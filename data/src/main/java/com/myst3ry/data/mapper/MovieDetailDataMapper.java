@@ -19,9 +19,11 @@ public final class MovieDetailDataMapper {
     }
 
     public static MovieDetailModel transform(final MovieEntity entity) {
+        final List<PersonCredit> crewList = entity.getDirectors();
+        crewList.addAll(entity.getWriters());
+
         return new MovieDetailModel(
                 entity.getId(),
-                entity.getType(),
                 entity.getTitle(),
                 entity.getOriginalTitle(),
                 entity.getTagLine(),
@@ -39,16 +41,22 @@ public final class MovieDetailDataMapper {
                 entity.getRating(),
                 entity.getTmdbRating(),
                 entity.getVotesCount(),
+                entity.isWatchlist(),
+                entity.isFavorite(),
                 transformPersonCredits(entity.getActors()),
-                transformPersonCredits(entity.getDirectors()),
-                transformPersonCredits(entity.getWriters())
+                transformPersonCredits(crewList)
         );
     }
 
     private static List<PersonCreditModel> transformPersonCredits(final List<PersonCredit> credits) {
         final List<PersonCreditModel> models = new ArrayList<>();
         for (final PersonCredit credit : credits) {
-            models.add(new PersonCreditModel(credit.getId(), credit.getName(), credit.getCharacter(), credit.getPhoto()));
+            models.add(new PersonCreditModel(
+                    credit.getId(),
+                    credit.getName(),
+                    credit.getCharacter(),
+                    credit.getPhoto())
+            );
         }
         return models;
     }

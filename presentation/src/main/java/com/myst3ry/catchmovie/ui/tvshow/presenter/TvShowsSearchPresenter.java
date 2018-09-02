@@ -18,8 +18,6 @@ import timber.log.Timber;
 @TvShowsScope
 public final class TvShowsSearchPresenter extends BasePresenter<TvShowsSearchView> {
 
-    private static final String TAG = "TvShowsSearchPresenter";
-
     private final SearchTvShowsUseCase mSearchTvShowsUseCase;
 
     @Inject
@@ -39,10 +37,11 @@ public final class TvShowsSearchPresenter extends BasePresenter<TvShowsSearchVie
     private void showTvShowsSearchResult(final List<TvShowResultDataModel> tvShows) {
         if (tvShows != null && !tvShows.isEmpty()) {
             Timber.i("TV search successful, found: %s", tvShows.size());
+            mView.hideEmptyText();
             mView.showTvShowsSearchResult(tvShows);
         } else {
-            Timber.w("TV search failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("TV search failed: empty list");
+            mView.showEmptyText();
         }
     }
 

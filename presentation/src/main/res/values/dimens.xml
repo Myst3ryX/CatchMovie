@@ -27,8 +27,14 @@
     <dimen name="item_card_elevation">0dp</dimen>
     <dimen name="item_main_image_width">80dp</dimen>
     <dimen name="item_main_image_height">120dp</dimen>
-    <dimen name="item_horizontal_min_height">80dp</dimen>
-    <dimen name="item_vertical_min_width">140dp</dimen>
-    <dimen name="item_vertical_max_title_width">120dp</dimen>
+    <dimen name="item_main_min_height">120dp</dimen>
+
+    <dimen name="item_result_min_width">140dp</dimen>
+    <dimen name="item_result_max_title_width">120dp</dimen>
+
+    <dimen name="item_credit_min_width">90dp</dimen>
+    <dimen name="item_credit_max_width">90dp</dimen>
+    <dimen name="item_credit_max_title_width">100dp</dimen>
+    <dimen name="item_credit_max_character_width">90dp</dimen>
 
 </resources>

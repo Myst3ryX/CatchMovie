@@ -16,7 +16,11 @@ public final class PersonEntityMapper {
                 person.getBiography(),
                 PersonConvertUtils.convertOriginalImageUrl(person.getProfilePath()),
                 PersonConvertUtils.convertPreviewImageUrl(person.getProfilePath()),
-                PersonConvertUtils.convertCastToTvShowsCredits(person.getTvShowsCredits().getPersonCast()),
-                PersonConvertUtils.convertCastToMoviesCredits(person.getMoviesCredits().getPersonCast()));
+                PersonConvertUtils.isActor(person.getKnownForDepartment())
+                        ? PersonConvertUtils.convertCastToTvShowsCredits(person.getTvShowsCredits().getPersonCast())
+                        : PersonConvertUtils.convertCrewToTvShowsCredits(person.getTvShowsCredits().getPersonCrew()),
+                PersonConvertUtils.isActor(person.getKnownForDepartment())
+                        ? PersonConvertUtils.convertCastToMoviesCredits(person.getMoviesCredits().getPersonCast())
+                        : PersonConvertUtils.convertCrewToMoviesCredits(person.getMoviesCredits().getPersonCrew()));
     }
 }

@@ -56,13 +56,9 @@ public final class TvShowsSearchFragment extends BaseFragment implements TvShows
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnTvShowClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getTvShowsSubComponent().inject(this);
-        if (context instanceof OnTvShowClickListener) {
-            this.mTvShowClickListener = (OnTvShowClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -86,6 +82,14 @@ public final class TvShowsSearchFragment extends BaseFragment implements TvShows
         super.onStart();
         if (getArguments() != null) {
             performSearch(getArguments().getString(ARG_TV_SHOWS_SEARCH_QUERY));
+        }
+    }
+
+    private void initOnTvShowClickListener(final Context context) {
+        if (context instanceof OnTvShowClickListener) {
+            this.mTvShowClickListener = (OnTvShowClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
         }
     }
 

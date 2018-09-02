@@ -2,22 +2,23 @@ package com.myst3ry.data.local.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 
 import com.myst3ry.data.local.converter.ArrayListConverter;
 import com.myst3ry.data.local.converter.CastCreditListConverter;
+import com.myst3ry.data.local.converter.DateConverter;
 import com.myst3ry.data.local.entity.credits.PersonCredit;
 
+import java.util.Date;
 import java.util.List;
 
-@Entity(tableName = "TVShows", primaryKeys = {"id", "type"})
+@Entity(tableName = "TVShows")
 public final class TvShowEntity {
 
+    @PrimaryKey
     @ColumnInfo(name = "id")
     private final int mId;
-
-    @ColumnInfo(name = "type")
-    private final int mType;
 
     @ColumnInfo(name = "title")
     private final String mTitle;
@@ -75,6 +76,19 @@ public final class TvShowEntity {
     @ColumnInfo(name = "votes_count")
     private final int mVotesCount;
 
+    @ColumnInfo(name = "recent")
+    private boolean mRecent;
+
+    @ColumnInfo(name = "watchlist")
+    private boolean mWatchlist;
+
+    @ColumnInfo(name = "favorite")
+    private boolean mFavorite;
+
+    @ColumnInfo(name = "creation_date")
+    @TypeConverters(DateConverter.class)
+    private Date mCreationDate;
+
     @ColumnInfo(name = "creators")
     @TypeConverters(CastCreditListConverter.class)
     private final List<PersonCredit> mCreators;
@@ -83,14 +97,13 @@ public final class TvShowEntity {
     @TypeConverters(CastCreditListConverter.class)
     private final List<PersonCredit> mActors;
 
-    public TvShowEntity(int id, int type, String title, String originalTitle,
+    public TvShowEntity(int id, String title, String originalTitle,
                         String firstAirDate, List<String> genres, String poster,
                         String posterPreview, List<String> allPosters, String description,
                         String status, boolean isInProduction, int episodesCount, int seasonsCount,
-                        String language, String network, int episodeRuntime, double rating,
-                        double tmdbRating, int votesCount, List<PersonCredit> creators, List<PersonCredit> actors) {
+                        String language, String network, int episodeRuntime, double tmdbRating,
+                        int votesCount, List<PersonCredit> creators, List<PersonCredit> actors) {
         this.mId = id;
-        this.mType = type;
         this.mTitle = title;
         this.mOriginalTitle = originalTitle;
         this.mFirstAirDate = firstAirDate;
@@ -106,7 +119,6 @@ public final class TvShowEntity {
         this.mLanguage = language;
         this.mNetwork = network;
         this.mEpisodeRuntime = episodeRuntime;
-        this.mRating = rating;
         this.mTmdbRating = tmdbRating;
         this.mVotesCount = votesCount;
         this.mCreators = creators;
@@ -115,10 +127,6 @@ public final class TvShowEntity {
 
     public int getId() {
         return mId;
-    }
-
-    public int getType() {
-        return mType;
     }
 
     public String getTitle() {
@@ -193,6 +201,22 @@ public final class TvShowEntity {
         return mVotesCount;
     }
 
+    public boolean isRecent() {
+        return mRecent;
+    }
+
+    public boolean isWatchlist() {
+        return mWatchlist;
+    }
+
+    public boolean isFavorite() {
+        return mFavorite;
+    }
+
+    public Date getCreationDate() {
+        return mCreationDate;
+    }
+
     public List<PersonCredit> getCreators() {
         return mCreators;
     }
@@ -203,5 +227,21 @@ public final class TvShowEntity {
 
     public void setRating(final double rating) {
         this.mRating = rating;
+    }
+
+    public void setRecent(final boolean isRecent) {
+        this.mRecent = isRecent;
+    }
+
+    public void setWatchlist(final boolean isWatchlist) {
+        this.mWatchlist = isWatchlist;
+    }
+
+    public void setFavorite(final boolean isFavorite) {
+        this.mFavorite = isFavorite;
+    }
+
+    public void setCreationDate(final Date creationDate) {
+        this.mCreationDate = creationDate;
     }
 }

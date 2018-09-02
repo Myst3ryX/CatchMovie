@@ -6,13 +6,9 @@ import com.myst3ry.data.remote.pojo.tvshow.detail.TvShowDetail;
 
 public final class TvShowEntityMapper {
 
-    private static final int TV_SHOW_INITIAL_TYPE = 0;
-    private static final double TV_SHOW_INITIAL_RATING = 0.0;
-
     public static TvShowEntity transform(final TvShowDetail tvShow) {
         return new TvShowEntity(
                 tvShow.getId(),
-                TV_SHOW_INITIAL_TYPE,
                 tvShow.getTitle(),
                 tvShow.getOriginalTitle(),
                 tvShow.getFirstAirDate(),
@@ -28,7 +24,6 @@ public final class TvShowEntityMapper {
                 tvShow.getOriginalLanguage(),
                 TvShowConvertUtils.convertNetworks(tvShow.getNetworks()),
                 TvShowConvertUtils.convertEpisodesRuntime(tvShow.getEpisodeRunTime()),
-                TV_SHOW_INITIAL_RATING,
                 tvShow.getVoteAverage(),
                 tvShow.getVoteCount(),
                 TvShowConvertUtils.convertCreators(tvShow.getCreatedBy()),

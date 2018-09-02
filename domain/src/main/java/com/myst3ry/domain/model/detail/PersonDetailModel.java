@@ -15,11 +15,12 @@ public final class PersonDetailModel {
     private final String mBiography;
     private final String mPhoto;
     private final String mPhotoPreview;
+    private final boolean mFavorite;
     private final List<TvShowCreditModel> mTvShowsCredits;
     private final List<MovieCreditModel> mMoviesCredits;
 
-    public PersonDetailModel(int id, String name, String knownAs, String birthday,
-                             String deathday, String biography, String photo, String photoPreview,
+    public PersonDetailModel(int id, String name, String knownAs, String birthday, String deathday,
+                             String biography, String photo, String photoPreview, boolean isFavorite,
                              List<TvShowCreditModel> tvShowsCredits, List<MovieCreditModel> moviesCredits) {
         this.mId = id;
         this.mName = name;
@@ -29,6 +30,7 @@ public final class PersonDetailModel {
         this.mBiography = biography;
         this.mPhoto = photo;
         this.mPhotoPreview = photoPreview;
+        this.mFavorite = isFavorite;
         this.mTvShowsCredits = tvShowsCredits;
         this.mMoviesCredits = moviesCredits;
     }
@@ -63,6 +65,10 @@ public final class PersonDetailModel {
 
     public String getPhotoPreview() {
         return mPhotoPreview;
+    }
+
+    public boolean isFavorite() {
+        return mFavorite;
     }
 
     public List<TvShowCreditModel> getTvShowsCredits() {

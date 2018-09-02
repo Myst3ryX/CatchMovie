@@ -24,7 +24,7 @@ public final class TvShowItemDataModelMapper {
                 .setPoster(model.getPoster())
                 .setTitle(model.getTitle())
                 .setReleaseDate(DateUtils.parseDateToYear(model.getReleaseDate()))
-                .setGenres(ConvertUtils.convertGenresToString(model.getGenres()))
+                .setGenres(ConvertUtils.convertItemGenresToString(model.getGenres()))
                 .setRating(ConvertUtils.convertRating(model.getRating()))
                 .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
                 .build();

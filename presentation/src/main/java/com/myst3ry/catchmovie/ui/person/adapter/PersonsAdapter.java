@@ -23,8 +23,6 @@ import butterknife.OnClick;
 
 public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.PersonHolder> {
 
-    private static final int INIT_POS = 0;
-
     private List<PersonItemDataModel> mPersons;
     private final OnPersonClickListener mListener;
 
@@ -64,40 +62,14 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
         notifyDataSetChanged();
     }
 
-    public void addPerson(final PersonItemDataModel person) {
-        mPersons.add(INIT_POS, person);
-        notifyItemInserted(INIT_POS);
-    }
-
-    public void removePerson(final int personId) {
-        PersonItemDataModel person = null;
-        int position = Integer.MIN_VALUE;
-
-        for (int i = 0; i < mPersons.size(); i++) {
-            if (mPersons.get(i).getPersonId() == personId) {
-                person = mPersons.get(i);
-                position = i;
-                break;
-            }
-        }
-
-        if (person != null) {
-            mPersons.remove(person);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, mPersons.size());
-        }
-    }
-
     public void clearPersons() {
-        final int size = mPersons.size();
         mPersons.clear();
-        notifyItemRangeRemoved(INIT_POS, size);
+        notifyDataSetChanged();
     }
 
     private PersonItemDataModel getPerson(final int position) {
         return mPersons.get(position);
     }
-
 
     public final class PersonHolder extends RecyclerView.ViewHolder {
 
@@ -108,7 +80,7 @@ public final class PersonsAdapter extends RecyclerView.Adapter<PersonsAdapter.Pe
         @BindView(R.id.person_known_as)
         TextView mPersonKnownAsTextView;
 
-        @OnClick(R.id.person_result_container)
+        @OnClick(R.id.person_container)
         void onClick() {
             mListener.onPersonClick(getPerson(getLayoutPosition()).getPersonId());
         }

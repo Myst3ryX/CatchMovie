@@ -20,8 +20,6 @@ import timber.log.Timber;
 @MoviesScope
 public final class MovieDetailPresenter extends BasePresenter<MovieDetailView> {
 
-    private static final String TAG = "MovieDetailPresenter";
-
     private final GetMovieDetailsUseCase mGetMovieDetailsUseCase;
     private final SetMovieRatingUseCase mSetMovieRatingUseCase;
     private final AddMovieUseCase mAddMovieUseCase;
@@ -48,15 +46,27 @@ public final class MovieDetailPresenter extends BasePresenter<MovieDetailView> {
     }
 
     public void setMovieRating(final int movieId, final double rating) {
-        mSetMovieRatingUseCase.execute(movieId, rating);
+        addDisposable(mSetMovieRatingUseCase.execute(movieId, rating));
     }
 
-    public void addMovie(final int movieId, final MovieType type) {
-        mAddMovieUseCase.execute(movieId, type);
+    public void addToWatchlist(final int movieId) {
+        addDisposable(mAddMovieUseCase.execute(movieId, MovieType.WATCHLIST));
+        mView.setWatchlistStatus(true);
     }
 
-    public void deleteMovie(final int movieId, final MovieType type) {
-        mDeleteMovieUseCase.execute(movieId, type);
+    public void deleteFromWatchlist(final int movieId) {
+        addDisposable(mDeleteMovieUseCase.execute(movieId, MovieType.WATCHLIST));
+        mView.setWatchlistStatus(false);
+    }
+
+    public void addToFavorites(final int movieId) {
+        addDisposable(mAddMovieUseCase.execute(movieId, MovieType.FAVORITE));
+        mView.setFavoriteStatus(true);
+    }
+
+    public void deleteFromFavorites(final int movieId) {
+        addDisposable(mDeleteMovieUseCase.execute(movieId, MovieType.FAVORITE));
+        mView.setFavoriteStatus(false);
     }
 
     private void setMovieDetails(final MovieDetailDataModel movie) {

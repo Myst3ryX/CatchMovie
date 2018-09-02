@@ -5,8 +5,8 @@ import com.myst3ry.catchmovie.mapper.PersonDetailDataModelMapper;
 import com.myst3ry.catchmovie.model.detail.PersonDetailDataModel;
 import com.myst3ry.catchmovie.ui.base.BasePresenter;
 import com.myst3ry.catchmovie.ui.person.view.PersonDetailView;
-import com.myst3ry.domain.usecase.person.AddPersonToFavoritesUseCase;
-import com.myst3ry.domain.usecase.person.DeleteFavoritePersonUseCase;
+import com.myst3ry.domain.usecase.person.AddPersonUseCase;
+import com.myst3ry.domain.usecase.person.DeletePersonUseCase;
 import com.myst3ry.domain.usecase.person.GetPersonDetailsUseCase;
 
 import javax.inject.Inject;
@@ -18,19 +18,17 @@ import timber.log.Timber;
 @PersonsScope
 public final class PersonDetailPresenter extends BasePresenter<PersonDetailView> {
 
-    private static final String TAG = "PersonDetailPresenter";
-
     private final GetPersonDetailsUseCase mGetPersonDetailsUseCase;
-    private final AddPersonToFavoritesUseCase mAddPersonToFavoritesUseCase;
-    private final DeleteFavoritePersonUseCase mDeleteFavoritePersonUseCase;
+    private final AddPersonUseCase mAddPersonUseCase;
+    private final DeletePersonUseCase mDeletePersonUseCase;
 
     @Inject
     public PersonDetailPresenter(final GetPersonDetailsUseCase getPersonDetailsUseCase,
-                                 final AddPersonToFavoritesUseCase addPersonToFavoritesUseCase,
-                                 final DeleteFavoritePersonUseCase deleteFavoritePersonUseCase) {
+                                 final AddPersonUseCase addPersonUseCase,
+                                 final DeletePersonUseCase deletePersonUseCase) {
         this.mGetPersonDetailsUseCase = getPersonDetailsUseCase;
-        this.mAddPersonToFavoritesUseCase = addPersonToFavoritesUseCase;
-        this.mDeleteFavoritePersonUseCase = deleteFavoritePersonUseCase;
+        this.mAddPersonUseCase = addPersonUseCase;
+        this.mDeletePersonUseCase = deletePersonUseCase;
     }
 
     public void getPersonDetails(final int personId) {
@@ -42,12 +40,14 @@ public final class PersonDetailPresenter extends BasePresenter<PersonDetailView>
                         throwable -> showErrorMessage(throwable.getLocalizedMessage())));
     }
 
-    public void addPerson(final int personId) {
-        mAddPersonToFavoritesUseCase.execute(personId);
+    public void addToFavorites(final int personId) {
+        addDisposable(mAddPersonUseCase.execute(personId));
+        mView.setFavoriteStatus(true);
     }
 
-    public void deletePerson(final int personId) {
-        mDeleteFavoritePersonUseCase.execute(personId);
+    public void deleteFromFavorites(final int personId) {
+        addDisposable(mDeletePersonUseCase.execute(personId));
+        mView.setFavoriteStatus(false);
     }
 
     private void setPersonDetails(final PersonDetailDataModel person) {
@@ -63,5 +63,4 @@ public final class PersonDetailPresenter extends BasePresenter<PersonDetailView>
         Timber.e("PersonDetail details load error: %s", message);
         mView.showToast(message);
     }
-
 }

@@ -7,7 +7,6 @@ import java.util.List;
 public final class MovieDetailDataModel {
 
     private final int mMovieId;
-    private final int mMovieType;
     private final String mMoviePoster;
     private final String mMoviePosterPreview;
     private final String mMovieTitle;
@@ -16,22 +15,20 @@ public final class MovieDetailDataModel {
     private final String mMovieReleaseDate;
     private final List<String> mMovieGenres;
     private final List<String> mMovieAllPosters;
+    private final String mMovieInfo;
     private final String mMovieDescription;
-    private final int mMovieBudget;
-    private final int mMovieRevenue;
-    private final String mMovieStatus;
-    private final String mMovieLanguage;
-    private final int mMovieRuntime;
+    private final String mMovieBudget;
+    private final String mMovieRevenue;
     private final String mMovieRating;
     private final String mMovieTmdbRating;
-    private final int mMovieVotesCount;
-    private final List<PersonCreditDataModel> mMovieActors;
-    private final List<PersonCreditDataModel> mMovieDirectors;
-    private final List<PersonCreditDataModel> mMovieWriters;
+    private final String mMovieVotesCount;
+    private final boolean mMovieWatchlist;
+    private final boolean mMovieFavorite;
+    private final List<PersonCreditDataModel> mMovieCast;
+    private final List<PersonCreditDataModel> mMovieCrew;
 
     private MovieDetailDataModel(final Builder builder) {
         this.mMovieId = builder.id;
-        this.mMovieType = builder.type;
         this.mMoviePoster = builder.poster;
         this.mMoviePosterPreview = builder.posterPreview;
         this.mMovieTitle = builder.title;
@@ -43,15 +40,14 @@ public final class MovieDetailDataModel {
         this.mMovieDescription = builder.description;
         this.mMovieBudget = builder.budget;
         this.mMovieRevenue = builder.revenue;
-        this.mMovieStatus = builder.status;
-        this.mMovieLanguage = builder.language;
-        this.mMovieRuntime = builder.runtime;
+        this.mMovieInfo = builder.info;
         this.mMovieRating = builder.rating;
         this.mMovieTmdbRating = builder.tmdbRating;
         this.mMovieVotesCount = builder.votesCount;
-        this.mMovieActors = builder.actors;
-        this.mMovieDirectors = builder.directors;
-        this.mMovieWriters = builder.writers;
+        this.mMovieWatchlist = builder.watchlist;
+        this.mMovieFavorite = builder.favorite;
+        this.mMovieCast = builder.cast;
+        this.mMovieCrew = builder.crew;
     }
 
     public static Builder newBuilder() {
@@ -60,10 +56,6 @@ public final class MovieDetailDataModel {
 
     public int getMovieId() {
         return mMovieId;
-    }
-
-    public int getMovieType() {
-        return mMovieType;
     }
 
     public String getMoviePoster() {
@@ -102,24 +94,16 @@ public final class MovieDetailDataModel {
         return mMovieDescription;
     }
 
-    public int getMovieBudget() {
+    public String getMovieBudget() {
         return mMovieBudget;
     }
 
-    public int getMovieRevenue() {
+    public String getMovieRevenue() {
         return mMovieRevenue;
     }
 
-    public String getMovieStatus() {
-        return mMovieStatus;
-    }
-
-    public String getMovieLanguage() {
-        return mMovieLanguage;
-    }
-
-    public int getMovieRuntime() {
-        return mMovieRuntime;
+    public String getMovieInfo() {
+        return mMovieInfo;
     }
 
     public String getMovieRating() {
@@ -130,26 +114,29 @@ public final class MovieDetailDataModel {
         return mMovieTmdbRating;
     }
 
-    public int getMovieVotesCount() {
+    public String getMovieVotesCount() {
         return mMovieVotesCount;
     }
 
-    public List<PersonCreditDataModel> getMovieActors() {
-        return mMovieActors;
+    public boolean isMovieWatchlist() {
+        return mMovieWatchlist;
     }
 
-    public List<PersonCreditDataModel> getMovieDirectors() {
-        return mMovieDirectors;
+    public boolean isMovieFavorite() {
+        return mMovieFavorite;
     }
 
-    public List<PersonCreditDataModel> getMovieWriters() {
-        return mMovieWriters;
+    public List<PersonCreditDataModel> getMovieCast() {
+        return mMovieCast;
+    }
+
+    public List<PersonCreditDataModel> getMovieCrew() {
+        return mMovieCrew;
     }
 
     public static final class Builder {
 
         private int id;
-        private int type;
         private String poster;
         private String posterPreview;
         private String title;
@@ -158,29 +145,23 @@ public final class MovieDetailDataModel {
         private String releaseDate;
         private List<String> genres;
         private List<String> allPosters;
+        private String info;
         private String description;
-        private int budget;
-        private int revenue;
-        private String status;
-        private String language;
-        private int runtime;
+        private String budget;
+        private String revenue;
         private String rating;
         private String tmdbRating;
-        private int votesCount;
-        private List<PersonCreditDataModel> actors;
-        private List<PersonCreditDataModel> directors;
-        private List<PersonCreditDataModel> writers;
+        private String votesCount;
+        private boolean watchlist;
+        private boolean favorite;
+        private List<PersonCreditDataModel> cast;
+        private List<PersonCreditDataModel> crew;
 
         private Builder() {
         }
 
         public Builder setId(final int id) {
             this.id = id;
-            return this;
-        }
-
-        public Builder setType(final int type) {
-            this.type = type;
             return this;
         }
 
@@ -229,28 +210,18 @@ public final class MovieDetailDataModel {
             return this;
         }
 
-        public Builder setBudget(final int budget) {
+        public Builder setBudget(final String budget) {
             this.budget = budget;
             return this;
         }
 
-        public Builder setRevenue(final int revenue) {
+        public Builder setRevenue(final String revenue) {
             this.revenue = revenue;
             return this;
         }
 
-        public Builder setStatus(final String status) {
-            this.status = status;
-            return this;
-        }
-
-        public Builder setLanguage(final String language) {
-            this.language = language;
-            return this;
-        }
-
-        public Builder setRuntime(final int runtime) {
-            this.runtime = runtime;
+        public Builder setMovieInfo(final String info) {
+            this.info = info;
             return this;
         }
 
@@ -264,23 +235,28 @@ public final class MovieDetailDataModel {
             return this;
         }
 
-        public Builder setVotesCount(final int votesCount) {
+        public Builder setVotesCount(final String votesCount) {
             this.votesCount = votesCount;
             return this;
         }
 
-        public Builder setActors(final List<PersonCreditDataModel> actors) {
-            this.actors = actors;
+        public Builder setWatchlist(final boolean isWatchlist) {
+            this.watchlist = isWatchlist;
             return this;
         }
 
-        public Builder setDirectors(final List<PersonCreditDataModel> directors) {
-            this.directors = directors;
+        public Builder setFavorite(final boolean isFavorite) {
+            this.favorite = isFavorite;
             return this;
         }
 
-        public Builder setWriters(final List<PersonCreditDataModel> writers) {
-            this.writers = writers;
+        public Builder setCast(final List<PersonCreditDataModel> cast) {
+            this.cast = cast;
+            return this;
+        }
+
+        public Builder setCrew(final List<PersonCreditDataModel> crew) {
+            this.crew = crew;
             return this;
         }
 

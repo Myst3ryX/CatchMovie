@@ -23,6 +23,8 @@ import okhttp3.OkHttpClient;
 @GlideModule
 public final class CatchMovieGlideModule extends AppGlideModule {
 
+    public static final int CROSS_FADE_DURATION = 400;
+
     @Inject
     OkHttpClient okHttpClient;
 

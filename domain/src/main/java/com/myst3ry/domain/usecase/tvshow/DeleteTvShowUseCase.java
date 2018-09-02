@@ -5,6 +5,8 @@ import com.myst3ry.domain.types.TvShowType;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+
 public final class DeleteTvShowUseCase {
 
     private final TvShowsRepository mTvShowsRepository;
@@ -14,7 +16,16 @@ public final class DeleteTvShowUseCase {
         this.mTvShowsRepository = tvShowsRepository;
     }
 
-    public void execute(final int tvShowId, final TvShowType type) {
-        mTvShowsRepository.deleteTvShowById(tvShowId, type.ordinal());
+    public Disposable execute(final int tvShowId, final TvShowType type) {
+        switch (type) {
+            case RECENT:
+                return mTvShowsRepository.deleteTvShowFromRecent(tvShowId);
+            case WATCHLIST:
+                return mTvShowsRepository.deleteTvShowFromWatchlist(tvShowId);
+            case FAVORITE:
+                return mTvShowsRepository.deleteTvShowFromFavorites(tvShowId);
+            default:
+                return null;
+        }
     }
 }

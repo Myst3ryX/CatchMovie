@@ -62,13 +62,9 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnTvShowClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getTvShowsSubComponent().inject(this);
-        if (context instanceof OnTvShowClickListener) {
-            this.mTvShowClickListener = (OnTvShowClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Override
@@ -95,9 +91,17 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         getTvShows();
+    }
+
+    private void initOnTvShowClickListener(final Context context) {
+        if (context instanceof OnTvShowClickListener) {
+            this.mTvShowClickListener = (OnTvShowClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {
@@ -112,7 +116,7 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
         mTvShowsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false));
         mTvShowsRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
-                .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
+                .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_half))
                 .setOrientation(LinearLayoutManager.VERTICAL)
                 .includeEdge(true)
                 .build());
@@ -128,20 +132,27 @@ public final class TvShowsFragment extends BaseFragment implements TvShowsView {
     }
 
     @Override
+    public void clearTvShows() {
+        mTvShowsAdapter.clearTvShows();
+    }
+
+    @Override
     public void showEmptyText() {
-        mEmptyTvShowsTextView.setVisibility(View.VISIBLE);
-        switch (mType) {
-            case RECENT:
-                mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_recent));
-                break;
-            case WATCHLIST:
-                mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_watchlist));
-                break;
-            case FAVORITE:
-                mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_favorites));
-                break;
-            default:
-                break;
+        if (mEmptyTvShowsTextView.getVisibility() == View.GONE) {
+            mEmptyTvShowsTextView.setVisibility(View.VISIBLE);
+            switch (mType) {
+                case RECENT:
+                    mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_recent));
+                    break;
+                case WATCHLIST:
+                    mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_watchlist));
+                    break;
+                case FAVORITE:
+                    mEmptyTvShowsTextView.setText(getString(R.string.text_empty_tv_shows_favorites));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

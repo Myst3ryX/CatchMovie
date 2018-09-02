@@ -10,10 +10,12 @@ import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
+import com.myst3ry.catchmovie.listener.OnMovieClickListener;
+import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.person.fragment.PersonDetailFragment;
 
-public final class PersonDetailActivity extends BaseActivity {
+public final class PersonDetailActivity extends BaseActivity implements OnMovieClickListener, OnTvShowClickListener {
 
     public static final String EXTRA_PERSON_ID = BuildConfig.APPLICATION_ID + "EXTRA.PERSON_ID";
 
@@ -26,8 +28,11 @@ public final class PersonDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_detail);
         prepareActionBar();
+
         if (savedInstanceState == null) {
-            initUI();
+            if (getIntent() != null) {
+                initUI(getIntent().getIntExtra(EXTRA_PERSON_ID, 0));
+            }
         }
     }
 
@@ -49,9 +54,9 @@ public final class PersonDetailActivity extends BaseActivity {
         }
     }
 
-    private void initUI() {
+    private void initUI(final int personId) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame_person_detail, PersonDetailFragment.newInstance(), PersonDetailFragment.TAG)
+                .add(R.id.frame_person_detail, PersonDetailFragment.newInstance(personId), PersonDetailFragment.TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
@@ -61,6 +66,16 @@ public final class PersonDetailActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void onMovieClick(final int movieId) {
+        getNavigator().navigateToMovieDetailScreen(this, movieId);
+    }
+
+    @Override
+    public void onTvShowClick(final int tvShowId) {
+        getNavigator().navigateToTvShowDetailScreen(this, tvShowId);
     }
 }
 

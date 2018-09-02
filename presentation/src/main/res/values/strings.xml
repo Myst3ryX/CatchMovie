@@ -34,6 +34,12 @@
     <!--Actors Empty Text-->
     <string name="text_empty_persons">Your favorite persons list is empty</string>
 
+    <!--Search-->
+    <string name="hint_search">Search…</string>
+    <string name="text_empty_search_movies">Movies wasn\'t found</string>
+    <string name="text_empty_search_tv_shows">TV shows wasn\'t found</string>
+    <string name="text_empty_search_persons">Persons wasn\'t found</string>
+
     <!--Errors-->
     <string name="text_exception_no_listener_impl">Activity must implement Listener interface</string>
 
@@ -70,18 +76,18 @@
 
     <!--Details-->
     <string name="detail_overview_title">Overview:</string>
-    <string name="detail_actors_cast_title">Cast:</string>
-    <string name="detail_movie_directors_title">Director:</string>
-    <string name="detail_movie_writers_title">Writer:</string>
-
+    <string name="detail_cast_title">Cast:</string>
+    <string name="detail_movie_crew_title">Crew:</string>
     <string name="detail_tv_show_creators_title">Creator:</string>
 
     <string name="detail_person_biography_title">Biography:</string>
     <string name="detail_person_filmography_title">Filmography:</string>
     <string name="detail_person_movies_credits">Movies</string>
     <string name="detail_person_tv_shows_credits">TV Shows</string>
+    <string name="detail_person_born_at">Born:</string>
+    <string name="detail_person_died_at">Died:</string>
+    <string name="detail_tv_show_seasons_title">Seasons:</string>
 
-    <!--Search-->
-    <string name="hint_search">Search…</string>
+    <string name="credit_unknown_title">Unknown</string>
 
 </resources>

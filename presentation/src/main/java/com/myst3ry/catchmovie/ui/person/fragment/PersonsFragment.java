@@ -56,13 +56,9 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnPersonClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getPersonsSubComponent().inject(this);
-        if (context instanceof OnPersonClickListener) {
-            this.mPersonClickListener = (OnPersonClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Override
@@ -81,9 +77,17 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         getPersons();
+    }
+
+    private void initOnPersonClickListener(final Context context) {
+        if (context instanceof OnPersonClickListener) {
+            this.mPersonClickListener = (OnPersonClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {
@@ -114,13 +118,22 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
     }
 
     @Override
+    public void clearPersons() {
+        mPersonsAdapter.clearPersons();
+    }
+
+    @Override
     public void showEmptyText() {
-        mEmptyPersonsTextView.setVisibility(View.VISIBLE);
+        if (mEmptyPersonsTextView.getVisibility() == View.GONE) {
+            mEmptyPersonsTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void hideEmptyText() {
-        mEmptyPersonsTextView.setVisibility(View.GONE);
+        if (mEmptyPersonsTextView.getVisibility() == View.VISIBLE) {
+            mEmptyPersonsTextView.setVisibility(View.GONE);
+        }
     }
 
     @Override

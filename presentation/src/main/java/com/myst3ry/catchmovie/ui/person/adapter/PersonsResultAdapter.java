@@ -68,14 +68,14 @@ public final class PersonsResultAdapter extends RecyclerView.Adapter<PersonsResu
 
     public final class PersonResultHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.person_photo)
+        @BindView(R.id.result_person_photo)
         ImageView mPersonPhotoImageView;
-        @BindView(R.id.person_name)
+        @BindView(R.id.result_person_name)
         TextView mPersonNameTextView;
-        @BindView(R.id.person_known_for)
+        @BindView(R.id.result_person_known_for)
         TextView mPersonKnownForTextView;
 
-        @OnClick(R.id.person_result_container)
+        @OnClick(R.id.result_person_container)
         void onClick() {
             mListener.onPersonClick(getPerson(getLayoutPosition()).getPersonId());
         }

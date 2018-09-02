@@ -18,23 +18,30 @@ public final class TvShowConvertUtils {
 
     private static final String JOB_CREATOR = "Creator";
 
-    private static final String NETWORK_SEPARATOR = ", ";
     private static final int ELEM_OFFSET = 1;
     private static final int NETWORKS_MAX = 2;
+    private static final int GENRES_MAX = 3;
 
     public static String convertOriginalImageUrl(final String path) {
-        return TMDbApi.IMAGES_URL + TV_ORIGINAL_IMAGE_SIZE + path;
+        if (path != null) {
+            return TMDbApi.IMAGES_URL + TV_ORIGINAL_IMAGE_SIZE + path;
+        }
+        return null;
     }
 
     public static String convertPreviewImageUrl(final String path) {
-        return TMDbApi.IMAGES_URL + TV_PREVIEW_IMAGE_SIZE + path;
+        if (path != null) {
+            return TMDbApi.IMAGES_URL + TV_PREVIEW_IMAGE_SIZE + path;
+        }
+        return null;
     }
 
     public static List<String> convertGenres(final List<Genres> genresList) {
-        final List<String> genres = new ArrayList<>();
-        for (final Genres genre : genresList) {
-            if (genre.getName() != null) {
-                genres.add(genre.getName());
+        final int size = genresList.size() > GENRES_MAX ? GENRES_MAX : genresList.size();
+        final List<String> genres = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            if (genresList.get(i).getName() != null) {
+                genres.add(genresList.get(i).getName());
             }
         }
         return genres;
@@ -44,26 +51,25 @@ public final class TvShowConvertUtils {
         final List<String> posters = new ArrayList<>();
         for (final Poster poster : postersList) {
             if (poster.getFilePath() != null) {
-                posters.add(poster.getFilePath());
+                posters.add(convertOriginalImageUrl(poster.getFilePath()));
             }
         }
         return posters;
     }
 
     public static String convertNetworks(final List<Network> networkList) {
-        if (networkList == null) {
-            return "";
-        }
-
-        final StringBuilder networks = new StringBuilder();
-        final int size = networkList.size() > NETWORKS_MAX ? NETWORKS_MAX : networkList.size();
-        for (int i = 0; i < size; i++) {
-            networks.append(networkList.get(i));
-            if (i != networkList.size() - ELEM_OFFSET) {
-                networks.append(NETWORK_SEPARATOR);
+        if (networkList != null) {
+            final StringBuilder networks = new StringBuilder();
+            final int size = networkList.size() > NETWORKS_MAX ? NETWORKS_MAX : networkList.size();
+            for (int i = 0; i < size; i++) {
+                networks.append(networkList.get(i).getName());
+                if (i != networkList.size() - ELEM_OFFSET) {
+                    networks.append(", ");
+                }
             }
+            return networks.toString();
         }
-        return networks.toString();
+        return null;
     }
 
     public static int convertEpisodesRuntime(final List<Integer> episodesRuntime) {

@@ -28,9 +28,10 @@ public final class PersonDetailDataModelMapper {
                 .setPhotoPreview(model.getPhotoPreview())
                 .setName(model.getName())
                 .setBiography(model.getBiography())
-                .setBirthday(DateUtils.parseDate(model.getBirthday()))
-                .setDeathday(DateUtils.parseDate(model.getDeathday()))
+                .setBirthday(DateUtils.parsePersonDate(model.getBirthday()))
+                .setDeathday(DateUtils.parsePersonDate(model.getDeathday()))
                 .setKnownAs(model.getKnownAs())
+                .setFavorite(model.isFavorite())
                 .setMovies(transformMoviesCredits(model.getMoviesCredits()))
                 .setTvShows(transformTvShowsCredits(model.getTvShowsCredits()))
                 .build();
@@ -39,7 +40,12 @@ public final class PersonDetailDataModelMapper {
     private static List<MovieCreditDataModel> transformMoviesCredits(final List<MovieCreditModel> movies) {
         final List<MovieCreditDataModel> credits = new ArrayList<>();
         for (final MovieCreditModel movie : movies) {
-            credits.add(new MovieCreditDataModel(movie.getId(), movie.getTitle(), movie.getPoster()));
+            credits.add(new MovieCreditDataModel(
+                    movie.getId(),
+                    movie.getTitle(),
+                    movie.getCharacter(),
+                    movie.getPoster())
+            );
         }
         return credits;
     }
@@ -47,7 +53,12 @@ public final class PersonDetailDataModelMapper {
     private static List<TvShowCreditDataModel> transformTvShowsCredits(final List<TvShowCreditModel> tvShows) {
         final List<TvShowCreditDataModel> credits = new ArrayList<>();
         for (final TvShowCreditModel tvShow : tvShows) {
-            credits.add(new TvShowCreditDataModel(tvShow.getId(), tvShow.getTitle(), tvShow.getPoster()));
+            credits.add(new TvShowCreditDataModel(
+                    tvShow.getId(),
+                    tvShow.getTitle(),
+                    tvShow.getCharacter(),
+                    tvShow.getPoster())
+            );
         }
         return credits;
     }

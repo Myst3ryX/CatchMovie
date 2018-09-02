@@ -18,8 +18,6 @@ import timber.log.Timber;
 @MoviesScope
 public final class MoviesSearchPresenter extends BasePresenter<MoviesSearchView> {
 
-    private static final String TAG = "MoviesSearchPresenter";
-
     private final SearchMoviesUseCase mSearchMoviesUseCase;
 
     @Inject
@@ -39,10 +37,11 @@ public final class MoviesSearchPresenter extends BasePresenter<MoviesSearchView>
     private void showMoviesSearchResult(final List<MovieResultDataModel> movies) {
         if (movies != null && !movies.isEmpty()) {
             Timber.i("Movies search successful, found: %s", movies.size());
+            mView.hideEmptyText();
             mView.showMoviesSearchResult(movies);
         } else {
-            Timber.w("Movies search failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("Movies search failed: empty list");
+            mView.showEmptyText();
         }
     }
 

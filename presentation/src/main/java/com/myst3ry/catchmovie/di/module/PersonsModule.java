@@ -3,9 +3,9 @@ package com.myst3ry.catchmovie.di.module;
 import com.myst3ry.catchmovie.di.scope.PersonsScope;
 import com.myst3ry.catchmovie.ui.person.presenter.PersonsPresenter;
 import com.myst3ry.domain.repository.PersonsRepository;
-import com.myst3ry.domain.usecase.person.AddPersonToFavoritesUseCase;
-import com.myst3ry.domain.usecase.person.DeleteFavoritePersonUseCase;
-import com.myst3ry.domain.usecase.person.GetFavoritePersonsUseCase;
+import com.myst3ry.domain.usecase.person.AddPersonUseCase;
+import com.myst3ry.domain.usecase.person.DeletePersonUseCase;
+import com.myst3ry.domain.usecase.person.GetPersonsUseCase;
 
 import dagger.Module;
 import dagger.Provides;
@@ -15,27 +15,25 @@ public final class PersonsModule {
 
     @Provides
     @PersonsScope
-    PersonsPresenter providesPersonsPresenter(final GetFavoritePersonsUseCase getFavoritePersonsUseCase,
-                                              final AddPersonToFavoritesUseCase addPersonToFavoritesUseCase,
-                                              final DeleteFavoritePersonUseCase deleteFavoritePersonUseCase) {
-        return new PersonsPresenter(getFavoritePersonsUseCase, addPersonToFavoritesUseCase, deleteFavoritePersonUseCase);
+    PersonsPresenter providesPersonsPresenter(final GetPersonsUseCase getPersonsUseCase) {
+        return new PersonsPresenter(getPersonsUseCase);
     }
 
     @Provides
     @PersonsScope
-    GetFavoritePersonsUseCase providesGetFavoritePersonsUseCase(final PersonsRepository personsRepository) {
-        return new GetFavoritePersonsUseCase(personsRepository);
+    GetPersonsUseCase providesGetPersonsUseCase(final PersonsRepository personsRepository) {
+        return new GetPersonsUseCase(personsRepository);
     }
 
     @Provides
     @PersonsScope
-    AddPersonToFavoritesUseCase providesAddPersonToFavoritesUseCase(final PersonsRepository personsRepository) {
-        return new AddPersonToFavoritesUseCase(personsRepository);
+    AddPersonUseCase providesAddPersonUseCase(final PersonsRepository personsRepository) {
+        return new AddPersonUseCase(personsRepository);
     }
 
     @Provides
     @PersonsScope
-    DeleteFavoritePersonUseCase providesDeleteFavoritePersonUseCase(final PersonsRepository personsRepository) {
-        return new DeleteFavoritePersonUseCase(personsRepository);
+    DeletePersonUseCase providesDeletePersonUseCase(final PersonsRepository personsRepository) {
+        return new DeletePersonUseCase(personsRepository);
     }
 }

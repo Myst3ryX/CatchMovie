@@ -10,10 +10,11 @@ import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
+import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.movie.fragment.MovieDetailFragment;
 
-public final class MovieDetailActivity extends BaseActivity {
+public final class MovieDetailActivity extends BaseActivity implements OnPersonClickListener {
 
     public static final String EXTRA_MOVIE_ID = BuildConfig.APPLICATION_ID + "EXTRA.MOVIE_ID";
 
@@ -27,7 +28,9 @@ public final class MovieDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_movie_detail);
         prepareActionBar();
         if (savedInstanceState == null) {
-            initUI();
+            if (getIntent() != null) {
+                initUI(getIntent().getIntExtra(EXTRA_MOVIE_ID, 0));
+            }
         }
     }
 
@@ -49,9 +52,9 @@ public final class MovieDetailActivity extends BaseActivity {
         }
     }
 
-    private void initUI() {
+    private void initUI(final int movieId) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame_movie_detail, MovieDetailFragment.newInstance(), MovieDetailFragment.TAG)
+                .add(R.id.frame_movie_detail, MovieDetailFragment.newInstance(movieId), MovieDetailFragment.TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
@@ -61,6 +64,11 @@ public final class MovieDetailActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void onPersonClick(final int personId) {
+        getNavigator().navigateToPersonDetailScreen(this, personId);
     }
 }
 

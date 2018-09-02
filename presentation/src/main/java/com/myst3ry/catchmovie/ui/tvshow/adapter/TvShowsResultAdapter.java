@@ -68,14 +68,14 @@ public final class TvShowsResultAdapter extends RecyclerView.Adapter<TvShowsResu
 
     public final class TvShowResultHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_show_poster_image)
+        @BindView(R.id.result_tv_show_poster)
         ImageView mPosterImageView;
-        @BindView(R.id.tv_show_title)
+        @BindView(R.id.result_tv_show_title)
         TextView mTitleTextView;
-        @BindView(R.id.tv_show_release_year)
+        @BindView(R.id.result_tv_show_release_year)
         TextView mReleaseYearTextView;
 
-        @OnClick(R.id.tv_show_result_container)
+        @OnClick(R.id.result_tv_show_container)
         void onItemClick() {
             mListener.onTvShowClick(getTvShow(getLayoutPosition()).getTvShowId());
         }

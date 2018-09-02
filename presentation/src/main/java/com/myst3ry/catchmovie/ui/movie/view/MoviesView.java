@@ -9,6 +9,8 @@ public interface MoviesView extends BaseView {
 
     void setMovies(final List<MovieItemDataModel> movies);
 
+    void clearMovies();
+
     void showEmptyText();
 
     void hideEmptyText();

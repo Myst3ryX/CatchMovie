@@ -7,10 +7,15 @@ import com.myst3ry.domain.model.result.TvShowResultModel;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 public interface TvShowsRepository {
 
-    Observable<List<TvShowItemModel>> getTvShows(final int type);
+    Observable<List<TvShowItemModel>> getRecentTvShows();
+
+    Observable<List<TvShowItemModel>> getWatchlistTvShows();
+
+    Observable<List<TvShowItemModel>> getFavoriteTvShows();
 
     Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId);
 
@@ -18,11 +23,15 @@ public interface TvShowsRepository {
 
     Observable<List<TvShowResultModel>> searchTvShowsByQuery(final String query);
 
-    void setTvShowRating(final int tvShowId, final double rating);
+    Disposable setTvShowRating(final int tvShowId, final double rating);
 
-    void addTvShowToWatchlist(final int tvShowId);
+    Disposable addTvShowToWatchlist(final int tvShowId);
 
-    void addTvShowToFavorites(final int tvShowId);
+    Disposable addTvShowToFavorites(final int tvShowId);
 
-    void deleteTvShowById(final int tvShowId, final int type);
+    Disposable deleteTvShowFromRecent(final int movieId);
+
+    Disposable deleteTvShowFromWatchlist(final int movieId);
+
+    Disposable deleteTvShowFromFavorites(final int movieId);
 }

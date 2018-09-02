@@ -18,8 +18,6 @@ import timber.log.Timber;
 @PersonsScope
 public final class PersonsSearchPresenter extends BasePresenter<PersonsSearchView> {
 
-    private static final String TAG = "PersonsSearchPresenter";
-
     private final SearchPersonsUseCase mSearchPersonsUseCase;
 
     @Inject
@@ -39,10 +37,11 @@ public final class PersonsSearchPresenter extends BasePresenter<PersonsSearchVie
     private void showPersonsSearchResult(final List<PersonResultDataModel> persons) {
         if (persons != null && !persons.isEmpty()) {
             Timber.i("Persons search successful, found: %s", persons.size());
+            mView.hideEmptyText();
             mView.showPersonsSearchResult(persons);
         } else {
-            Timber.w("Persons search failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("Persons search failed: empty list");
+            mView.showEmptyText();
         }
     }
 

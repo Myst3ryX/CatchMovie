@@ -18,8 +18,6 @@ import timber.log.Timber;
 @MoviesScope
 public final class MoviesPopularPresenter extends BasePresenter<MoviesPopularView> {
 
-    private static final String TAG = "MoviesPopularPresenter";
-
     private final GetPopularMoviesUseCase mGetPopularMoviesUseCase;
 
     @Inject
@@ -41,8 +39,7 @@ public final class MoviesPopularPresenter extends BasePresenter<MoviesPopularVie
             Timber.i("Popular movies loaded successful, size: %s", movies.size());
             mView.showPopularMovies(movies);
         } else {
-            Timber.w("Popular movies load failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("Popular movies load failed: empty list");
         }
     }
 

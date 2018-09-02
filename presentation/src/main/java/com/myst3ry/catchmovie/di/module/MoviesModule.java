@@ -24,19 +24,19 @@ public final class MoviesModule {
 
     @Provides
     @MoviesScope
-    GetMoviesUseCase providesGetRecentMoviesUseCase(final MoviesRepository moviesRepository) {
+    GetMoviesUseCase providesGetMoviesUseCase(final MoviesRepository moviesRepository) {
         return new GetMoviesUseCase(moviesRepository);
     }
 
     @Provides
     @MoviesScope
-    AddMovieUseCase providesAddMovieToFavoritesUseCase(final MoviesRepository moviesRepository) {
+    AddMovieUseCase providesAddMovieUseCase(final MoviesRepository moviesRepository) {
         return new AddMovieUseCase(moviesRepository);
     }
 
     @Provides
     @MoviesScope
-    DeleteMovieUseCase providesDeleteFavoriteMovieUseCase(final MoviesRepository moviesRepository) {
+    DeleteMovieUseCase providesDeleteMovieUseCase(final MoviesRepository moviesRepository) {
         return new DeleteMovieUseCase(moviesRepository);
     }
 }

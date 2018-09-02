@@ -18,8 +18,6 @@ import timber.log.Timber;
 @PersonsScope
 public final class PersonsPopularPresenter extends BasePresenter<PersonsPopularView> {
 
-    private static final String TAG = "PersonsPopularPresenter";
-
     private final GetPopularPersonsUseCase mGetPopularPersonsUseCase;
 
     @Inject
@@ -41,8 +39,7 @@ public final class PersonsPopularPresenter extends BasePresenter<PersonsPopularV
             Timber.i("Popular persons loaded successful, size: %s", persons.size());
             mView.showPopularPersons(persons);
         } else {
-            Timber.w("Popular persons load failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("Popular persons load failed: empty list");
         }
     }
 

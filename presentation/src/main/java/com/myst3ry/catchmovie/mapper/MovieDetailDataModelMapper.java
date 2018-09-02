@@ -23,34 +23,37 @@ public final class MovieDetailDataModelMapper {
     public static MovieDetailDataModel transform(final MovieDetailModel model) {
         return MovieDetailDataModel.newBuilder()
                 .setId(model.getId())
-                .setType(model.getType())
                 .setPoster(model.getPoster())
                 .setPosterPreview(model.getPosterPreview())
                 .setTitle(model.getTitle())
                 .setOriginalTitle(model.getOriginalTitle())
                 .setTagLine(model.getTagLine())
-                .setReleaseDate(DateUtils.parseDate(model.getReleaseDate()))
+                .setReleaseDate(DateUtils.parseReleaseDate(model.getReleaseDate()))
                 .setGenres(model.getGenres())
                 .setAllPosters(model.getAllPosters())
                 .setDescription(model.getDescription())
-                .setBudget(model.getBudget())
-                .setRevenue(model.getRevenue())
-                .setStatus(model.getStatus())
-                .setLanguage(model.getLanguage())
-                .setRuntime(model.getRuntime())
+                .setBudget(ConvertUtils.convertMovieAmount(model.getBudget()))
+                .setRevenue(ConvertUtils.convertMovieAmount(model.getRevenue()))
+                .setMovieInfo(ConvertUtils.convertMovieInfo(model.getLanguage(), model.getRuntime(), model.getStatus()))
                 .setRating(ConvertUtils.convertRating(model.getRating()))
                 .setTmdbRating(ConvertUtils.convertTmdbRating(model.getTmdbRating()))
-                .setVotesCount(model.getVotesCount())
-                .setActors(transformPersonsCredits(model.getActors()))
-                .setDirectors(transformPersonsCredits(model.getDirectors()))
-                .setWriters(transformPersonsCredits(model.getWriters()))
+                .setVotesCount(String.valueOf(model.getVotesCount()))
+                .setWatchlist(model.isWatchlist())
+                .setFavorite(model.isFavorite())
+                .setCast(transformPersonsCredits(model.getCast()))
+                .setCrew(transformPersonsCredits(model.getCrew()))
                 .build();
     }
 
     private static List<PersonCreditDataModel> transformPersonsCredits(final List<PersonCreditModel> persons) {
         final List<PersonCreditDataModel> credits = new ArrayList<>();
         for (final PersonCreditModel person : persons) {
-            credits.add(new PersonCreditDataModel(person.getId(), person.getName(), person.getCharacter(), person.getPhoto()));
+            credits.add(new PersonCreditDataModel(
+                    person.getId(),
+                    person.getName(),
+                    person.getCharacter(),
+                    person.getPhoto())
+            );
         }
         return credits;
     }

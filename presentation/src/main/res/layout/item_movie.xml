@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movie_result_container"
+    android:id="@+id/movie_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardBackgroundColor="@android:color/transparent"
@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/item_horizontal_min_height">
+        android:minHeight="@dimen/item_main_min_height">
 
         <ImageView
             android:id="@+id/movie_poster_image"
@@ -82,7 +82,7 @@
             android:textColor="@color/color_sub_text" />
 
         <ImageView
-            android:id="@+id/rate_star_image"
+            android:id="@+id/movie_rate_star_image"
             android:layout_width="@dimen/tmdb_logo_image_width"
             android:layout_height="@dimen/tmdb_logo_image_height"
             android:layout_alignParentBottom="true"
@@ -100,13 +100,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/movie_genres"
-            android:layout_toEndOf="@+id/rate_star_image"
+            android:layout_toEndOf="@+id/movie_rate_star_image"
             android:paddingBottom="@dimen/padding_half"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_main_text" />
 
         <ImageView
-            android:id="@+id/tmdb_logo_image"
+            android:id="@+id/movie_tmdb_logo_image"
             android:layout_width="@dimen/tmdb_logo_image_width"
             android:layout_height="@dimen/tmdb_logo_image_height"
             android:layout_alignParentBottom="true"
@@ -119,13 +119,13 @@
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tmdb_rating"
+            android:id="@+id/movie_tmdb_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/movie_genres"
             android:layout_marginBottom="@dimen/margin_half"
-            android:layout_toEndOf="@+id/tmdb_logo_image"
+            android:layout_toEndOf="@+id/movie_tmdb_logo_image"
             android:paddingBottom="@dimen/padding_half"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/color_main_text" />

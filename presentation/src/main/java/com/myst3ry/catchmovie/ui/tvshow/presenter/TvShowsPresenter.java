@@ -21,8 +21,6 @@ import timber.log.Timber;
 @TvShowsScope
 public final class TvShowsPresenter extends BasePresenter<TvShowsView> {
 
-    private static final String TAG = "TvShowsPresenter";
-
     private final GetTvShowsUseCase mGetTvShowsUseCase;
     private final AddTvShowUseCase mAddTvShowUseCase;
     private final DeleteTvShowUseCase mDeleteTvShowUseCase;
@@ -45,25 +43,27 @@ public final class TvShowsPresenter extends BasePresenter<TvShowsView> {
     }
 
     public void addTvShow(final int tvShowId, final TvShowType type) {
-        mAddTvShowUseCase.execute(tvShowId, type);
+        addDisposable(mAddTvShowUseCase.execute(tvShowId, type));
     }
 
     public void deleteTvShow(final int tvShowId, final TvShowType type) {
-        mDeleteTvShowUseCase.execute(tvShowId, type);
+        addDisposable(mDeleteTvShowUseCase.execute(tvShowId, type));
     }
 
     private void setTvShows(final List<TvShowItemDataModel> tvShows) {
         if (tvShows != null && !tvShows.isEmpty()) {
-            Timber.i("TV loaded successful, size: %s", tvShows.size());
+            Timber.i("TV shows loaded successful, size: %s", tvShows.size());
+            mView.hideEmptyText();
             mView.setTvShows(tvShows);
         } else {
-            Timber.w("TV load failed: null or empty list");
+            Timber.w("TV shows load failed: empty list");
+            mView.clearTvShows();
             mView.showEmptyText();
         }
     }
 
     private void showErrorMessage(final String message) {
-        Timber.e("TV load error: %s", message);
+        Timber.e("TV shows load error: %s", message);
         mView.showToast(message);
     }
 }

@@ -20,6 +20,15 @@ public final class GetMoviesUseCase {
     }
 
     public Observable<List<MovieItemModel>> execute(final MovieType type) {
-        return mMoviesRepository.getMovies(type.ordinal());
+        switch (type) {
+            case RECENT:
+                return mMoviesRepository.getRecentMovies();
+            case WATCHLIST:
+                return mMoviesRepository.getWatchlistMovies();
+            case FAVORITE:
+                return mMoviesRepository.getFavoriteMovies();
+            default:
+                return Observable.empty();
+        }
     }
 }

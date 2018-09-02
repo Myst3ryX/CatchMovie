@@ -5,6 +5,8 @@ import com.myst3ry.domain.types.MovieType;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+
 public final class AddMovieUseCase {
 
     private final MoviesRepository mMoviesRepository;
@@ -14,16 +16,14 @@ public final class AddMovieUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public void execute(final int movieId, final MovieType type) {
+    public Disposable execute(final int movieId, final MovieType type) {
         switch (type) {
             case WATCHLIST:
-                mMoviesRepository.addMovieToWatchlist(movieId);
-                break;
+                return mMoviesRepository.addMovieToWatchlist(movieId);
             case FAVORITE:
-                mMoviesRepository.addMovieToFavorites(movieId);
-                break;
+                return mMoviesRepository.addMovieToFavorites(movieId);
             default:
-                break;
+                return null;
         }
     }
 }

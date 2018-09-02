@@ -9,6 +9,8 @@ public interface TvShowsView extends BaseView {
 
     void setTvShows(final List<TvShowItemDataModel> tvShows);
 
+    void clearTvShows();
+
     void showEmptyText();
 
     void hideEmptyText();

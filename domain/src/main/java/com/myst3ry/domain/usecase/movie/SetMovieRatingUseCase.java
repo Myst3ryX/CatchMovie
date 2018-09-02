@@ -4,6 +4,8 @@ import com.myst3ry.domain.repository.MoviesRepository;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+
 public final class SetMovieRatingUseCase {
 
     private final MoviesRepository mMoviesRepository;
@@ -13,7 +15,7 @@ public final class SetMovieRatingUseCase {
         this.mMoviesRepository = moviesRepository;
     }
 
-    public void execute(final int movieId, final double rating) {
-        mMoviesRepository.setMovieRating(movieId, rating);
+    public Disposable execute(final int movieId, final double rating) {
+        return mMoviesRepository.setMovieRating(movieId, rating);
     }
 }

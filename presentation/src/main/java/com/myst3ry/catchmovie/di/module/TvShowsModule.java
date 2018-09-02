@@ -23,19 +23,19 @@ public final class TvShowsModule {
 
     @Provides
     @TvShowsScope
-    GetTvShowsUseCase providesGetFavoriteTvShowsUseCase(final TvShowsRepository tvShowsRepository) {
+    GetTvShowsUseCase providesGetTvShowsUseCase(final TvShowsRepository tvShowsRepository) {
         return new GetTvShowsUseCase(tvShowsRepository);
     }
 
     @Provides
     @TvShowsScope
-    AddTvShowUseCase providesAddTvShowToFavoritesUseCase(final TvShowsRepository tvShowsRepository) {
+    AddTvShowUseCase providesAddTvShowUseCase(final TvShowsRepository tvShowsRepository) {
         return new AddTvShowUseCase(tvShowsRepository);
     }
 
     @Provides
     @TvShowsScope
-    DeleteTvShowUseCase providesDeleteFavoriteTvShowUseCase(final TvShowsRepository tvShowsRepository) {
+    DeleteTvShowUseCase providesDeleteTvShowUseCase(final TvShowsRepository tvShowsRepository) {
         return new DeleteTvShowUseCase(tvShowsRepository);
     }
 }

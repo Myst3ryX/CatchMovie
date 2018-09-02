@@ -7,10 +7,15 @@ import com.myst3ry.domain.model.result.MovieResultModel;
 import java.util.List;
 
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 
 public interface MoviesRepository {
 
-    Observable<List<MovieItemModel>> getMovies(final int type);
+    Observable<List<MovieItemModel>> getRecentMovies();
+
+    Observable<List<MovieItemModel>> getWatchlistMovies();
+
+    Observable<List<MovieItemModel>> getFavoriteMovies();
 
     Observable<MovieDetailModel> getMovieDetailsById(final int movieId);
 
@@ -18,11 +23,15 @@ public interface MoviesRepository {
 
     Observable<List<MovieResultModel>> searchMoviesByQuery(final String query);
 
-    void setMovieRating(final int movieId, final double rating);
+    Disposable setMovieRating(final int movieId, final double rating);
 
-    void addMovieToWatchlist(final int movieId);
+    Disposable addMovieToWatchlist(final int movieId);
 
-    void addMovieToFavorites(final int movieId);
+    Disposable addMovieToFavorites(final int movieId);
 
-    void deleteMovieById(final int movieId, final int type);
+    Disposable deleteMovieFromRecent(final int movieId);
+
+    Disposable deleteMovieFromWatchlist(final int movieId);
+
+    Disposable deleteMovieFromFavorites(final int movieId);
 }

@@ -22,7 +22,7 @@ public final class PersonResultDataMapper {
                 result.getId(),
                 result.getName(),
                 PersonConvertUtils.convertKnownForDesc(result.getKnownFor()),
-                PersonConvertUtils.convertOriginalImageUrl(result.getProfilePath())
+                PersonConvertUtils.convertPreviewImageUrl(result.getProfilePath())
         );
     }
 }

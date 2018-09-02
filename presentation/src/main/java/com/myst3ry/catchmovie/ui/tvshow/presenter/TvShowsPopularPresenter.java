@@ -18,8 +18,6 @@ import timber.log.Timber;
 @TvShowsScope
 public final class TvShowsPopularPresenter extends BasePresenter<TvShowsPopularView> {
 
-    private static final String TAG = "TvShowsPopularPresenter";
-
     private final GetPopularTvShowsUseCase mGetPopularTvShowsUseCase;
 
     @Inject
@@ -41,8 +39,7 @@ public final class TvShowsPopularPresenter extends BasePresenter<TvShowsPopularV
             Timber.i("Popular TV shows loaded successful, size: %s", tvShows.size());
             mView.showPopularTvShows(tvShows);
         } else {
-            Timber.w("Popular TV shows load failed: null or empty list");
-            //mView.showEmptyText();
+            Timber.w("Popular TV shows load failed: empty list");
         }
     }
 

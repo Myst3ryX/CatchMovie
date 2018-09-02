@@ -26,6 +26,8 @@ public final class MoviesActivity extends NavigationBaseActivity implements OnMo
     @BindView(R.id.fab_find_movie)
     FloatingActionButton mFloatingButtonFindMovie;
 
+    private static final int OFFSCREEN_PAGE_LIMIT = 2;
+
     public static Intent newIntent(final Context context) {
         return new Intent(context, MoviesActivity.class);
     }
@@ -66,6 +68,7 @@ public final class MoviesActivity extends NavigationBaseActivity implements OnMo
     private void initViewPager() {
         mMoviesViewPager.setAdapter(new MoviesPagerAdapter(getSupportFragmentManager(),
                 getResources().getStringArray(R.array.movies_sections)));
+        mMoviesViewPager.setOffscreenPageLimit(OFFSCREEN_PAGE_LIMIT);
         mMoviesTabLayout.setupWithViewPager(mMoviesViewPager);
     }
 

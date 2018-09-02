@@ -49,13 +49,9 @@ public final class PersonsPopularFragment extends BaseFragment implements Person
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnPersonClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getPersonsSubComponent().inject(this);
-        if (context instanceof OnPersonClickListener) {
-            this.mPersonClickListener = (OnPersonClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -78,6 +74,14 @@ public final class PersonsPopularFragment extends BaseFragment implements Person
     public void onStart() {
         super.onStart();
         getPopularPersons();
+    }
+
+    private void initOnPersonClickListener(final Context context) {
+        if (context instanceof OnPersonClickListener) {
+            this.mPersonClickListener = (OnPersonClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {

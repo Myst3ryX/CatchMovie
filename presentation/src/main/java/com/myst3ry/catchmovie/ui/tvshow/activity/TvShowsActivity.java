@@ -26,6 +26,8 @@ public final class TvShowsActivity extends NavigationBaseActivity implements OnT
     @BindView(R.id.fab_find_tv_show)
     FloatingActionButton mFloatingButtonFindTvShow;
 
+    private static final int OFFSCREEN_PAGE_LIMIT = 2;
+
     public static Intent newIntent(final Context context) {
         return new Intent(context, TvShowsActivity.class);
     }
@@ -66,6 +68,7 @@ public final class TvShowsActivity extends NavigationBaseActivity implements OnT
     private void initViewPager() {
         mTvShowsViewPager.setAdapter(new TvShowsPagerAdapter(getSupportFragmentManager(),
                 getResources().getStringArray(R.array.tv_shows_sections)));
+        mTvShowsViewPager.setOffscreenPageLimit(OFFSCREEN_PAGE_LIMIT);
         mTvShowsTabLayout.setupWithViewPager(mTvShowsViewPager);
     }
 

@@ -7,7 +7,6 @@ import java.util.List;
 public final class MovieDetailModel {
 
     private final int mId;
-    private final int mType;
     private final String mTitle;
     private final String mOriginalTitle;
     private final String mTagLine;
@@ -25,19 +24,19 @@ public final class MovieDetailModel {
     private final double mRating;
     private final double mTmdbRating;
     private final int mVotesCount;
-    private final List<PersonCreditModel> mActors;
-    private final List<PersonCreditModel> mDirectors;
-    private final List<PersonCreditModel> mWriters;
+    private final boolean mWatchlist;
+    private final boolean mFavorite;
+    private final List<PersonCreditModel> mCast;
+    private final List<PersonCreditModel> mCrew;
 
-    public MovieDetailModel(int id, int type, String title, String originalTitle,
+    public MovieDetailModel(int id, String title, String originalTitle,
                             String tagLine, String releaseDate, List<String> genres,
                             String poster, String posterPreview, List<String> allPosters,
                             String description, int budget, int revenue, String status,
                             String language, int runtime, double rating, double tmdbRating,
-                            int votesCount, List<PersonCreditModel> actors,
-                            List<PersonCreditModel> directors, List<PersonCreditModel> writers) {
+                            int votesCount, boolean isWatchlist, boolean isFavorite,
+                            List<PersonCreditModel> cast, List<PersonCreditModel> crew) {
         this.mId = id;
-        this.mType = type;
         this.mTitle = title;
         this.mOriginalTitle = originalTitle;
         this.mTagLine = tagLine;
@@ -55,17 +54,14 @@ public final class MovieDetailModel {
         this.mRating = rating;
         this.mTmdbRating = tmdbRating;
         this.mVotesCount = votesCount;
-        this.mActors = actors;
-        this.mDirectors = directors;
-        this.mWriters = writers;
+        this.mWatchlist = isWatchlist;
+        this.mFavorite = isFavorite;
+        this.mCast = cast;
+        this.mCrew = crew;
     }
 
     public int getId() {
         return mId;
-    }
-
-    public int getType() {
-        return mType;
     }
 
     public String getTitle() {
@@ -136,15 +132,20 @@ public final class MovieDetailModel {
         return mVotesCount;
     }
 
-    public List<PersonCreditModel> getActors() {
-        return mActors;
+    public boolean isWatchlist() {
+        return mWatchlist;
     }
 
-    public List<PersonCreditModel> getDirectors() {
-        return mDirectors;
+    public boolean isFavorite() {
+        return mFavorite;
     }
 
-    public List<PersonCreditModel> getWriters() {
-        return mWriters;
+    public List<PersonCreditModel> getCast() {
+        return mCast;
     }
+
+    public List<PersonCreditModel> getCrew() {
+        return mCrew;
+    }
+
 }

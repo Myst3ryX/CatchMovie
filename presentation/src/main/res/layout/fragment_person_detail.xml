@@ -44,7 +44,6 @@
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="@integer/detail_person_name_max_lines"
-            android:text="Jordana Brewster"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/color_main_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,13 +55,24 @@
             android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_standard"
-            android:layout_marginTop="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
-            android:text="Actress"
+            android:layout_marginTop="@dimen/margin_small"
             android:textColor="@color/color_sub_text"
             app:layout_constraintStart_toEndOf="@+id/detail_person_photo"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_name" />
+
+        <TextView
+            android:id="@+id/detail_person_birthday_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:text="@string/detail_person_born_at"
+            android:textColor="@color/color_main_text"
+            app:layout_constraintStart_toEndOf="@+id/detail_person_photo"
+            app:layout_constraintTop_toBottomOf="@+id/detail_person_known_as" />
 
         <TextView
             android:id="@+id/detail_person_birthday"
@@ -71,10 +81,22 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_standard"
-            android:text="Born: October 10, 1977"
             android:textColor="@color/color_main_text"
-            app:layout_constraintStart_toEndOf="@+id/detail_person_photo"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/detail_person_birthday_title"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_known_as" />
+
+        <TextView
+            android:id="@+id/detail_person_deathday_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_half"
+            android:layout_marginTop="@dimen/margin_half"
+            android:text="@string/detail_person_died_at"
+            android:textColor="@color/color_main_text"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/detail_person_photo"
+            app:layout_constraintTop_toBottomOf="@+id/detail_person_birthday_title" />
 
         <TextView
             android:id="@+id/detail_person_deathday"
@@ -84,9 +106,10 @@
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_half"
             android:layout_marginTop="@dimen/margin_half"
-            android:text="Died: September 22, 2199"
             android:textColor="@color/color_main_text"
-            app:layout_constraintStart_toEndOf="@+id/detail_person_photo"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/detail_person_deathday_title"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_birthday" />
 
         <TextView
@@ -98,6 +121,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_photo" />
 
@@ -110,7 +134,6 @@
             android:layout_marginTop="@dimen/margin_half"
             android:ellipsize="end"
             android:maxLines="@integer/detail_person_bio_max_lines"
-            android:text="Raven-haired beauty Jordana Brewster was born on April 26, 1980 in Panama City, Panama. Her mother, Maria João Leal de Sousa, is a Brazilian-born model who appeared on the cover of Sports Illustrated in 1978 . Her father, Alden Brewster, is an American-born investment banker, who has English, Scottish, and Irish ancestry. Her paternal grandfather, Mayflower descendant Kingman Brewster, Jr., was president of Yale University from 1963 to 1977. Jordana was raised in London, England up until the age of six. At this time, her family decided to move back to her mother's native Rio de Janeiro. Here, they would stay for the next 4 years. Jordana learned to speak fluent Portuguese during her 4 year stay in Rio de Janeiro. At the age of ten, Jordana's family decided to move again, only this time they would relocate to Manhattan. It was here where Jordana studied at Sacred Heart, an all-girl Catholic school before moving on to the New York Professional Children's School."
             android:textColor="@color/color_main_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -125,6 +148,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/color_main_text"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_biography" />
 
@@ -132,24 +156,22 @@
             android:id="@+id/detail_person_movies_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_half"
             android:text="@string/detail_person_movies_credits"
             android:textColor="@color/color_main_text"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_filmography_title" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_detail_movies_credits"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_standard"
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_small"
-            android:overScrollMode="never"
-            android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_movies_subtitle" />
@@ -158,26 +180,25 @@
             android:id="@+id/detail_person_tv_shows_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_half"
             android:text="@string/detail_person_tv_shows_credits"
             android:textColor="@color/color_main_text"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_detail_movies_credits" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_detail_tv_shows_credits"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/detail_field_zero_width"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_standard"
             android:layout_marginEnd="@dimen/margin_standard"
             android:layout_marginStart="@dimen/margin_standard"
             android:layout_marginTop="@dimen/margin_small"
-            android:overScrollMode="never"
-            android:scrollbars="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_person_tv_shows_subtitle" />
 
     </android.support.constraint.ConstraintLayout>

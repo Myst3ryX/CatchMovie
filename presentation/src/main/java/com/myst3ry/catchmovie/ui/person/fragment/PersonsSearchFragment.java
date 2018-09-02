@@ -56,13 +56,9 @@ public final class PersonsSearchFragment extends BaseFragment implements Persons
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnPersonClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getPersonsSubComponent().inject(this);
-        if (context instanceof OnPersonClickListener) {
-            this.mPersonClickListener = (OnPersonClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -86,6 +82,14 @@ public final class PersonsSearchFragment extends BaseFragment implements Persons
         super.onStart();
         if (getArguments() != null) {
             performSearch(getArguments().getString(ARG_PERSONS_SEARCH_QUERY));
+        }
+    }
+
+    private void initOnPersonClickListener(final Context context) {
+        if (context instanceof OnPersonClickListener) {
+            this.mPersonClickListener = (OnPersonClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
         }
     }
 

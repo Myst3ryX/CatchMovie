@@ -30,6 +30,7 @@ public final class PersonDetailDataMapper {
                 entity.getBiography(),
                 entity.getPhoto(),
                 entity.getPhotoPreview(),
+                entity.isFavorite(),
                 transformTvShowsCredits(entity.getTvShowsCredits()),
                 transformMoviesCredits(entity.getMoviesCredits())
         );
@@ -38,7 +39,12 @@ public final class PersonDetailDataMapper {
     private static List<TvShowCreditModel> transformTvShowsCredits(final List<TvShowCredit> credits) {
         final List<TvShowCreditModel> models = new ArrayList<>();
         for (final TvShowCredit credit : credits) {
-            models.add(new TvShowCreditModel(credit.getId(), credit.getTitle(), credit.getPoster()));
+            models.add(new TvShowCreditModel(
+                    credit.getId(),
+                    credit.getTitle(),
+                    credit.getCharacter(),
+                    credit.getPoster())
+            );
         }
         return models;
     }
@@ -46,7 +52,12 @@ public final class PersonDetailDataMapper {
     private static List<MovieCreditModel> transformMoviesCredits(final List<MovieCredit> credits) {
         final List<MovieCreditModel> models = new ArrayList<>();
         for (final MovieCredit credit : credits) {
-            models.add(new MovieCreditModel(credit.getId(), credit.getTitle(), credit.getPoster()));
+            models.add(new MovieCreditModel(
+                    credit.getId(),
+                    credit.getTitle(),
+                    credit.getCharacter(),
+                    credit.getPoster())
+            );
         }
         return models;
     }

@@ -20,8 +20,8 @@ public final class TvShowDetailModule {
                                                         final SetTvShowRatingUseCase setTvShowRatingUseCase,
                                                         final AddTvShowUseCase addTvShowUseCase,
                                                         final DeleteTvShowUseCase deleteTvShowUseCase) {
-        return new TvShowDetailPresenter(getTvShowDetailsUseCase, setTvShowRatingUseCase, addTvShowUseCase,
-                deleteTvShowUseCase);
+        return new TvShowDetailPresenter(getTvShowDetailsUseCase, setTvShowRatingUseCase,
+                addTvShowUseCase, deleteTvShowUseCase);
     }
 
     @Provides

@@ -10,10 +10,11 @@ import android.view.MenuItem;
 
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
+import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowDetailFragment;
 
-public final class TvShowDetailActivity extends BaseActivity {
+public final class TvShowDetailActivity extends BaseActivity implements OnPersonClickListener {
 
     public static final String EXTRA_TV_SHOW_ID = BuildConfig.APPLICATION_ID + "EXTRA.TV_SHOW_ID";
 
@@ -27,7 +28,9 @@ public final class TvShowDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_tv_show_detail);
         prepareActionBar();
         if (savedInstanceState == null) {
-            initUI();
+            if (getIntent() != null) {
+                initUI(getIntent().getIntExtra(EXTRA_TV_SHOW_ID, 0));
+            }
         }
     }
 
@@ -49,9 +52,9 @@ public final class TvShowDetailActivity extends BaseActivity {
         }
     }
 
-    private void initUI() {
+    private void initUI(final int tvShowId) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.frame_tvshow_detail, TvShowDetailFragment.newInstance(), TvShowDetailFragment.TAG)
+                .add(R.id.frame_tvshow_detail, TvShowDetailFragment.newInstance(tvShowId), TvShowDetailFragment.TAG)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                 .commit();
     }
@@ -61,6 +64,11 @@ public final class TvShowDetailActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public void onPersonClick(final int personId) {
+        getNavigator().navigateToPersonDetailScreen(this, personId);
     }
 }
 

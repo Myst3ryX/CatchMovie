@@ -21,8 +21,6 @@ import timber.log.Timber;
 @MoviesScope
 public final class MoviesPresenter extends BasePresenter<MoviesView> {
 
-    private static final String TAG = "MoviesPresenter";
-
     private final GetMoviesUseCase mGetMoviesUseCase;
     private final AddMovieUseCase mAddMovieUseCase;
     private final DeleteMovieUseCase mDeleteMovieUseCase;
@@ -45,19 +43,21 @@ public final class MoviesPresenter extends BasePresenter<MoviesView> {
     }
 
     public void addMovie(final int movieId, final MovieType type) {
-        mAddMovieUseCase.execute(movieId, type);
+        addDisposable(mAddMovieUseCase.execute(movieId, type));
     }
 
     public void deleteMovie(final int movieId, final MovieType type) {
-        mDeleteMovieUseCase.execute(movieId, type);
+        addDisposable(mDeleteMovieUseCase.execute(movieId, type));
     }
 
     private void setMovies(final List<MovieItemDataModel> movies) {
         if (movies != null && !movies.isEmpty()) {
             Timber.i("Movies loaded successful, size: %s", movies.size());
+            mView.hideEmptyText();
             mView.setMovies(movies);
         } else {
-            Timber.w("Movies load failed: null or empty list");
+            Timber.w("Movies load failed: empty list");
+            mView.clearMovies();
             mView.showEmptyText();
         }
     }

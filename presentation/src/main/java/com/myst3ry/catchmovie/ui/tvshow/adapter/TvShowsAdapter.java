@@ -24,8 +24,6 @@ import butterknife.OnClick;
 
 public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.TvShowHolder> {
 
-    private static final int INIT_POS = 0;
-
     private List<TvShowItemDataModel> mTvShows;
     private final OnTvShowClickListener mListener;
     private final OnTvShowMenuClickListener mMenuListener;
@@ -70,34 +68,9 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         notifyDataSetChanged();
     }
 
-    public void addTvShow(final TvShowItemDataModel tvShow) {
-        mTvShows.add(INIT_POS, tvShow);
-        notifyItemInserted(INIT_POS);
-    }
-
-    public void removeTvShow(final int tvShowId) {
-        TvShowItemDataModel tvShow = null;
-        int position = Integer.MIN_VALUE;
-
-        for (int i = 0; i < mTvShows.size(); i++) {
-            if (mTvShows.get(i).getTvShowId() == tvShowId) {
-                tvShow = mTvShows.get(i);
-                position = i;
-                break;
-            }
-        }
-
-        if (tvShow != null) {
-            mTvShows.remove(tvShow);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, mTvShows.size());
-        }
-    }
-
     public void clearTvShows() {
-        final int size = mTvShows.size();
         mTvShows.clear();
-        notifyItemRangeRemoved(INIT_POS, size);
+        notifyDataSetChanged();
     }
 
     private TvShowItemDataModel getTvShow(final int position) {
@@ -116,10 +89,10 @@ public final class TvShowsAdapter extends RecyclerView.Adapter<TvShowsAdapter.Tv
         TextView mGenreTextView;
         @BindView(R.id.tv_show_rating)
         TextView mRatingTextView;
-        @BindView(R.id.tmdb_rating)
+        @BindView(R.id.tv_show_tmdb_rating)
         TextView mTmdbRatingTextView;
 
-        @OnClick(R.id.tv_show_result_container)
+        @OnClick(R.id.tv_show_container)
         void onItemClick() {
             mListener.onTvShowClick(getTvShow(getLayoutPosition()).getTvShowId());
         }

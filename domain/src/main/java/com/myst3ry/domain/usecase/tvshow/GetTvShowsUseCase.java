@@ -20,6 +20,15 @@ public final class GetTvShowsUseCase {
     }
 
     public Observable<List<TvShowItemModel>> execute(final TvShowType type) {
-        return mTvShowsRepository.getTvShows(type.ordinal());
+        switch (type) {
+            case RECENT:
+                return mTvShowsRepository.getRecentTvShows();
+            case WATCHLIST:
+                return mTvShowsRepository.getWatchlistTvShows();
+            case FAVORITE:
+                return mTvShowsRepository.getFavoriteTvShows();
+            default:
+                return Observable.empty();
+        }
     }
 }

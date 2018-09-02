@@ -13,7 +13,9 @@ public abstract class BasePresenter<T extends BaseView> {
     }
 
     protected void addDisposable(final Disposable disposable) {
-        mDisposables.add(disposable);
+        if (disposable != null) {
+            mDisposables.add(disposable);
+        }
     }
 
     public void disposeAll() {

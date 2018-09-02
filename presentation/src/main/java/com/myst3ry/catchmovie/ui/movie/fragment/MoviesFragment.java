@@ -62,13 +62,9 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnMovieClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getMoviesSubComponent().inject(this);
-        if (context instanceof OnMovieClickListener) {
-            this.mMovieClickListener = (OnMovieClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Override
@@ -95,9 +91,17 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         getMovies();
+    }
+
+    private void initOnMovieClickListener(final Context context) {
+        if (context instanceof OnMovieClickListener) {
+            this.mMovieClickListener = (OnMovieClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {
@@ -112,7 +116,7 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
         mMoviesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false));
         mMoviesRecyclerView.addItemDecoration(LinearSpacingItemDecoration.newBuilder()
-                .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_small))
+                .setSpacing(getResources().getDimensionPixelSize(R.dimen.margin_half))
                 .setOrientation(LinearLayoutManager.VERTICAL)
                 .includeEdge(true)
                 .build());
@@ -128,27 +132,35 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
     }
 
     @Override
-    public void showEmptyText() {
-        mEmptyMoviesTextView.setVisibility(View.VISIBLE);
-        switch (mType) {
-            case RECENT:
-                mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_recent));
-                break;
-            case WATCHLIST:
-                mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_watchlist));
-                break;
-            case FAVORITE:
-                mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_favorites));
-                break;
-            default:
-                break;
-        }
+    public void clearMovies() {
+        mMoviesAdapter.clearMovies();
+    }
 
+    @Override
+    public void showEmptyText() {
+        if (mEmptyMoviesTextView.getVisibility() == View.GONE) {
+            mEmptyMoviesTextView.setVisibility(View.VISIBLE);
+            switch (mType) {
+                case RECENT:
+                    mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_recent));
+                    break;
+                case WATCHLIST:
+                    mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_watchlist));
+                    break;
+                case FAVORITE:
+                    mEmptyMoviesTextView.setText(getString(R.string.text_empty_movies_favorites));
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     @Override
     public void hideEmptyText() {
-        mEmptyMoviesTextView.setVisibility(View.GONE);
+        if (mEmptyMoviesTextView.getVisibility() == View.VISIBLE) {
+            mEmptyMoviesTextView.setVisibility(View.GONE);
+        }
     }
 
     private void onMovieMenuClick(final int movieId) {

@@ -21,7 +21,6 @@ public final class TvShowDetailDataMapper {
     public static TvShowDetailModel transform(final TvShowEntity entity) {
         return new TvShowDetailModel(
                 entity.getId(),
-                entity.getType(),
                 entity.getTitle(),
                 entity.getOriginalTitle(),
                 entity.getFirstAirDate(),
@@ -40,6 +39,8 @@ public final class TvShowDetailDataMapper {
                 entity.getRating(),
                 entity.getTmdbRating(),
                 entity.getVotesCount(),
+                entity.isWatchlist(),
+                entity.isFavorite(),
                 transformPersonCredits(entity.getCreators()),
                 transformPersonCredits(entity.getActors())
         );
@@ -48,7 +49,12 @@ public final class TvShowDetailDataMapper {
     private static List<PersonCreditModel> transformPersonCredits(final List<PersonCredit> credits) {
         final List<PersonCreditModel> models = new ArrayList<>();
         for (final PersonCredit credit : credits) {
-            models.add(new PersonCreditModel(credit.getId(), credit.getName(), credit.getCharacter(), credit.getPhoto()));
+            models.add(new PersonCreditModel(
+                    credit.getId(),
+                    credit.getName(),
+                    credit.getCharacter(),
+                    credit.getPhoto())
+            );
         }
         return models;
     }

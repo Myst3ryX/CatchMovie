@@ -24,8 +24,6 @@ import butterknife.OnClick;
 
 public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieHolder> {
 
-    private static final int INIT_POS = 0;
-
     private List<MovieItemDataModel> mMovies;
     private final OnMovieClickListener mListener;
     private final OnMovieMenuClickListener mMenuListener;
@@ -70,34 +68,9 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         notifyDataSetChanged();
     }
 
-    public void addMovie(final MovieItemDataModel movie) {
-        mMovies.add(INIT_POS, movie);
-        notifyItemInserted(INIT_POS);
-    }
-
-    public void removeMovie(final int movieId) {
-        MovieItemDataModel movie = null;
-        int position = Integer.MIN_VALUE;
-
-        for (int i = 0; i < mMovies.size(); i++) {
-            if (mMovies.get(i).getMovieId() == movieId) {
-                movie = mMovies.get(i);
-                position = i;
-                break;
-            }
-        }
-
-        if (movie != null) {
-            mMovies.remove(movie);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, mMovies.size());
-        }
-    }
-
     public void clearMovies() {
-        final int size = mMovies.size();
         mMovies.clear();
-        notifyItemRangeRemoved(INIT_POS, size);
+        notifyDataSetChanged();
     }
 
     private MovieItemDataModel getMovie(final int position) {
@@ -116,10 +89,10 @@ public final class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.Movi
         TextView mGenreTextView;
         @BindView(R.id.movie_rating)
         TextView mRatingTextView;
-        @BindView(R.id.tmdb_rating)
+        @BindView(R.id.movie_tmdb_rating)
         TextView mTmdbRatingTextView;
 
-        @OnClick(R.id.movie_result_container)
+        @OnClick(R.id.movie_container)
         void onItemClick() {
             mListener.onMovieClick(getMovie(getLayoutPosition()).getMovieId());
         }

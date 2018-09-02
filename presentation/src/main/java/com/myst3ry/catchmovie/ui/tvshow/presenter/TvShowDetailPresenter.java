@@ -20,8 +20,6 @@ import timber.log.Timber;
 @TvShowsScope
 public final class TvShowDetailPresenter extends BasePresenter<TvShowDetailView> {
 
-    private static final String TAG = "TvShowDetailPresenter";
-
     private final GetTvShowDetailsUseCase mGetTvShowDetailsUseCase;
     private final SetTvShowRatingUseCase mSetTvShowRatingUseCase;
     private final AddTvShowUseCase mAddTvShowUseCase;
@@ -48,15 +46,27 @@ public final class TvShowDetailPresenter extends BasePresenter<TvShowDetailView>
     }
 
     public void setTvShowRating(final int tvShowId, final double rating) {
-        mSetTvShowRatingUseCase.execute(tvShowId, rating);
+        addDisposable(mSetTvShowRatingUseCase.execute(tvShowId, rating));
     }
 
-    public void addTvShow(final int tvShowId, final TvShowType type) {
-        mAddTvShowUseCase.execute(tvShowId, type);
+    public void addToWatchlist(final int tvShowId) {
+        addDisposable(mAddTvShowUseCase.execute(tvShowId, TvShowType.WATCHLIST));
+        mView.setWatchlistStatus(true);
     }
 
-    public void deleteTvShow(final int tvShowId, final TvShowType type) {
-        mDeleteTvShowUseCase.execute(tvShowId, type);
+    public void deleteFromWatchlist(final int tvShowId) {
+        addDisposable(mDeleteTvShowUseCase.execute(tvShowId, TvShowType.WATCHLIST));
+        mView.setWatchlistStatus(false);
+    }
+
+    public void addToFavorites(final int tvShowId) {
+        addDisposable(mAddTvShowUseCase.execute(tvShowId, TvShowType.FAVORITE));
+        mView.setFavoriteStatus(true);
+    }
+
+    public void deleteFromFavorites(final int tvShowId) {
+        addDisposable(mDeleteTvShowUseCase.execute(tvShowId, TvShowType.FAVORITE));
+        mView.setFavoriteStatus(false);
     }
 
     private void setTvShowDetails(final TvShowDetailDataModel tvShow) {

@@ -1,6 +1,8 @@
 package com.myst3ry.data.repository;
 
 import com.myst3ry.data.local.database.dao.TvShowsDAO;
+import com.myst3ry.data.mapper.TvShowDetailDataMapper;
+import com.myst3ry.data.mapper.TvShowEntityMapper;
 import com.myst3ry.data.mapper.TvShowItemDataMapper;
 import com.myst3ry.data.mapper.TvShowResultDataMapper;
 import com.myst3ry.data.remote.api.ApiMapper;
@@ -9,11 +11,13 @@ import com.myst3ry.domain.model.item.TvShowItemModel;
 import com.myst3ry.domain.model.result.TvShowResultModel;
 import com.myst3ry.domain.repository.TvShowsRepository;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public final class TvShowsRepositoryImpl implements TvShowsRepository {
@@ -28,15 +32,39 @@ public final class TvShowsRepositoryImpl implements TvShowsRepository {
     }
 
     @Override
-    public Observable<List<TvShowItemModel>> getTvShows(final int type) {
-        return mTvShowsDao.getTvShowsByType(type)
+    public Observable<List<TvShowItemModel>> getRecentTvShows() {
+        return mTvShowsDao.getRecentTvShows()
+                .map(TvShowItemDataMapper::transform)
+                .toObservable();
+    }
+
+    @Override
+    public Observable<List<TvShowItemModel>> getWatchlistTvShows() {
+        return mTvShowsDao.getWatchlistTvShows()
+                .map(TvShowItemDataMapper::transform)
+                .toObservable();
+    }
+
+    @Override
+    public Observable<List<TvShowItemModel>> getFavoriteTvShows() {
+        return mTvShowsDao.getFavoriteTvShows()
                 .map(TvShowItemDataMapper::transform)
                 .toObservable();
     }
 
     @Override
     public Observable<TvShowDetailModel> getTvShowDetailsById(final int tvShowId) {
-        return null; //todo api+db
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .observeOn(Schedulers.computation())
+                .onErrorResumeNext(throwable -> {
+                    return mApiMapper.getTvShowDetails(tvShowId)
+                            .map(TvShowEntityMapper::transform)
+                            .doOnNext(entity -> {
+                                entity.setRecent(true);
+                                entity.setCreationDate(new Date());
+                                mTvShowsDao.insertTvShow(entity);
+                            });
+                }).map(TvShowDetailDataMapper::transform);
     }
 
     @Override
@@ -52,26 +80,80 @@ public final class TvShowsRepositoryImpl implements TvShowsRepository {
     }
 
     @Override
-    public void setTvShowRating(final int tvShowId, final double rating) {
-        mTvShowsDao.getTvShowById(tvShowId)
-                .toObservable()
+    public Disposable setTvShowRating(final int tvShowId, final double rating) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
-                .doOnNext(movie -> movie.setRating(rating))
-                .subscribe();
+                .doOnNext(entity -> {
+                    entity.setRating(rating);
+                    mTvShowsDao.updateTvShow(entity);
+                }).subscribe();
     }
 
     @Override
-    public void addTvShowToWatchlist(final int tvShowId) {
-        //todo db
+    public Disposable addTvShowToWatchlist(final int tvShowId) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .doOnNext(entity -> {
+                    entity.setWatchlist(true);
+                    mTvShowsDao.updateTvShow(entity);
+                }).subscribe();
     }
 
     @Override
-    public void addTvShowToFavorites(final int tvShowId) {
-        //todo db
+    public Disposable addTvShowToFavorites(final int tvShowId) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .doOnNext(entity -> {
+                    entity.setFavorite(true);
+                    mTvShowsDao.updateTvShow(entity);
+                }).subscribe();
     }
 
     @Override
-    public void deleteTvShowById(final int tvShowId, final int type) {
-        //todo db
+    public Disposable deleteTvShowFromRecent(final int tvShowId) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .doOnNext(entity -> {
+                    if (!entity.isWatchlist() && !entity.isFavorite()) {
+                        mTvShowsDao.deleteTvShow(entity);
+                    } else {
+                        entity.setRecent(false);
+                        mTvShowsDao.updateTvShow(entity);
+                    }
+                }).subscribe();
+    }
+
+    @Override
+    public Disposable deleteTvShowFromWatchlist(final int tvShowId) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .doOnNext(entity -> {
+                    if (!entity.isRecent() && !entity.isFavorite()) {
+                        mTvShowsDao.deleteTvShow(entity);
+                    } else {
+                        entity.setWatchlist(false);
+                        mTvShowsDao.updateTvShow(entity);
+                    }
+                }).subscribe();
+    }
+
+    @Override
+    public Disposable deleteTvShowFromFavorites(final int tvShowId) {
+        return mTvShowsDao.getTvShowById(tvShowId).toObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .doOnNext(entity -> {
+                    if (!entity.isRecent() && !entity.isWatchlist()) {
+                        mTvShowsDao.deleteTvShow(entity);
+                    } else {
+                        entity.setFavorite(false);
+                        mTvShowsDao.updateTvShow(entity);
+                    }
+                }).subscribe();
     }
 }

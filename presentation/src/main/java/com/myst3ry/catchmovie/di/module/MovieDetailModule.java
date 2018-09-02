@@ -20,7 +20,8 @@ public final class MovieDetailModule {
                                                       final SetMovieRatingUseCase setMovieRatingUseCase,
                                                       final AddMovieUseCase addMovieUseCase,
                                                       final DeleteMovieUseCase deleteMovieUseCase) {
-        return new MovieDetailPresenter(getMovieDetailsUseCase, setMovieRatingUseCase, addMovieUseCase, deleteMovieUseCase);
+        return new MovieDetailPresenter(getMovieDetailsUseCase, setMovieRatingUseCase,
+                addMovieUseCase, deleteMovieUseCase);
     }
 
     @Provides

@@ -49,13 +49,9 @@ public final class TvShowsPopularFragment extends BaseFragment implements TvShow
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        initOnTvShowClickListener(context);
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent()
                 .getTvShowsSubComponent().inject(this);
-        if (context instanceof OnTvShowClickListener) {
-            this.mTvShowClickListener = (OnTvShowClickListener) context;
-        } else {
-            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
-        }
     }
 
     @Nullable
@@ -79,6 +75,14 @@ public final class TvShowsPopularFragment extends BaseFragment implements TvShow
     public void onStart() {
         super.onStart();
         getPopularTvShows();
+    }
+
+    private void initOnTvShowClickListener(final Context context) {
+        if (context instanceof OnTvShowClickListener) {
+            this.mTvShowClickListener = (OnTvShowClickListener) context;
+        } else {
+            throw new ClassCastException(getString(R.string.text_exception_no_listener_impl));
+        }
     }
 
     private void initAdapter() {
