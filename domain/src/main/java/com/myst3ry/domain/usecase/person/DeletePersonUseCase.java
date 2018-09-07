@@ -6,6 +6,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for deleting person from collection
+ */
 public final class DeletePersonUseCase {
 
     private final PersonsRepository mPersonsRepository;

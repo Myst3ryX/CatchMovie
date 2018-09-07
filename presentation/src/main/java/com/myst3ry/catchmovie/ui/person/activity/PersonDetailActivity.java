@@ -11,10 +11,17 @@ import android.view.MenuItem;
 import com.myst3ry.catchmovie.BuildConfig;
 import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
+import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.person.fragment.PersonDetailFragment;
 
+/**
+ * Person Detail Activity contains detail information about person
+ *
+ * @see BaseActivity
+ * @see OnPersonClickListener
+ */
 public final class PersonDetailActivity extends BaseActivity implements OnMovieClickListener, OnTvShowClickListener {
 
     public static final String EXTRA_PERSON_ID = BuildConfig.APPLICATION_ID + "EXTRA.PERSON_ID";

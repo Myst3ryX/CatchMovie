@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.detail.credits;
 
+/**
+ * Model that represents Person Credit in domain-layer
+ */
 public final class PersonCreditModel {
 
     private final int mId;

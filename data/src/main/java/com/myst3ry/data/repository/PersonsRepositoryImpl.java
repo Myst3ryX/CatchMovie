@@ -20,6 +20,11 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * Implementation of PersonsRepository interface
+ *
+ * @see PersonsRepository
+ */
 public final class PersonsRepositoryImpl implements PersonsRepository {
 
     private final PersonsDAO mPersonsDao;

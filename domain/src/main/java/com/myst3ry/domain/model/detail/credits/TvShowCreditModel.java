@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.detail.credits;
 
+/**
+ * Model that represents TvShow Credit in domain-layer
+ */
 public final class TvShowCreditModel {
 
     private final int mId;

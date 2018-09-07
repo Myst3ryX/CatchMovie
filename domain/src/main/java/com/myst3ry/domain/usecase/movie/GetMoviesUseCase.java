@@ -10,6 +10,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting movie collections by movie type
+ */
 public final class GetMoviesUseCase {
 
     private final MoviesRepository mMoviesRepository;

@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for adding movie to collection
+ */
 public final class AddMovieUseCase {
 
     private final MoviesRepository mMoviesRepository;

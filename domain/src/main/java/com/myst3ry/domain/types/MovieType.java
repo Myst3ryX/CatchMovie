@@ -1,5 +1,8 @@
 package com.myst3ry.domain.types;
 
+/**
+ * Enum class that represents type of Movie
+ */
 public enum MovieType {
     RECENT, WATCHLIST, FAVORITE;
 

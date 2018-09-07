@@ -9,6 +9,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting popular persons
+ */
 public final class GetPopularPersonsUseCase {
 
     private final PersonsRepository mPersonsRepository;

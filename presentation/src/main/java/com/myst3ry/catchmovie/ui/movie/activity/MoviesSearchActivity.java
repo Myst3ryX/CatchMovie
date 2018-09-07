@@ -16,6 +16,14 @@ import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.movie.fragment.MoviesPopularFragment;
 import com.myst3ry.catchmovie.ui.movie.fragment.MoviesSearchFragment;
 
+/**
+ * Movies Search Activity contains movie search content
+ *
+ * @see BaseActivity
+ * @see OnMovieClickListener
+ * @see MoviesPopularFragment
+ * @see MoviesSearchFragment
+ */
 public final class MoviesSearchActivity extends BaseActivity implements OnMovieClickListener {
 
     private SearchView mSearchView;

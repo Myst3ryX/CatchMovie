@@ -1,5 +1,8 @@
 package com.myst3ry.catchmovie.model.item;
 
+/**
+ * Model that represents PersonItem in presentation-layer
+ */
 public final class PersonItemDataModel {
 
     private final int mPersonId;

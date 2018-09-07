@@ -10,6 +10,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting tv show collections by tv show type
+ */
 public final class GetTvShowsUseCase {
 
     private final TvShowsRepository mTvShowsRepository;

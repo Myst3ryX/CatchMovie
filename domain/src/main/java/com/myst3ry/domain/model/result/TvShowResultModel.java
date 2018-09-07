@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.result;
 
+/**
+ * Model that represents TvShowResult in domain-layer
+ */
 public final class TvShowResultModel {
 
     private final int mId;

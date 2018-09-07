@@ -1,5 +1,8 @@
 package com.myst3ry.domain.types;
 
+/**
+ * Enum class that represents type of TvShow
+ */
 public enum TvShowType {
     RECENT, WATCHLIST, FAVORITE;
 

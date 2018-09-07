@@ -2,6 +2,9 @@ package com.myst3ry.domain.model.item;
 
 import java.util.List;
 
+/**
+ * Model that represents MovieItem in domain-layer
+ */
 public final class MovieItemModel {
 
     private final int mId;

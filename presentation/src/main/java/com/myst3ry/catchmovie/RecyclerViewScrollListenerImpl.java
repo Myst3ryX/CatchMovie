@@ -2,8 +2,16 @@ package com.myst3ry.catchmovie;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 
-public final class RecyclerViewScrollListenerImpl extends RecyclerView.OnScrollListener {
+/**
+ * A simple {@link RecyclerView} custom scroll listener
+ *
+ * @see RecyclerView
+ * @see OnScrollListener
+ * @see FloatingActionButton
+ */
+public final class RecyclerViewScrollListenerImpl extends OnScrollListener {
 
     private static final int DY_POS = 0;
 

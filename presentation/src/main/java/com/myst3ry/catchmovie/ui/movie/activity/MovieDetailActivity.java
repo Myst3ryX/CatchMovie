@@ -14,6 +14,12 @@ import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.movie.fragment.MovieDetailFragment;
 
+/**
+ * Movie Detail Activity contains detail information about movie
+ *
+ * @see BaseActivity
+ * @see OnPersonClickListener
+ */
 public final class MovieDetailActivity extends BaseActivity implements OnPersonClickListener {
 
     public static final String EXTRA_MOVIE_ID = BuildConfig.APPLICATION_ID + "EXTRA.MOVIE_ID";

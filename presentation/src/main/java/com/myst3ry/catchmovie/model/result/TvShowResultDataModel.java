@@ -1,5 +1,8 @@
 package com.myst3ry.catchmovie.model.result;
 
+/**
+ * Model that represents TvShowResult in presentation-layer
+ */
 public final class TvShowResultDataModel {
 
     private final int mTvShowId;

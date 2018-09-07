@@ -14,9 +14,17 @@ import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnTvShowClickListener;
 import com.myst3ry.catchmovie.ui.base.NavigationBaseActivity;
 import com.myst3ry.catchmovie.ui.tvshow.adapter.TvShowsPagerAdapter;
+import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowsFragment;
 
 import butterknife.BindView;
 
+/**
+ * TvShows Activity contains tv show collections
+ *
+ * @see NavigationBaseActivity
+ * @see OnTvShowClickListener
+ * @see TvShowsFragment
+ */
 public final class TvShowsActivity extends NavigationBaseActivity implements OnTvShowClickListener {
 
     @BindView(R.id.view_pager)
@@ -73,7 +81,7 @@ public final class TvShowsActivity extends NavigationBaseActivity implements OnT
     }
 
     private void setFabListener() {
-        mFloatingButtonFindTvShow.setOnClickListener(v -> getNavigator().navigateToTvShowFindScreen(this));
+        mFloatingButtonFindTvShow.setOnClickListener(v -> getNavigator().navigateToTvShowSearchScreen(this));
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.myst3ry.catchmovie.di.module;
 
 import android.app.Application;
 
-import com.myst3ry.catchmovie.CatchMovieApp;
 import com.myst3ry.catchmovie.navigation.Navigator;
 
 import javax.inject.Singleton;
@@ -21,8 +20,8 @@ public final class AppModule {
 
     @Provides
     @Singleton
-    CatchMovieApp providesApplication() {
-        return (CatchMovieApp) mApplication;
+    Application providesApplication() {
+        return mApplication;
     }
 
     @Provides

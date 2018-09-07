@@ -17,6 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import icepick.Icepick;
 
+/**
+ * A abstract base class for all activities
+ *
+ * @see AppCompatActivity
+ */
 public abstract class BaseActivity extends AppCompatActivity {
 
     @Nullable

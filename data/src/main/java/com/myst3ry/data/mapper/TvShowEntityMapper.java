@@ -4,8 +4,17 @@ import com.myst3ry.data.local.entity.TvShowEntity;
 import com.myst3ry.data.mapper.utils.TvShowConvertUtils;
 import com.myst3ry.data.remote.pojo.tvshow.detail.TvShowDetail;
 
+/**
+ * A Mapper which transforms TvShowEntity from pojo to data-layer model.
+ */
 public final class TvShowEntityMapper {
 
+    /**
+     * Transforms tv show model from pojo {@link TvShowDetail} to data-layer model (entity) class {@link TvShowEntity}.
+     *
+     * @param tvShow - a tv show detail pojo-class received from remote
+     * @return transformed tv show data-layer model
+     */
     public static TvShowEntity transform(final TvShowDetail tvShow) {
         return new TvShowEntity(
                 tvShow.getId(),

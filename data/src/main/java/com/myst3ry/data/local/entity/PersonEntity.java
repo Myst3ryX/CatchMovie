@@ -14,6 +14,9 @@ import com.myst3ry.data.local.entity.credits.TvShowCredit;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Person Entity
+ */
 @Entity(tableName = "Persons")
 public final class PersonEntity {
 

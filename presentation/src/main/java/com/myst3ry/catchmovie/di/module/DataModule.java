@@ -1,6 +1,8 @@
 package com.myst3ry.catchmovie.di.module;
 
-import com.myst3ry.catchmovie.CatchMovieApp;
+import android.app.Application;
+import android.arch.persistence.room.Room;
+
 import com.myst3ry.data.local.database.CMDatabase;
 import com.myst3ry.data.local.database.dao.MoviesDAO;
 import com.myst3ry.data.local.database.dao.PersonsDAO;
@@ -59,7 +61,7 @@ public final class DataModule {
 
     @Provides
     @Singleton
-    CMDatabase providesDatabase(final CatchMovieApp app) {
-        return app.getDatabase();
+    CMDatabase providesDatabase(final Application app) {
+        return Room.databaseBuilder(app, CMDatabase.class, "catch_movie_db").build();
     }
 }

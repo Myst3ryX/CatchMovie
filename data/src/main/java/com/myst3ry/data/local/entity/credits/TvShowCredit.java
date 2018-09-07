@@ -1,5 +1,8 @@
 package com.myst3ry.data.local.entity.credits;
 
+/**
+ * A class that represents TvShow Credit which stores a simple tv show information about Person character.
+ */
 public final class TvShowCredit {
 
     private final int mId;

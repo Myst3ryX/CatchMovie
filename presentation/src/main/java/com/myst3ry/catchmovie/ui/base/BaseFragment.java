@@ -14,6 +14,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+/**
+ * A abstract base class for all fragments
+ *
+ * @see Fragment
+ * @see BaseView
+ */
 public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Nullable

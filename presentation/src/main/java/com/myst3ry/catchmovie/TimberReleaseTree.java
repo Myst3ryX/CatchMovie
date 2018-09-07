@@ -6,11 +6,15 @@ import android.util.Log;
 
 import timber.log.Timber;
 
-/*
- * Timber TimberReleaseTree for release build only
- */
+import static timber.log.Timber.Tree;
 
-public final class TimberReleaseTree extends Timber.Tree {
+/**
+ * Timber logging class TimberReleaseTree for release build only
+ *
+ * @see Timber
+ * @see Tree
+ */
+public final class TimberReleaseTree extends Tree {
 
     private static final int MAX_LOG_LENGTH = 4000;
 

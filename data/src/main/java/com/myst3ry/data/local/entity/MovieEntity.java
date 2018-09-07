@@ -13,6 +13,9 @@ import com.myst3ry.data.local.entity.credits.PersonCredit;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Movie Entity
+ */
 @Entity(tableName = "Movies")
 public final class MovieEntity {
 

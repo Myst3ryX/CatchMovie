@@ -20,6 +20,11 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * Implementation of MoviesRepository interface
+ *
+ * @see MoviesRepository
+ */
 public final class MoviesRepositoryImpl implements MoviesRepository {
 
     private final MoviesDAO mMoviesDao;

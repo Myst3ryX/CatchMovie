@@ -16,7 +16,15 @@ import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowsPopularFragment;
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowsSearchFragment;
 
-public class TvShowsSearchActivity extends BaseActivity implements OnTvShowClickListener {
+/**
+ * Tv Show Search Activity contains tv show search content
+ *
+ * @see BaseActivity
+ * @see OnTvShowClickListener
+ * @see TvShowsPopularFragment
+ * @see TvShowsSearchFragment
+ */
+public final class TvShowsSearchActivity extends BaseActivity implements OnTvShowClickListener {
 
     private SearchView mSearchView;
 

@@ -1,41 +1,42 @@
 package com.myst3ry.catchmovie;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
 import android.support.annotation.NonNull;
 
 import com.myst3ry.catchmovie.di.component.AppComponent;
 import com.myst3ry.catchmovie.di.component.DaggerAppComponent;
 import com.myst3ry.catchmovie.di.module.AppModule;
-import com.myst3ry.data.local.database.CMDatabase;
 
 import timber.log.Timber;
 
 public final class CatchMovieApp extends Application {
 
     private AppComponent mAppComponent;
-    private CMDatabase mCMDatabase;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initAppComponent();
-        initDatabase();
         configureTimber();
     }
 
+    /**
+     * Initialize dagger AppComponent with AppModule
+     *
+     * @see AppComponent
+     * @see AppModule
+     */
     private void initAppComponent() {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
     }
 
-    private void initDatabase() {
-        mCMDatabase = Room.databaseBuilder(this, CMDatabase.class, "catch_movie_db")
-                .fallbackToDestructiveMigration()
-                .build();
-    }
-
+    /**
+     * Configure Timber for logging, for release version uses TimberReleaseTree class.
+     *
+     * @see TimberReleaseTree
+     */
     private void configureTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree() {
@@ -51,9 +52,5 @@ public final class CatchMovieApp extends Application {
 
     public AppComponent getAppComponent() {
         return mAppComponent;
-    }
-
-    public CMDatabase getDatabase() {
-        return mCMDatabase;
     }
 }

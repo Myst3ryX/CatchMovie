@@ -16,6 +16,13 @@ import com.myst3ry.catchmovie.ui.person.fragment.PersonsFragment;
 
 import butterknife.BindView;
 
+/**
+ * Persons Activity contains person collections
+ *
+ * @see NavigationBaseActivity
+ * @see OnPersonClickListener
+ * @see PersonsFragment
+ */
 public final class PersonsActivity extends NavigationBaseActivity implements OnPersonClickListener {
 
     @BindView(R.id.fab_find_person)

@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting tv show details
+ */
 public final class GetTvShowDetailsUseCase {
 
     private final TvShowsRepository mTvShowsRepository;
