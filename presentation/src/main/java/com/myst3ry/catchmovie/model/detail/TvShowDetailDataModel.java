@@ -4,6 +4,9 @@ import com.myst3ry.catchmovie.model.detail.credits.PersonCreditDataModel;
 
 import java.util.List;
 
+/**
+ * Model that represents TvShowDetail in presentation-layer
+ */
 public final class TvShowDetailDataModel {
 
     private final int mTvShowId;

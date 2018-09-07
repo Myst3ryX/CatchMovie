@@ -16,10 +16,9 @@ import javax.inject.Inject;
 
 import okhttp3.OkHttpClient;
 
-/*
- * Ensures that Glide's generated API is created
+/**
+ * Class ensures that Glide's generated API is created
  */
-
 @GlideModule
 public final class CatchMovieGlideModule extends AppGlideModule {
 
@@ -28,10 +27,10 @@ public final class CatchMovieGlideModule extends AppGlideModule {
     @Inject
     OkHttpClient okHttpClient;
 
-    //replace default networking logic to okhttp logic
     @Override
     public void registerComponents(@NonNull Context context, @NonNull Glide glide, @NonNull Registry registry) {
         ((CatchMovieApp) context.getApplicationContext()).getAppComponent().inject(this);
+        //replaces default glide networking logic to okhttp
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(okHttpClient));
     }
 }

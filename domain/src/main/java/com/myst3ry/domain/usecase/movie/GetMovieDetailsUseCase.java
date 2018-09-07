@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting movie details
+ */
 public final class GetMovieDetailsUseCase {
 
     private final MoviesRepository mMoviesRepository;

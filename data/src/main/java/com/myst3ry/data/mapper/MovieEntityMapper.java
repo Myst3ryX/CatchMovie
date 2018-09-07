@@ -4,8 +4,17 @@ import com.myst3ry.data.local.entity.MovieEntity;
 import com.myst3ry.data.mapper.utils.MovieConvertUtils;
 import com.myst3ry.data.remote.pojo.movie.detail.MovieDetail;
 
+/**
+ * A Mapper which transforms MovieEntity from pojo to data-layer model.
+ */
 public final class MovieEntityMapper {
 
+    /**
+     * Transforms movie model from pojo {@link MovieDetail} to data-layer model (entity) class {@link MovieEntity}.
+     *
+     * @param movie - a movie detail pojo-class received from remote
+     * @return transformed movie data-layer model
+     */
     public static MovieEntity transform(final MovieDetail movie) {
         return new MovieEntity(
                 movie.getId(),

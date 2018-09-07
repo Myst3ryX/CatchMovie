@@ -20,6 +20,11 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * Implementation of TvShowsRepository interface
+ *
+ * @see TvShowsRepository
+ */
 public final class TvShowsRepositoryImpl implements TvShowsRepository {
 
     private final TvShowsDAO mTvShowsDao;

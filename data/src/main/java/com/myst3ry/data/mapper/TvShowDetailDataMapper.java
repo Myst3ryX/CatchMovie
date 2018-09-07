@@ -8,16 +8,17 @@ import com.myst3ry.domain.model.detail.credits.PersonCreditModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Mapper which transforms TvShowDetail from data-layer model to domain-layer model
+ */
 public final class TvShowDetailDataMapper {
 
-    public static List<TvShowDetailModel> transform(final List<TvShowEntity> entities) {
-        final List<TvShowDetailModel> models = new ArrayList<>();
-        for (final TvShowEntity entity : entities) {
-            models.add(transform(entity));
-        }
-        return models;
-    }
-
+    /**
+     * Transforms tv show data-layer model {@link TvShowEntity} to tv show detail domain-layer model {@link TvShowDetailModel}
+     *
+     * @param entity - a tv show detail data-layer model for transform
+     * @return transformed tv show detail domain-layer model
+     */
     public static TvShowDetailModel transform(final TvShowEntity entity) {
         return new TvShowDetailModel(
                 entity.getId(),
@@ -46,6 +47,13 @@ public final class TvShowDetailDataMapper {
         );
     }
 
+    /**
+     * Transforms list of persons which are credits to the tv show {@link List<PersonCredit>} from data-layer model
+     * to domain-layer model {@link List<PersonCreditModel>}
+     *
+     * @param credits - a list of person credits data-layer model
+     * @return transformed list of person credits domain-layer model
+     */
     private static List<PersonCreditModel> transformPersonCredits(final List<PersonCredit> credits) {
         final List<PersonCreditModel> models = new ArrayList<>();
         for (final PersonCredit credit : credits) {

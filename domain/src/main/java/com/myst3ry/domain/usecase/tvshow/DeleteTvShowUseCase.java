@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for deleting tv show from collection
+ */
 public final class DeleteTvShowUseCase {
 
     private final TvShowsRepository mTvShowsRepository;

@@ -6,6 +6,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for setting tv show rating
+ */
 public final class SetTvShowRatingUseCase {
 
     private final TvShowsRepository mTvShowsRepository;

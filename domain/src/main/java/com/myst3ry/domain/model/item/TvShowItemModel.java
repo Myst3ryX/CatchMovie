@@ -2,6 +2,9 @@ package com.myst3ry.domain.model.item;
 
 import java.util.List;
 
+/**
+ * Model that represents TvShowItem in domain-layer
+ */
 public final class TvShowItemModel {
 
     private final int mId;

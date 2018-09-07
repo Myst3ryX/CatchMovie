@@ -9,6 +9,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for search tv shows by query string
+ */
 public final class SearchTvShowsUseCase {
 
     private final TvShowsRepository mTvShowsRepository;

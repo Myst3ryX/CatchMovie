@@ -8,16 +8,17 @@ import com.myst3ry.domain.model.detail.credits.PersonCreditModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A Mapper which transforms MovieDetail from data-layer model to domain-layer model
+ */
 public final class MovieDetailDataMapper {
 
-    public static List<MovieDetailModel> transform(final List<MovieEntity> entities) {
-        final List<MovieDetailModel> models = new ArrayList<>();
-        for (final MovieEntity entity : entities) {
-            models.add(transform(entity));
-        }
-        return models;
-    }
-
+    /**
+     * Transforms movie data-layer model {@link MovieEntity} to movie detail domain-layer model {@link MovieDetailModel}
+     *
+     * @param entity - a movie detail data-layer model for transform
+     * @return transformed movie detail domain-layer model
+     */
     public static MovieDetailModel transform(final MovieEntity entity) {
         final List<PersonCredit> crewList = entity.getDirectors();
         crewList.addAll(entity.getWriters());
@@ -48,6 +49,13 @@ public final class MovieDetailDataMapper {
         );
     }
 
+    /**
+     * Transforms list of persons which are credits to the movie {@link List<PersonCredit>} from data-layer model
+     * to domain-layer model {@link List<PersonCreditModel>}
+     *
+     * @param credits - a list of person credits data-layer model
+     * @return transformed list of person credits domain-layer model
+     */
     private static List<PersonCreditModel> transformPersonCredits(final List<PersonCredit> credits) {
         final List<PersonCreditModel> models = new ArrayList<>();
         for (final PersonCredit credit : credits) {

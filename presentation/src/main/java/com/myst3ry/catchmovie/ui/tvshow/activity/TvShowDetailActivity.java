@@ -14,6 +14,12 @@ import com.myst3ry.catchmovie.listener.OnPersonClickListener;
 import com.myst3ry.catchmovie.ui.base.BaseActivity;
 import com.myst3ry.catchmovie.ui.tvshow.fragment.TvShowDetailFragment;
 
+/**
+ * TvShow Detail Activity contains detail information about tv show
+ *
+ * @see BaseActivity
+ * @see OnPersonClickListener
+ */
 public final class TvShowDetailActivity extends BaseActivity implements OnPersonClickListener {
 
     public static final String EXTRA_TV_SHOW_ID = BuildConfig.APPLICATION_ID + "EXTRA.TV_SHOW_ID";

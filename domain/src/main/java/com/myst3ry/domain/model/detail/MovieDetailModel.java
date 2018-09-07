@@ -4,6 +4,9 @@ import com.myst3ry.domain.model.detail.credits.PersonCreditModel;
 
 import java.util.List;
 
+/**
+ * Model that represents MovieDetail in domain-layer
+ */
 public final class MovieDetailModel {
 
     private final int mId;

@@ -1,5 +1,8 @@
 package com.myst3ry.data.local.entity.credits;
 
+/**
+ * A class that represents Movie Credit which stores a simple movie information about Person character.
+ */
 public final class MovieCredit {
 
     private final int mId;

@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.result;
 
+/**
+ * Model that represents MovieResult in domain-layer
+ */
 public final class MovieResultModel {
 
     private final int mId;

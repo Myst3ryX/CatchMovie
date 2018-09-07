@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.detail.credits;
 
+/**
+ * Model that represents Movie Credit in domain-layer
+ */
 public final class MovieCreditModel {
 
     private final int mId;

@@ -1,5 +1,8 @@
 package com.myst3ry.catchmovie.model.detail.credits;
 
+/**
+ * Model that represents TvShow Credit in presentation-layer
+ */
 public final class TvShowCreditDataModel {
 
     private final int mId;

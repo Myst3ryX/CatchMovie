@@ -17,6 +17,13 @@ import com.myst3ry.catchmovie.ui.tvshow.activity.TvShowsActivity;
 
 import butterknife.BindView;
 
+/**
+ * A abstract NavigationBaseActivity
+ *
+ * @see BaseActivity
+ * @see NavigationView
+ * @see DrawerLayout
+ */
 public abstract class NavigationBaseActivity extends BaseActivity {
 
     private static final int NAV_CLOSE_DELAY = 275;

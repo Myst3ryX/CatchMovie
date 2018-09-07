@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.item;
 
+/**
+ * Model that represents PersonItem in domain-layer
+ */
 public final class PersonItemModel {
 
     private final int mId;

@@ -9,6 +9,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for search movies by query string
+ */
 public final class SearchMoviesUseCase {
 
     private final MoviesRepository mMoviesRepository;

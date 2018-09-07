@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for getting person details
+ */
 public final class GetPersonDetailsUseCase {
 
     private final PersonsRepository mPersonsRepository;

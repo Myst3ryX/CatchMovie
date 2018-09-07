@@ -6,6 +6,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for setting movie rating
+ */
 public final class SetMovieRatingUseCase {
 
     private final MoviesRepository mMoviesRepository;

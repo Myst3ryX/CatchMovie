@@ -3,9 +3,16 @@ package com.myst3ry.catchmovie;
 import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
 import android.view.View;
 
-public final class LinearSpacingItemDecoration extends RecyclerView.ItemDecoration {
+/**
+ * A simple {@link ItemDecoration} to decorate linear items for recycler view
+ *
+ * @see ItemDecoration
+ * @see LinearLayoutManager
+ */
+public final class LinearSpacingItemDecoration extends ItemDecoration {
 
     private static final int ZERO = 0;
     private static final int HALF_DIVIDER = 2;

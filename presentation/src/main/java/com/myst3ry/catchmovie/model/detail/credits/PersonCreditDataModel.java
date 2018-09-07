@@ -1,5 +1,8 @@
 package com.myst3ry.catchmovie.model.detail.credits;
 
+/**
+ * Model that represents Person Credit in presentation-layer
+ */
 public final class PersonCreditDataModel {
 
     private final int mId;

@@ -14,9 +14,17 @@ import com.myst3ry.catchmovie.R;
 import com.myst3ry.catchmovie.listener.OnMovieClickListener;
 import com.myst3ry.catchmovie.ui.base.NavigationBaseActivity;
 import com.myst3ry.catchmovie.ui.movie.adapter.MoviesPagerAdapter;
+import com.myst3ry.catchmovie.ui.movie.fragment.MoviesFragment;
 
 import butterknife.BindView;
 
+/**
+ * Movies Activity contains movie collections
+ *
+ * @see NavigationBaseActivity
+ * @see OnMovieClickListener
+ * @see MoviesFragment
+ */
 public final class MoviesActivity extends NavigationBaseActivity implements OnMovieClickListener {
 
     @BindView(R.id.view_pager)
@@ -73,7 +81,7 @@ public final class MoviesActivity extends NavigationBaseActivity implements OnMo
     }
 
     private void setFabListener() {
-        mFloatingButtonFindMovie.setOnClickListener(v -> getNavigator().navigateToMovieFindScreen(this));
+        mFloatingButtonFindMovie.setOnClickListener(v -> getNavigator().navigateToMovieSearchScreen(this));
     }
 
     @Override

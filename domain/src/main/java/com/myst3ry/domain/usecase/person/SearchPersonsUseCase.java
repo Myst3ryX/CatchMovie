@@ -9,6 +9,9 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
+/**
+ * A UseCase class for search persons by query string
+ */
 public final class SearchPersonsUseCase {
 
     private final PersonsRepository mPersonsRepository;

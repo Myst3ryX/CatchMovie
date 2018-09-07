@@ -1,5 +1,8 @@
 package com.myst3ry.domain.model.result;
 
+/**
+ * Model that represents PersonResult in domain-layer
+ */
 public final class PersonResultModel {
 
     private final int mId;

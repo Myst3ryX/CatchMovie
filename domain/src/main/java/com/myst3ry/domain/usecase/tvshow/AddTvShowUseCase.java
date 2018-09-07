@@ -7,6 +7,9 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.Disposable;
 
+/**
+ * A UseCase class for adding tv show to collection
+ */
 public final class AddTvShowUseCase {
 
     private final TvShowsRepository mTvShowsRepository;
