@@ -291,4 +291,10 @@ public final class MovieDetailFragment extends BaseFragment implements MovieDeta
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mPersonClickListener = null;
+    }
 }

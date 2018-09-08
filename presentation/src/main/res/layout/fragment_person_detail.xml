@@ -17,7 +17,6 @@
             android:layout_width="@dimen/detail_image_width"
             android:layout_height="@dimen/detail_image_height"
             android:layout_margin="@dimen/margin_standard"
-            android:background="@color/color_image_placeholder"
             android:contentDescription="@string/person_photo_desc"
             android:scaleType="centerInside"
             app:layout_constraintStart_toStartOf="parent"

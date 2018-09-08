@@ -110,4 +110,10 @@ public final class MoviesPopularFragment extends BaseFragment implements MoviesP
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mMovieClickListener = null;
+    }
 }

@@ -133,4 +133,10 @@ public final class PersonsSearchFragment extends BaseFragment implements Persons
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mPersonClickListener = null;
+    }
 }

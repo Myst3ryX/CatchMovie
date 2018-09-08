@@ -110,4 +110,10 @@ public final class PersonsPopularFragment extends BaseFragment implements Person
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mPersonClickListener = null;
+    }
 }

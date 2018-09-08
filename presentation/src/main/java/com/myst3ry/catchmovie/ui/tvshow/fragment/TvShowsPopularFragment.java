@@ -111,4 +111,10 @@ public final class TvShowsPopularFragment extends BaseFragment implements TvShow
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mTvShowClickListener = null;
+    }
 }

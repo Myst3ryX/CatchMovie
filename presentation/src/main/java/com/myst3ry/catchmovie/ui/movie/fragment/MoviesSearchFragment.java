@@ -133,4 +133,10 @@ public final class MoviesSearchFragment extends BaseFragment implements MoviesSe
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mMovieClickListener = null;
+    }
 }

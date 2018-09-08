@@ -247,4 +247,11 @@ public final class PersonDetailFragment extends BaseFragment implements PersonDe
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mMovieClickListener = null;
+        mTvShowClickListener = null;
+    }
 }

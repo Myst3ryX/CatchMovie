@@ -193,4 +193,10 @@ public final class MoviesFragment extends BaseFragment implements MoviesView {
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mMovieClickListener = null;
+    }
 }

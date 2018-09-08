@@ -142,4 +142,10 @@ public final class PersonsFragment extends BaseFragment implements PersonsView {
         mPresenter.detachView();
         mPresenter.disposeAll();
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mPersonClickListener = null;
+    }
 }
